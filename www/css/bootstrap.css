@@ -8708,7 +8708,7 @@ body {
   animation-duration: 0.75s;
 }
 body {
-  background-color: #5e656d;
+  background-image: url("../img/bg-iphone5.png");
 }
 .logo {
   background-image: url("../img/logo-app.png");
