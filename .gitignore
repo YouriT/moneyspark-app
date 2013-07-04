@@ -14,3 +14,4 @@ platforms/android/gen
 platforms/android/project.properties
 platforms/android/assets/www
 .classpath
+!platforms/android/project.properties
