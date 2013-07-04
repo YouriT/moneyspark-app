@@ -8711,7 +8711,7 @@ body {
   background-color: #5e656d;
 }
 .logo {
-  background-image: url("/img/logo-app.png");
+  background-image: url("img/logo-app.png");
   width: 140px;
   height: 50px;
   margin: 0 auto;
@@ -8725,7 +8725,7 @@ body {
   color: #fff;
 }
 .launch {
-  background-image: url("/img/launch.png");
+  background-image: url("img/launch.png");
 }
 .deal {
   display: inline-block;
