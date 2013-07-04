@@ -8,7 +8,9 @@ nbproject
 .settings
 composer.lock
 platforms/ios/build
+platforms/ios/www
 platforms/android/bin
 platforms/android/gen
 platforms/android/project.properties
+platforms/android/assets/www
 .classpath
