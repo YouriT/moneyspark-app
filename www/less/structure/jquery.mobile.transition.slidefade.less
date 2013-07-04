@@ -1,0 +1,22 @@
+@import "jquery.mobile.transition.fade.less";
+@import "jquery.mobile.transition.slideout.keyframes.less";
+
+.slidefade.out {
+	.animation(slideouttoleft, .225s);
+    .translate(-100%);
+}
+
+.slidefade.in {
+	.animation(fadein, .2s);
+    .translate(0);
+}
+
+.slidefade.out.reverse {
+	.animation(slideouttoright, .2s);
+    .translate(100%);
+}
+
+.slidefade.in.reverse {
+	.animation(fadein, .2s);
+    .translate(0);
+}
