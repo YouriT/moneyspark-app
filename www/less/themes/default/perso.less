@@ -1,7 +1,9 @@
-body {
-	//background-color: #5e656d;
-	background-image: url("../img/bg-iphone5.png");
-}
+
+@rose: #df1874;
+@blue: #21aecb;
+@grey: #666;
+@turquoise: #3acac6;
+@green: #82c729;
 
 .logo {
 	background-image: url("../img/logo-app.png");
@@ -24,15 +26,212 @@ body {
 }
 
 .deal {
-	display: inline-block;
-	line-height: 1;
-	width: 280px;
-	padding: 10px;
+	padding: 4%;
+	padding-top: 5%;
 	.border-radius(0px);
 	.box-shadow(0 1px 2px rgba(0,0,0,0.3));
 	background-color: rgba(255,255,255,0.65);
+	.title {
+		font-family: Proxima Nova;
+		font-size: 1.1em;
+		text-align: center;
+		color: #666;
+		padding-bottom: 4px;
+		border-bottom: 1px solid rgba(94,101,109,0.6);
+	}
+	.subtitle {
+		font-size: 0.75em;
+		color: rgba(94, 101, 109, 0.9);
+		float: left;
+		line-height: 30px;
+		//font-weight: normal;
+		//font-family: Proxima Nova;
+	}
+	.content {
+		border-top: 1px solid #fff;
+		padding-top: 12px;
+	}
+}
+
+.logo-hf {
+	height: 18px;
+	float: left;
+	margin-top: 5px;
+	margin-left: 5px;
+}
+
+.hf-name {
+	float: left;
+	margin-left: 5px;
+	line-height: 30px;
+	font-family: Proxima Nova;
+	font-weight: normal;
+	font-size: 0.95em;
+	margin-left: 7px;
+	line-height: 30px;
+	color: #666;
+}
+
+.lock-icon {
+	background-image: url("../img/lock.png");
+	width: 20px;
+	height: 20px;
+	float: left;
+	margin-top: 5px;
+}
+
+.lock-time {
+	line-height: 30px;
+	font-size: 0.95em;
+	color: #666;
+}
+
+.progress-bar-hover {
+	background-color: #aaa;
+	height: 13px;
+	width: 20%;
+	margin-left: 65%;
+	margin-top: -14px;
+	//box-shadow: inset -1px 1px 6px rgba(0, 0, 0, 0.9);;
+}
+
+.progress-bar-layout {
+	height: 13px;
+	width: 85%;
+	#gradient > .horizontal(@blue, @rose);
+	border-bottom: 1px solid rgba(255,255,255,0.95);
+}
+
+.progress-number {
+	color: @grey;
+	float: left;
+	font-size: 0.8em;
+}
+
+.imin {
+	width: 90%;
+	height: 35px;
+	text-align: center;
+	color: #fff;
+	background-color: @green;
+	//text-shadow: 0 -1px 1px rgba(0,0,0,0.4);
+	//box-shadow: 0 1px 2px rgba(0,0,0,0.3),inset 0 1px 1px rgba(255,255,255,0.3);
+	border-radius: 3px;
+	line-height: 35px;
+	font-size: 0.9em;
+	font-weight: normal;
+	//border-color: rgba(0,0,0,0.1) rgba(0,0,0,0.1) rgba(0,0,0,0.25);
+	//border: 1px solid #ccc;
+}
+
+.maybe {
+	font-family: cambria;
+	font-style: italic;
+}
+
+.bordertop {
+	width: 100%;
+	margin-top: 12px;
+	background-color: rgba(94,101,109,0.6);
+	height: 1px;
+}
+
+.borderbottom {
+	width: 100%;
+	margin-bottom: 10px;
+	background-color: #fff;
+	height: 1px;
+}
+
+.text {
+	font-family: Proxima Nova;
+	font-weight: normal;
+	color: #666;
+	font-size: 0.75em;
+	line-height: 1.3;
+	display: block;
+	text-align: justify;
+}
+
+.analyse {
+	float: left;
+	background-image: url("../img/flash.png");
+	width: 25px;
+	height: 25px;
+	margin-right: 7px;
+}
+
+.seemore {
+	margin-left: 6px;
+	color: #444;
+}
+
+.circle {
+	text-align: center;
+	color: @green;
+	font-size: 1em;
+	width: 60px;
+	height: 60px;
+	//background-color: @green;
+	border-radius: 50%;
+	margin-top: 20px;
+	font-weight: normal;
+	padding-top: 18px;
+	//text-shadow: 0 1px 1px rgba(0,0,0,0.4);
+	background-image: url("../img/circle.png");
+
+}
+
+.circle-time {
+	text-align: center;
+	color: #fff;
+	font-size: 1em;
+}
+
+.opportunity-bar-layout {
+	height: 13px;
+	width: 100%;
+	#gradient > .horizontal(rgb(255,60,112), rgb(130,199,41));
+	border-bottom: 1px solid rgba(255,255,255,0.95);
+}
+
+.sportwatch-icon {
+	background-image: url("../img/sportwatch.png");
+	width: 25px;
+	height: 25px;
+	margin: 0 auto;
+}
+
+.sportwatch-time {
+	line-height: 25px;
+	font-size: 0.95em;
+	color: #666;
+	text-align: center;
+}
+
+.pagenum {
+	display: block;
+	width: 10px;
+	height: 10px;
+	border: 2px solid rgba(255, 255, 255, 0.65);
+	margin-bottom: 5px;
+	.border-radius(50%) !important;
+	float: left;
+	box-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+	&.active {
+		background-color: rgba(255, 255, 255, 0.65);
+	}	
 }
 
 .header {
 	margin-top: 5px;
+}
+
+.container {
+	width: 94%;
+	margin: 0 auto;
+}
+
+.clear {
+	clear: both;
 }
