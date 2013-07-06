@@ -161,6 +161,7 @@ img {
 *
 */
 
+
 body {
 	/* 16px / 24px */
 	font-size: @font-size / 16 * 1em; 
@@ -203,6 +204,14 @@ body {
 	line-height: (@line*5) / 110 * 1em;
 }
 
+@media screen and (max-width: 320px) {
+	
+	body {
+		/* Zoom baseline grid to 17/16 = 1.0625 */
+		font-size: 14px;
+	}
+	
+}
 
 /*
 *

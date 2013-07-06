@@ -5598,7 +5598,6 @@ Button States
 .ui-body-c {
   font-family: "Helvetica Neue", Arial, sans-serif;
   font-weight: lighter;
-  background-image: url("../img/bg-iphone5.png") !important;
   background-attachment: fixed;
 }
 .ui-body-c input,
@@ -6481,51 +6480,235 @@ a.ui-link-inherit {
 }
 @media screen and (min-width: 240px) {
   .logo {
-    background-image: url("../img/240-app-header-logo.png");
+    background-image: url("../img/240/240-app-header-logo.png");
     width: 105px;
     height: 26px;
+  }
+  .logo-hf {
+    background-image: url("../img/240/240-hf.png");
+    width: 18px;
+    height: 18px;
+    margin-top: 4px !important;
+  }
+  .lock-icon {
+    background-image: url("../img/240/240-lock.png");
+    width: 18px;
+    height: 18px;
+    margin-top: 6px !important;
+  }
+  .analyse {
+    background-image: url("../img/240/240-analyse.png");
+    width: 18px;
+    height: 18px;
+  }
+  .sportwatch-icon {
+    background-image: url("../img/240/240-chrono.png");
+    width: 18px;
+    height: 18px;
+  }
+  .buydeal {
+    background-image: url("../img/240/240-buybg.png");
+  }
+  .ui-body-c {
+    background-image: url("../img/240/240-bg.png") !important;
   }
 }
 @media screen and (min-width: 320px) {
   .logo {
-    background-image: url("../img/320-app-header-logo.png");
+    background-image: url("../img/320/320-app-header-logo.png");
     width: 140px;
     height: 34px;
+  }
+  .logo-hf {
+    background-image: url("../img/320/320-hf.png");
+    width: 25px;
+    height: 25px;
+  }
+  .lock-icon {
+    background-image: url("../img/320/320-lock.png");
+    width: 25px;
+    height: 25px;
+  }
+  .analyse {
+    background-image: url("../img/320/320-analyse.png");
+    width: 25px;
+    height: 25px;
+  }
+  .sportwatch-icon {
+    background-image: url("../img/320/320-chrono.png");
+    width: 25px;
+    height: 25px;
+  }
+  .buydeal {
+    background-image: url("../img/320/320-buybg.png");
+  }
+  .ui-body-c {
+    background-image: url("../img/320/320-bg.png") !important;
   }
 }
 @media screen and (min-width: 360px) {
   .logo {
-    background-image: url("../img/360-app-header-logo.png");
+    background-image: url("../img/360/360-app-header-logo.png");
     width: 157px;
     height: 38px;
+  }
+  .logo-hf {
+    background-image: url("../img/360/360-hf.png");
+    width: 28px;
+    height: 28px;
+  }
+  .lock-icon {
+    background-image: url("../img/360/360-lock.png");
+    width: 28px;
+    height: 28px;
+  }
+  .analyse {
+    background-image: url("../img/360/360-analyse.png");
+    width: 28px;
+    height: 28px;
+  }
+  .sportwatch-icon {
+    background-image: url("../img/360/360-chrono.png");
+    width: 28px;
+    height: 28px;
+  }
+  .buydeal {
+    background-image: url("../img/360/360-buybg.png");
+  }
+  .ui-body-c {
+    background-image: url("../img/360/360-bg.png") !important;
   }
 }
 @media screen and (min-width: 480px) {
   .logo {
-    background-image: url("../img/480-app-header-logo.png");
+    background-image: url("../img/480/480-app-header-logo.png");
     width: 210px;
     height: 51px;
+  }
+  .logo-hf {
+    background-image: url("../img/480/480-hf.png");
+    width: 37px;
+    height: 37px;
+  }
+  .lock-icon {
+    background-image: url("../img/480/480-lock.png");
+    width: 37px;
+    height: 37px;
+  }
+  .analyse {
+    background-image: url("../img/480/480-analyse.png");
+    width: 37px;
+    height: 37px;
+  }
+  .sportwatch-icon {
+    background-image: url("../img/480/480-chrono.png");
+    width: 37px;
+    height: 37px;
+  }
+  .buydeal {
+    background-image: url("../img/480/480-buybg.png");
+  }
+  .ui-body-c {
+    background-image: url("../img/480/480-bg.png") !important;
   }
 }
 @media screen and (min-width: 640px) {
   .logo {
-    background-image: url("../img/640-app-header-logo.png");
+    background-image: url("../img/640/640-app-header-logo.png");
     width: 280px;
     height: 69px;
+  }
+  .logo-hf {
+    background-image: url("../img/640/640-hf.png");
+    width: 50px;
+    height: 50px;
+  }
+  .lock-icon {
+    background-image: url("../img/640/640-lock.png");
+    width: 50px;
+    height: 50px;
+  }
+  .analyse {
+    background-image: url("../img/640/640-analyse.png");
+    width: 50px;
+    height: 50px;
+  }
+  .sportwatch-icon {
+    background-image: url("../img/640/640-chrono.png");
+    width: 50px;
+    height: 50px;
+  }
+  .buydeal {
+    background-image: url("../img/640/640-buybg.png");
+  }
+  .ui-body-c {
+    background-image: url("../img/640/640-bg.png") !important;
   }
 }
 @media screen and (min-width: 768px) {
   .logo {
-    background-image: url("../img/768-app-header-logo.png");
+    background-image: url("../img/768/768-app-header-logo.png");
     width: 336px;
     height: 82px;
+  }
+  .logo-hf {
+    background-image: url("../img/768/768-hf.png");
+    width: 60px;
+    height: 60px;
+  }
+  .lock-icon {
+    background-image: url("../img/768/768-lock.png");
+    width: 60px;
+    height: 60px;
+  }
+  .analyse {
+    background-image: url("../img/768/768-analyse.png");
+    width: 60px;
+    height: 60px;
+  }
+  .sportwatch-icon {
+    background-image: url("../img/768/768-chrono.png");
+    width: 60px;
+    height: 60px;
+  }
+  .buydeal {
+    background-image: url("../img/768/768-buybg.png");
+  }
+  .ui-body-c {
+    background-image: url("../img/768/768-bg.png") !important;
   }
 }
 @media screen and (min-width: 1080px) {
   .logo {
-    background-image: url("../img/1080-app-header-logo.png");
+    background-image: url("../img/1080/1080-app-header-logo.png");
     width: 470px;
     height: 115px;
+  }
+  .logo-hf {
+    background-image: url("../img/1080/1080-hf.png");
+    width: 84px;
+    height: 84px;
+  }
+  .lock-icon {
+    background-image: url("../img/1080/1080-lock.png");
+    width: 84px;
+    height: 84px;
+  }
+  .analyse {
+    background-image: url("../img/1080/1080-analyse.png");
+    width: 84px;
+    height: 84px;
+  }
+  .sportwatch-icon {
+    background-image: url("../img/1080/1080-chrono.png");
+    width: 84px;
+    height: 84px;
+  }
+  .buydeal {
+    background-image: url("../img/1080/1080-buybg.png");
+  }
+  .ui-body-c {
+    background-image: url("../img/1080/1080-bg.png") !important;
   }
 }
 .logo {
@@ -6569,9 +6752,7 @@ a.ui-link-inherit {
   padding-top: 12px;
 }
 .logo-hf {
-  height: 18px;
   float: left;
-  margin-top: 5px;
   margin-left: 5px;
 }
 .hf-name {
@@ -6585,11 +6766,8 @@ a.ui-link-inherit {
   color: #666;
 }
 .lock-icon {
-  background-image: url("../img/lock.png");
-  width: 20px;
-  height: 20px;
   float: left;
-  margin-top: 5px;
+  margin-top: 3px;
 }
 .lock-time {
   line-height: 30px;
@@ -6660,9 +6838,6 @@ a.ui-link-inherit {
 }
 .analyse {
   float: left;
-  background-image: url("../img/flash.png");
-  width: 25px;
-  height: 25px;
   margin-right: 7px;
 }
 .seemore {
@@ -6700,9 +6875,6 @@ a.ui-link-inherit {
   border-bottom: 1px solid rgba(255, 255, 255, 0.95);
 }
 .sportwatch-icon {
-  background-image: url("../img/sportwatch.png");
-  width: 25px;
-  height: 25px;
   margin: 0 auto;
 }
 .sportwatch-time {
@@ -6738,7 +6910,6 @@ a.ui-link-inherit {
   clear: both;
 }
 .buydeal {
-  background-image: url("../img/buybg.png");
   padding-top: 20px;
   padding-left: 10%;
   padding-right: 10%;
@@ -7043,6 +7214,13 @@ h1 {
 
   font-size: 6.875em;
   line-height: 1.0909090909090908em;
+}
+@media screen and (max-width: 320px) {
+  body {
+    /* Zoom baseline grid to 17/16 = 1.0625 */
+  
+    font-size: 14px;
+  }
 }
 /*
 *
