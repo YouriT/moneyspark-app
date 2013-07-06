@@ -5,20 +5,64 @@
 @turquoise: #3acac6;
 @green: #82c729;
 
+// mediaquiries pictures
+
+@media screen and (min-width: 240px) {
+	.logo {
+		background-image: url("../img/240-app-header-logo.png"); 
+		width: 105px;
+		height: 26px;
+	}
+}
+@media screen and (min-width: 320px) {
+	.logo {
+		background-image: url("../img/320-app-header-logo.png"); 
+		width: 140px;
+		height: 34px;
+	}
+}
+@media screen and (min-width: 360px) {
+	.logo {
+		background-image: url("../img/360-app-header-logo.png"); 
+		width: 157px;
+		height: 38px;
+	}
+}
+@media screen and (min-width: 480px) {
+	.logo {
+		background-image: url("../img/480-app-header-logo.png"); 
+		width: 210px;
+		height: 51px;
+	}
+}	
+@media screen and (min-width: 640px) {
+	.logo {
+		background-image: url("../img/640-app-header-logo.png"); 
+		width: 280px;
+		height: 69px;
+	}
+}
+@media screen and (min-width: 768px) {
+	.logo {
+		background-image: url("../img/768-app-header-logo.png"); 
+		width: 336px;
+		height: 82px;
+	}
+}
+@media screen and (min-width: 1080px) {
+	.logo {
+		background-image: url("../img/1080-app-header-logo.png"); 
+		width: 470px;
+		height: 115px;
+	}
+}
+
+// Homepage
+
 .logo {
-	background-image: url("../img/logo-app.png");
-	width: 140px;
-	height: 50px;
 	margin: 0 auto;
 	margin-top: 13px;
 	margin-bottom: 7px;
-}
-.app {
-	text-shadow: 0 0 1px rgba(0,0,0,0.4);
-	line-height: 1.25;
-	font-family: DIN Medium;
-	font-size: 14px;
-	color: #fff;
 }
 
 .launch {
@@ -29,10 +73,11 @@
 	padding: 4%;
 	padding-top: 5%;
 	.border-radius(0px);
-	.box-shadow(0 1px 2px rgba(0,0,0,0.3));
-	background-color: rgba(255,255,255,0.65);
+	//.box-shadow(0 1px 2px rgba(0,0,0,0.3));
+	.box-shadow(0 1px 2px rgba(0,0,0,0.4));
+	background-color: rgba(255,255,255,0.60);
 	.title {
-		font-family: Proxima Nova;
+		font-family: ProximaNovaLight;
 		font-size: 1.1em;
 		text-align: center;
 		color: #666;
@@ -64,7 +109,7 @@
 	float: left;
 	margin-left: 5px;
 	line-height: 30px;
-	font-family: Proxima Nova;
+	font-family: ProximaNovaRegular;
 	font-weight: normal;
 	font-size: 0.95em;
 	margin-left: 7px;
@@ -105,7 +150,7 @@
 .progress-number {
 	color: @grey;
 	float: left;
-	font-size: 0.8em;
+	font-size: 0.9em;
 }
 
 .imin {
@@ -120,6 +165,7 @@
 	line-height: 35px;
 	font-size: 0.9em;
 	font-weight: normal;
+	cursor: pointer;
 	//border-color: rgba(0,0,0,0.1) rgba(0,0,0,0.1) rgba(0,0,0,0.25);
 	//border: 1px solid #ccc;
 }
@@ -132,19 +178,19 @@
 .bordertop {
 	width: 100%;
 	margin-top: 12px;
-	background-color: rgba(94,101,109,0.6);
+	background-color: rgba(94,101,109,0.5);
 	height: 1px;
 }
 
 .borderbottom {
 	width: 100%;
 	margin-bottom: 10px;
-	background-color: #fff;
+	background-color: rgba(255,255,255,0.6);
 	height: 1px;
 }
 
 .text {
-	font-family: Proxima Nova;
+	font-family: ProximaNovaRegular;
 	font-weight: normal;
 	color: #666;
 	font-size: 0.75em;
@@ -211,8 +257,8 @@
 
 .pagenum {
 	display: block;
-	width: 10px;
-	height: 10px;
+	width: 7px;
+	height: 7px;
 	border: 2px solid rgba(255, 255, 255, 0.65);
 	margin-bottom: 5px;
 	.border-radius(50%) !important;
@@ -234,4 +280,95 @@
 
 .clear {
 	clear: both;
+}
+
+
+// Buydeal
+
+.buydeal {
+	background-image: url("../img/buybg.png");
+	//.box-shadow(inset 0px 0px 4px rgba(0,0,0,0.5));
+	padding-top: 20px;
+	padding-left: 10%;
+	padding-right: 10%;
+	padding-bottom: 20px;
+	.box-shadow(0px 0px 4px rgba(0,0,0,0.5));
+}
+
+.amount {
+	font-family: ProximaNovaLight;
+	color: #fff;
+	font-size: 1em;
+	//text-shadow: 0 1px 1px rgba(0,0,0,0.4);
+	line-height: 30px;
+}
+
+.input {
+	background-color: #eee;
+	color: #666;
+	text-align: center;
+	border-radius: 4px;
+	box-shadow: inset 0px 0px 3px #000;
+	font-family: ProximaNovaLight;
+	font-size: 1em;
+	line-height: 30px;
+	padding-left: 10px;
+	padding-right: 10px;
+	margin-right: 10px;
+}
+
+.fees {
+	font-family: ProximaNovaLight;
+	color: #999;
+	font-size: 0.8em;
+}
+
+.letsgo {
+	margin: 0 auto;
+	line-height: 28px;
+	text-align: center;
+	background-color: rgba(0,0,0,0.4);
+	border-radius: 3px;
+	color: #999;
+	margin-top: 7px;
+	border: 1px solid #444;
+	.box-shadow(inset 0px 0px 4px rgba(0,0,0,0.5));
+	cursor: pointer;
+}
+
+.deal {
+	padding: 4%;
+	padding-top: 5%;
+	.border-radius(0px);
+	//.box-shadow(0 1px 2px rgba(0,0,0,0.3));
+	.box-shadow(0 1px 2px rgba(0,0,0,0.4));
+	background-color: rgba(255,255,255,0.60);
+	position: relative;
+	z-index: 1000000;
+	&.a {
+		.box-shadow(0 2px 4px rgba(0,0,0,0.4));
+	}
+	&.b {
+		.box-shadow(0 -2px 4px rgba(0,0,0,0.4));
+	}
+	.title {
+		font-family: ProximaNovaLight;
+		font-size: 1.1em;
+		text-align: center;
+		color: #666;
+		padding-bottom: 4px;
+		border-bottom: 1px solid rgba(94,101,109,0.6);
+	}
+	.subtitle {
+		font-size: 0.75em;
+		color: rgba(94, 101, 109, 0.9);
+		float: left;
+		line-height: 30px;
+		//font-weight: normal;
+		//font-family: Proxima Nova;
+	}
+	.content {
+		border-top: 1px solid #fff;
+		padding-top: 12px;
+	}
 }

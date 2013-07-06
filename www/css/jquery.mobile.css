@@ -5599,6 +5599,7 @@ Button States
   font-family: "Helvetica Neue", Arial, sans-serif;
   font-weight: lighter;
   background-image: url("../img/bg-iphone5.png") !important;
+  background-attachment: fixed;
 }
 .ui-body-c input,
 .ui-body-c select,
@@ -6478,20 +6479,59 @@ a.ui-link-inherit {
     page-break-after: avoid;
   }
 }
+@media screen and (min-width: 240px) {
+  .logo {
+    background-image: url("../img/240-app-header-logo.png");
+    width: 105px;
+    height: 26px;
+  }
+}
+@media screen and (min-width: 320px) {
+  .logo {
+    background-image: url("../img/320-app-header-logo.png");
+    width: 140px;
+    height: 34px;
+  }
+}
+@media screen and (min-width: 360px) {
+  .logo {
+    background-image: url("../img/360-app-header-logo.png");
+    width: 157px;
+    height: 38px;
+  }
+}
+@media screen and (min-width: 480px) {
+  .logo {
+    background-image: url("../img/480-app-header-logo.png");
+    width: 210px;
+    height: 51px;
+  }
+}
+@media screen and (min-width: 640px) {
+  .logo {
+    background-image: url("../img/640-app-header-logo.png");
+    width: 280px;
+    height: 69px;
+  }
+}
+@media screen and (min-width: 768px) {
+  .logo {
+    background-image: url("../img/768-app-header-logo.png");
+    width: 336px;
+    height: 82px;
+  }
+}
+@media screen and (min-width: 1080px) {
+  .logo {
+    background-image: url("../img/1080-app-header-logo.png");
+    width: 470px;
+    height: 115px;
+  }
+}
 .logo {
-  background-image: url("../img/logo-app.png");
-  width: 140px;
-  height: 50px;
   margin: 0 auto;
   margin-top: 13px;
   margin-bottom: 7px;
-}
-.app {
-  text-shadow: 0 0 1px rgba(0, 0, 0, 0.4);
-  line-height: 1.25;
-  font-family: DIN Medium;
-  font-size: 14px;
-  color: #fff;
 }
 .launch {
   background-image: url("../img/launch.png");
@@ -6503,15 +6543,15 @@ a.ui-link-inherit {
   -khtml-border-radius: 0px;
   -moz-border-radius: 0px;
   border-radius: 0px;
-  -webkit-box-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
-  -moz-box-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
-  -khtml-box-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
-  -o-box-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
-  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
-  background-color: rgba(255, 255, 255, 0.65);
+  -webkit-box-shadow: 0 1px 2px rgba(0, 0, 0, 0.4);
+  -moz-box-shadow: 0 1px 2px rgba(0, 0, 0, 0.4);
+  -khtml-box-shadow: 0 1px 2px rgba(0, 0, 0, 0.4);
+  -o-box-shadow: 0 1px 2px rgba(0, 0, 0, 0.4);
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.4);
+  background-color: rgba(255, 255, 255, 0.6);
 }
 .deal .title {
-  font-family: Proxima Nova;
+  font-family: ProximaNovaLight;
   font-size: 1.1em;
   text-align: center;
   color: #666;
@@ -6537,7 +6577,7 @@ a.ui-link-inherit {
 .hf-name {
   float: left;
   margin-left: 5px;
-  font-family: Proxima Nova;
+  font-family: ProximaNovaRegular;
   font-weight: normal;
   font-size: 0.95em;
   margin-left: 7px;
@@ -6579,7 +6619,7 @@ a.ui-link-inherit {
 .progress-number {
   color: #666666;
   float: left;
-  font-size: 0.8em;
+  font-size: 0.9em;
 }
 .imin {
   width: 90%;
@@ -6591,6 +6631,7 @@ a.ui-link-inherit {
   line-height: 35px;
   font-size: 0.9em;
   font-weight: normal;
+  cursor: pointer;
 }
 .maybe {
   font-family: cambria;
@@ -6599,17 +6640,17 @@ a.ui-link-inherit {
 .bordertop {
   width: 100%;
   margin-top: 12px;
-  background-color: rgba(94, 101, 109, 0.6);
+  background-color: rgba(94, 101, 109, 0.5);
   height: 1px;
 }
 .borderbottom {
   width: 100%;
   margin-bottom: 10px;
-  background-color: #fff;
+  background-color: rgba(255, 255, 255, 0.6);
   height: 1px;
 }
 .text {
-  font-family: Proxima Nova;
+  font-family: ProximaNovaRegular;
   font-weight: normal;
   color: #666;
   font-size: 0.75em;
@@ -6672,8 +6713,8 @@ a.ui-link-inherit {
 }
 .pagenum {
   display: block;
-  width: 10px;
-  height: 10px;
+  width: 7px;
+  height: 7px;
   border: 2px solid rgba(255, 255, 255, 0.65);
   margin-bottom: 5px;
   -webkit-border-radius: 50% !important;
@@ -6695,6 +6736,106 @@ a.ui-link-inherit {
 }
 .clear {
   clear: both;
+}
+.buydeal {
+  background-image: url("../img/buybg.png");
+  padding-top: 20px;
+  padding-left: 10%;
+  padding-right: 10%;
+  padding-bottom: 20px;
+  -webkit-box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.5);
+  -moz-box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.5);
+  -khtml-box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.5);
+  -o-box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.5);
+  box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.5);
+}
+.amount {
+  font-family: ProximaNovaLight;
+  color: #fff;
+  font-size: 1em;
+  line-height: 30px;
+}
+.input {
+  background-color: #eee;
+  color: #666;
+  text-align: center;
+  border-radius: 4px;
+  box-shadow: inset 0px 0px 3px #000;
+  font-family: ProximaNovaLight;
+  font-size: 1em;
+  line-height: 30px;
+  padding-left: 10px;
+  padding-right: 10px;
+  margin-right: 10px;
+}
+.fees {
+  font-family: ProximaNovaLight;
+  color: #999;
+  font-size: 0.8em;
+}
+.letsgo {
+  margin: 0 auto;
+  line-height: 28px;
+  text-align: center;
+  background-color: rgba(0, 0, 0, 0.4);
+  border-radius: 3px;
+  color: #999;
+  margin-top: 7px;
+  border: 1px solid #444;
+  -webkit-box-shadow: inset 0px 0px 4px rgba(0, 0, 0, 0.5);
+  -moz-box-shadow: inset 0px 0px 4px rgba(0, 0, 0, 0.5);
+  -khtml-box-shadow: inset 0px 0px 4px rgba(0, 0, 0, 0.5);
+  -o-box-shadow: inset 0px 0px 4px rgba(0, 0, 0, 0.5);
+  box-shadow: inset 0px 0px 4px rgba(0, 0, 0, 0.5);
+  cursor: pointer;
+}
+.deal {
+  padding: 4%;
+  padding-top: 5%;
+  -webkit-border-radius: 0px;
+  -khtml-border-radius: 0px;
+  -moz-border-radius: 0px;
+  border-radius: 0px;
+  -webkit-box-shadow: 0 1px 2px rgba(0, 0, 0, 0.4);
+  -moz-box-shadow: 0 1px 2px rgba(0, 0, 0, 0.4);
+  -khtml-box-shadow: 0 1px 2px rgba(0, 0, 0, 0.4);
+  -o-box-shadow: 0 1px 2px rgba(0, 0, 0, 0.4);
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.4);
+  background-color: rgba(255, 255, 255, 0.6);
+  position: relative;
+  z-index: 1000000;
+}
+.deal.a {
+  -webkit-box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
+  -moz-box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
+  -khtml-box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
+  -o-box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
+}
+.deal.b {
+  -webkit-box-shadow: 0 -2px 4px rgba(0, 0, 0, 0.4);
+  -moz-box-shadow: 0 -2px 4px rgba(0, 0, 0, 0.4);
+  -khtml-box-shadow: 0 -2px 4px rgba(0, 0, 0, 0.4);
+  -o-box-shadow: 0 -2px 4px rgba(0, 0, 0, 0.4);
+  box-shadow: 0 -2px 4px rgba(0, 0, 0, 0.4);
+}
+.deal .title {
+  font-family: ProximaNovaLight;
+  font-size: 1.1em;
+  text-align: center;
+  color: #666;
+  padding-bottom: 4px;
+  border-bottom: 1px solid rgba(94, 101, 109, 0.6);
+}
+.deal .subtitle {
+  font-size: 0.75em;
+  color: rgba(94, 101, 109, 0.9);
+  float: left;
+  line-height: 30px;
+}
+.deal .content {
+  border-top: 1px solid #fff;
+  padding-top: 12px;
 }
 /*
 *
@@ -7182,6 +7323,11 @@ h3 {
   font-family: 'ProximaNovaRegular';
   src: url('../fonts/proximanova-regular.eot');
   src: url('../fonts/proximanova-regular.eot') format('embedded-opentype'), url('../fonts/proximanova-regular.woff') format('woff'), url('../fonts/proximanova-regular.ttf') format('truetype'), url('../fonts/proximanova-regular.svg#ProximaNovaRegular') format('svg');
+}
+@font-face {
+  font-family: 'ProximaNovaLight';
+  src: url('../fonts/proximanovalight.eot');
+  src: url('../fonts/proximanovalight.eot') format('embedded-opentype'), url('../fonts/proximanovalight.woff') format('woff'), url('../fonts/proximanovalight.ttf') format('truetype'), url('../fonts/proximanovalight.svg#ProximaNovaLight') format('svg');
 }
 @font-face {
   font-family: 'ProximaNovaBold';
