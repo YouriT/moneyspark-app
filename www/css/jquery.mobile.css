@@ -7378,7 +7378,14 @@ h3 {
 .opportunity-bar-layout {
   height: 0.8125em;
   width: 100%;
-  background-image: linear-gradient(left, #ff3c70 5%, #82c729 95%);
+  background-color: #82c729;
+  background-image: -moz-linear-gradient(left, #ff3c70, #82c729);
+  background-image: -webkit-gradient(linear, 0 0, 100% 0, from(#ff3c70), to(#82c729));
+  background-image: -webkit-linear-gradient(left, #ff3c70, #82c729);
+  background-image: -o-linear-gradient(left, #ff3c70, #82c729);
+  background-image: linear-gradient(to right, #ff3c70, #82c729);
+  background-repeat: repeat-x;
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffff3c70', endColorstr='#ff82c729', GradientType=1);
   border-bottom: 0.0625em solid rgba(255, 255, 255, 0.95);
 }
 .sportwatch-icon {
@@ -7430,7 +7437,6 @@ h3 {
   clear: both;
 }
 .buydeal {
-  position: absolute;
   margin-top: -1%;
   -webkit-box-shadow: inset 0px 0px 13px rgba(0, 0, 0, 0.5);
   -moz-box-shadow: inset 0px 0px 13px rgba(0, 0, 0, 0.5);
@@ -7553,11 +7559,25 @@ h3 {
   border-radius: 0.125em;
   line-height: 3em;
   font-size: 1.05em;
+  border: 0px;
+  width: 80%;
   -webkit-box-shadow: 0 0.0625em 0.125em rgba(0, 0, 0, 0.4);
   -moz-box-shadow: 0 0.0625em 0.125em rgba(0, 0, 0, 0.4);
   -khtml-box-shadow: 0 0.0625em 0.125em rgba(0, 0, 0, 0.4);
   -o-box-shadow: 0 0.0625em 0.125em rgba(0, 0, 0, 0.4);
   box-shadow: 0 0.0625em 0.125em rgba(0, 0, 0, 0.4);
+}
+.userinfo::-webkit-input-placeholder {
+  color: #666666;
+}
+.userinfo:-moz-placeholder {
+  color: #666666;
+}
+.userinfo::-moz-placeholder {
+  color: #666666;
+}
+.userinfo:-ms-input-placeholder {
+  color: #666666;
 }
 .signin {
   background-color: rgba(102, 102, 102, 0.5);
@@ -7570,6 +7590,8 @@ h3 {
   border-radius: 0.125em;
   line-height: 3em;
   font-size: 1.05em;
+  border: 0;
+  width: 80%;
   -webkit-box-shadow: 0 0.0625em 0.125em rgba(0, 0, 0, 0.4);
   -moz-box-shadow: 0 0.0625em 0.125em rgba(0, 0, 0, 0.4);
   -khtml-box-shadow: 0 0.0625em 0.125em rgba(0, 0, 0, 0.4);
@@ -7578,6 +7600,7 @@ h3 {
 }
 .password-forgot {
   margin-top: 5%;
+  display: block;
   text-align: center;
   font-size: 0.9em;
   color: #333;
