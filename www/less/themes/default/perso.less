@@ -484,7 +484,8 @@
 .opportunity-bar-layout {
 	height: 13/16em;
 	width: 100%;
-	#gradient > .horizontal(rgb(255,60,112), rgb(130,199,41));
+	background-image: linear-gradient(left ,rgb(255,60,112) 5%, rgb(130,199,41)95%);
+	//#gradient > .horizontal(rgb(255,60,112) 20%, rgb(130,199,41));
 	border-bottom: 1/16em solid rgba(255,255,255,0.95);
 }
 
@@ -545,12 +546,17 @@
 // Buydeal
 
 .buydeal {
+	position: absolute;
+	margin-top: -1%;
+	.box-shadow(inset 0px 0px 13px rgba(0,0,0,0.5));
+	width: 245/16em;
+	margin-left: -12/16em;
 	//.box-shadow(inset 0/16em 0/16em 4/16em rgba(0,0,0,0.5));
-	padding-top: 20/16em;
-	padding-left: 10%;
-	padding-right: 10%;
-	padding-bottom: 20/16em;
-	.box-shadow(0/16em 0/16em 4/16em rgba(0,0,0,0.5));
+	//padding-top: 20/16em;
+	//padding-left: 10%;
+	//padding-right: 10%;
+	//padding-bottom: 20/16em;
+	//.box-shadow(0/16em 0/16em 4/16em rgba(0,0,0,0.5));
 }
 
 .amount {
@@ -596,7 +602,7 @@
 
 .deal {
 	padding: 4%;
-	padding-top: 5%;
+	padding-top: 4%;
 	.border-radius(0/16em);
 	//.box-shadow(0 1/16em 2/16em rgba(0,0,0,0.3));
 	.box-shadow(0 1/16em 2/16em rgba(0,0,0,0.4));

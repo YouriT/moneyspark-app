@@ -7378,14 +7378,7 @@ h3 {
 .opportunity-bar-layout {
   height: 0.8125em;
   width: 100%;
-  background-color: #82c729;
-  background-image: -moz-linear-gradient(left, #ff3c70, #82c729);
-  background-image: -webkit-gradient(linear, 0 0, 100% 0, from(#ff3c70), to(#82c729));
-  background-image: -webkit-linear-gradient(left, #ff3c70, #82c729);
-  background-image: -o-linear-gradient(left, #ff3c70, #82c729);
-  background-image: linear-gradient(to right, #ff3c70, #82c729);
-  background-repeat: repeat-x;
-  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffff3c70', endColorstr='#ff82c729', GradientType=1);
+  background-image: linear-gradient(left, #ff3c70 5%, #82c729 95%);
   border-bottom: 0.0625em solid rgba(255, 255, 255, 0.95);
 }
 .sportwatch-icon {
@@ -7437,15 +7430,15 @@ h3 {
   clear: both;
 }
 .buydeal {
-  padding-top: 1.25em;
-  padding-left: 10%;
-  padding-right: 10%;
-  padding-bottom: 1.25em;
-  -webkit-box-shadow: 0em 0em 0.25em rgba(0, 0, 0, 0.5);
-  -moz-box-shadow: 0em 0em 0.25em rgba(0, 0, 0, 0.5);
-  -khtml-box-shadow: 0em 0em 0.25em rgba(0, 0, 0, 0.5);
-  -o-box-shadow: 0em 0em 0.25em rgba(0, 0, 0, 0.5);
-  box-shadow: 0em 0em 0.25em rgba(0, 0, 0, 0.5);
+  position: absolute;
+  margin-top: -1%;
+  -webkit-box-shadow: inset 0px 0px 13px rgba(0, 0, 0, 0.5);
+  -moz-box-shadow: inset 0px 0px 13px rgba(0, 0, 0, 0.5);
+  -khtml-box-shadow: inset 0px 0px 13px rgba(0, 0, 0, 0.5);
+  -o-box-shadow: inset 0px 0px 13px rgba(0, 0, 0, 0.5);
+  box-shadow: inset 0px 0px 13px rgba(0, 0, 0, 0.5);
+  width: 15.3125em;
+  margin-left: -0.75em;
 }
 .amount {
   font-family: ProximaNovaLight;
@@ -7489,7 +7482,7 @@ h3 {
 }
 .deal {
   padding: 4%;
-  padding-top: 5%;
+  padding-top: 4%;
   -webkit-border-radius: 0em;
   -khtml-border-radius: 0em;
   -moz-border-radius: 0em;
