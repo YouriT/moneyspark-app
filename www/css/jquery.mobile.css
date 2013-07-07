@@ -7439,6 +7439,10 @@ h3 {
   box-shadow: inset 0px 0px 13px rgba(0, 0, 0, 0.5);
   width: 15.3125em;
   margin-left: -0.75em;
+  padding-top: 1.25em;
+  padding-left: 10%;
+  padding-right: 10%;
+  padding-bottom: 1.25em;
 }
 .amount {
   font-family: ProximaNovaLight;
