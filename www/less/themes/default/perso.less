@@ -48,6 +48,11 @@
 		width: 83px;
 		height: 83px;
 	}
+	.back {
+		background-image: url("../img/240/240-back2.png");		
+		width: 30px;
+		height: 30px;
+	}
 
 }
 @media screen and (min-width: 320px) {
@@ -91,6 +96,11 @@
 		width: 111px;
 		height: 111px;
 	}
+	.back {
+		background-image: url("../img/320/320-back2.png");		
+		width: 40px;
+		height: 40px;
+	}
 }
 @media screen and (min-width: 360px) {
 	body {font-size: @font-size/320*360px;}
@@ -129,6 +139,11 @@
 		background-image: url("../img/360/360-userpicture.png");		
 		width: 125px;
 		height: 125px;
+	}
+	.back {
+		background-image: url("../img/360/360-back2.png");		
+		width: 45px;
+		height: 45px;
 	}
 }
 @media screen and (min-width: 480px) {
@@ -169,6 +184,11 @@
 		width: 166px;
 		height: 166px;
 	}
+	.back {
+		background-image: url("../img/480/480-back2.png");		
+		width: 60px;
+		height: 60px;
+	}
 }	
 @media screen and (min-width: 640px) {
 	body {font-size: @font-size/320*640px;}
@@ -207,6 +227,11 @@
 		background-image: url("../img/640/640-userpicture.png");		
 		width: 222px;
 		height: 222px;
+	}
+	.back {
+		background-image: url("../img/640/640-back2.png");		
+		width: 80px;
+		height: 80px;
 	}
 }
 @media screen and (min-width: 768px) {
@@ -247,6 +272,11 @@
 		width: 267px;
 		height: 267px;
 	}
+	.back {
+		background-image: url("../img/768/768-back2.png");		
+		width: 96px;
+		height: 96px;
+	}
 }
 @media screen and (min-width: 1080px) {
 	body {font-size: @font-size/320*1080px;}
@@ -286,7 +316,63 @@
 		width: 373px;
 		height: 373px;
 	}
+	.back {
+		background-image: url("../img/1080/1080-back2.png");		
+		width: 134px;
+		height: 134px;
+	}
 }
+
+@media screen and (min-width: 1536px) {
+	//body {font-size: @font-size/320*1080px;}
+	/*
+	.logo {
+		background-image: url("../img/1080/1080-app-header-logo.png"); 
+		width: 470px;
+		height: 115px;
+	}
+	.logo-hf {
+		background-image: url("../img/1080/1080-hf.png"); 
+		width: 84px;
+		height: 84px;
+	}
+	.lock-icon {
+		background-image: url("../img/1080/1080-lock.png"); 
+		width: 84px;
+		height: 84px;
+	}
+	.analyse {
+		background-image: url("../img/1080/1080-analyse.png"); 
+		width: 84px;
+		height: 84px;
+	}
+	.sportwatch-icon {
+		background-image: url("../img/1080/1080-chrono.png"); 
+		width: 84px;
+		height: 84px;
+	}
+	.buydeal {
+		background-image: url("../img/1080/1080-buybg.png");
+	}
+	.ui-body-c {
+		background-image: url("../img/1080/1080-bg.png") !important;
+	}
+	.user {
+		background-image: url("../img/1080/1080-userpicture.png");		
+		width: 373px;
+		height: 373px;
+	}
+	.back {
+		background-image: url("../img/1080/1080-back2.png");		
+		width: 134px;
+		height: 134px;
+	}
+	*/
+	.ui-body-c {
+		background-image: url("../img/1536/1536-bg.png") !important;
+	}
+}
+
 .placeholder-color(@color) {
 	&::-webkit-input-placeholder {
 	   color: @color;
@@ -696,7 +782,7 @@
 }
 
 .signin {
-	background-color: rgba(102,102,102,0.5);
+	background-color: rgba(0,0,0,0.5);
 	margin-left: 10%;
 	margin-right: 10%;
 	text-align: center;
@@ -725,16 +811,16 @@
 
 .check {
 	float: left;
-	width: 0.7em;
-	height: 0.7em;
-	margin-top: 10%;
-	border: 2/16em solid #fff;
+	width: 0.6em;
+	height: 0.6em;
+	margin-top: 11%;
+	border: 2/16em solid rgba(255, 255, 255, 0.65);
 	border-radius: 50%;
 	margin-right: 15/16em;
 	margin-left: 5/16em;
 	cursor: pointer;
 	&.active {
-		background-color: #fff;
+		background-color: rgba(255, 255, 255, 0.65);
 	}
 }
 
@@ -745,4 +831,14 @@
 	color: #fff;
 	text-decoration: underline;
 	margin-bottom: 5%;
+}
+
+// Cash Amount
+
+.cash-title {
+	font-family: ProximaNovaLight;
+	font-size: 1.3em;
+	text-align: center;
+	color: #666;
+	padding-top: 0.8em;
 }
