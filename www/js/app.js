@@ -35,6 +35,8 @@ var app = {
     onDeviceReady: function() {
         app.receivedEvent('deviceready');
 		navigator.splashscreen.hide();
+        setTimeout(function () {console.log($('.ui-body-c').width());}, 10000);
+        
     },
     // Update DOM on a Received Event
     receivedEvent: function(id) {
