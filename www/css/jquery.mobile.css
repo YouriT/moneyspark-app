@@ -10422,6 +10422,9 @@ h3 {
   .ui-body-c {
     background-image: url("../img/320/320-bg.png") !important;
   }
+  .ui-body-c.bg2 {
+    background-image: url("../img/bg2.png") !important;
+  }
   .user {
     background-image: url("../img/320/320-userpicture.png");
     width: 111px;
@@ -10886,7 +10889,7 @@ h3 {
   -khtml-box-shadow: inset 0px 0px 13px rgba(0, 0, 0, 0.5);
   -o-box-shadow: inset 0px 0px 13px rgba(0, 0, 0, 0.5);
   box-shadow: inset 0px 0px 13px rgba(0, 0, 0, 0.5);
-  width: 15.3125em;
+  width: 88.5%;
   margin-left: -0.75em;
   padding-left: 10%;
   padding-right: 10%;
