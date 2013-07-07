@@ -158,6 +158,11 @@
                     alert('swipped !');
                 });
             });
+            window.addEventListener('load', function() {
+                document.body.addEventListener('touchmove', function(e) {
+                    e.preventDefault();
+                }, false);
+            }, false);
             // document.addEventListener("deviceready", buydealSize, false);
         </script>
     </body>

@@ -1,27 +1,31 @@
 var resize = function(){
-	windowHeight = window.screen.height;
-	bodyHeight = $(".ui-page-active").outerHeight();
-	diff = (bodyHeight-windowHeight);
+	var windowHeight = window.screen.height;
+	var bodyHeight = $(".ui-page-active").outerHeight();
+	var diff = $(".ana .text").height() - bodyHeight - windowHeight;
 	if(diff > 0){
-		ineH = $(".ana .text").height();
-		$(".ana .text").height(ineH-diff);
-
 		
+		$(".ana .text").height(diff);
+
 		if(device.platform == "Android" && parseInt(device.version) < 3){
 			$(".ana .text").niceScroll();
-			console.log(device.platform+" niceScroll");
 		}
 		else
 		{
 			$(".ana .text").css("overflow-y", "scroll");
 		}
 	}
+	else
+	{
+		// cas où il faut mettre les puces en bas...
+	}
 }
 
 $(function(){
 	function onDeviceReady() {
-		resize();
-        navigator.splashscreen.hide();
-     }
-     document.addEventListener("deviceready", onDeviceReady, false);
+		navigator.splashscreen.hide();
+    }
+    document.addEventListener("deviceready", onDeviceReady, false);
+    $(window).load(function () {
+    	resize();
+    });
 });

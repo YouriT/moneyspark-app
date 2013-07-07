@@ -1,7 +1,7 @@
 $('.imin').click(function(){
 	$('.buydeal').toggleClass('active');
-	if (!$('.buydeal').hasClass('active')) {
-		setTimeout(function () {$('.buydeal').css({marginTop: 0});}, 300);
+		if (!$('.buydeal').hasClass('active')) {
+			setTimeout(function () {$('.buydeal').css({marginTop: 0});}, 300);
 		$("body").css("overflow-y", "hidden");
 	}
 	else {

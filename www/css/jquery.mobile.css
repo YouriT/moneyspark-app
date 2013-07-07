@@ -10972,8 +10972,6 @@ h3 {
   -khtml-box-shadow: inset 0px 0px 13px rgba(0, 0, 0, 0.5);
   -o-box-shadow: inset 0px 0px 13px rgba(0, 0, 0, 0.5);
   box-shadow: inset 0px 0px 13px rgba(0, 0, 0, 0.5);
-  width: 88.5%;
-  margin-left: -0.75em;
   padding-left: 10%;
   padding-right: 10%;
 }
@@ -11002,6 +11000,8 @@ h3 {
   padding-left: 0.625em;
   padding-right: 0.625em;
   margin-right: 0.625em;
+  width: 20%;
+  border: 0;
 }
 .fees {
   font-family: ProximaNovaLight;
@@ -11023,6 +11023,7 @@ h3 {
   -o-box-shadow: inset 0em 0em 0.25em rgba(0, 0, 0, 0.5);
   box-shadow: inset 0em 0em 0.25em rgba(0, 0, 0, 0.5);
   cursor: pointer;
+  width: 100%;
 }
 .deal {
   padding: 4%;
