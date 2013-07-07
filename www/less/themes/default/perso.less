@@ -284,6 +284,23 @@
 		height: 373px;
 	}
 }
+.placeholder-color(@color) {
+	&::-webkit-input-placeholder {
+	   color: @color;
+	}
+
+	&:-moz-placeholder {
+	   color: @color;  
+	}
+
+	&::-moz-placeholder {
+	   color: @color;  
+	}
+
+	&:-ms-input-placeholder {  
+	   color: @color;  
+	}
+}
 
 // usefull class
 
@@ -648,6 +665,7 @@
 }
 
 .userinfo {
+	.placeholder-color(#666);
 	background-color: rgba(255,255,255,0.6);
 	margin-left: 10%;
 	margin-right: 10%;
@@ -658,6 +676,8 @@
 	border-radius: 2/16em;
 	line-height: 3em;
 	font-size: 1.05em;
+	border: 0px;
+	width: 80%;
 	.box-shadow(0 1/16em 2/16em rgba(0, 0, 0, 0.4));
 }
 
@@ -672,11 +692,14 @@
 	border-radius: 2/16em;
 	line-height: 3em;
 	font-size: 1.05em;
+	border: 0;
+	width: 80%;
 	.box-shadow(0 1/16em 2/16em rgba(0, 0, 0, 0.4));
 }
 
 .password-forgot {
 	margin-top: 5%;
+	display: block;
 	text-align: center;
 	font-size: 0.9em;
 	color: #333;
