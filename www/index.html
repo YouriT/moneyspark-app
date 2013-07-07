@@ -73,7 +73,7 @@
                     <div class="row-fluid">
                         <div class="amount" style="float: left;">Amount to invest </div>
                         <div class="amount" style="float: right;">€</div>                    
-                        <div class="input" style="float: right;cursor: pointer;">1500</div>
+                        <input data-role="none" class="input" style="float: right;cursor: pointer;" name="amount" placeholder="50"/>
                         <div class="clear"></div>
                     </div>
                     <div class="row-fluid">
@@ -83,7 +83,7 @@
                         <div class="clear"></div>
                     </div>
                     <div class="row-fluid">
-                        <div class="letsgo">GO</div>
+                        <button class="letsgo" data-role="none">GO</button>
                     </div>
                  </div>
 
@@ -143,8 +143,15 @@
 
     
         <script type="text/javascript">
+        $(function () {
+            var pad = $('.deal').width()-$('.deal').innerWidth();
+            $('.buydeal').css({
+                marginLeft: pad/2,
+                marginRight: pad/2
+            });
             var ts=new Date().getTime();
             $('#mycss').prop('href','css/jquery.mobile.css?'+ts);
+        });
         </script>
     </body>
 </html>
