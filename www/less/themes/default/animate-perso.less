@@ -1,0 +1,29 @@
+.accordion(@time) {
+	height: 0;
+	padding-top: 0;
+	padding-bottom: 0;
+	overflow: hidden;
+	-webkit-transition: height @time ease-in,
+				padding-top @time ease-in-out,
+				padding-bottom @time ease-in-out;
+	-moz-transition: height @time ease-in,
+				padding-top @time ease-in-out,
+				padding-bottom @time ease-in-out;
+	-o-transition: height @time ease-in,
+				padding-top @time ease-in-out,
+				padding-bottom @time ease-in-out;
+	-ms-transition: height @time ease-in,
+				padding-top @time ease-in-out,
+				padding-bottom @time ease-in-out;
+	transition: height @time ease-in,
+				padding-top @time ease-in-out,
+				padding-bottom @time ease-in-out;
+}
+.css3hack() {
+	-webkit-transform : translateZ(0); 
+	-o-transform : translateZ(0); 
+	-moz-transform : translateZ(0); 
+	transform : translateZ(0);
+	-webkit-backface-visibility: hidden;
+	-webkit-perspective: 1000;
+}
