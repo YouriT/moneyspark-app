@@ -9,6 +9,7 @@
     </author>
     <access origin="*" />
     <preference name="fullscreen" value="true" />
-    <preference name="webviewbounce" value="true" />
+    <preference name="webviewbounce" value="false" />
+    <preference name="orientation" value="portrait" />
     <preference name="EnableViewportScale" value="true" />
 </widget>
