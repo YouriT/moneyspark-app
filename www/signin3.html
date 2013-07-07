@@ -39,8 +39,8 @@
                     <div class="clear"></div>
                 </div>
                 
-                <div class="userinfo" style="margin-top: 5%;">password</div>
-                <div class="userinfo" style="margin-top: 5%;">password confirmation</div>
+                <input type="password" name="password" class="userinfo" style="margin-top: 5%;" data-role="none" placeholder="password" />
+                <input type="password" name="passwordConf" class="userinfo" style="margin-top: 5%;" data-role="none" placeholder="password confirmation" />
                 <!--
                 <div class="bordertop"></div>
                 <div class="borderbottom"></div>
@@ -49,8 +49,11 @@
                     <div class="check" style="float:left;"></div>
                     <div class="check-text" style="margin-top: 8%;float:left;">I've read the use of terms</div>
                     <div class="clear"></div>
+                    <div class="check" style="float:left;"></div>
+                    <div class="check-text" style="margin-top: 5%;float:left;">Newsletter</div>
+                    <div class="clear"></div>
                 </div>
-                <div class="signin" style="margin-bottom: 5%;margin-top: 10%;">confirm sign in</div>
+                <button class="signin" data-role="none" style="margin-bottom: 5%;margin-top: 10%;">confirm sign in</button>
             </div>
             
         </div>   
@@ -59,6 +62,9 @@
         <script type="text/javascript" src="js/app.js"></script>
         <script type="text/javascript" src="cordova.js"></script>
         <script type="text/javascript">
+            $('.check').click(function () {
+                $(this).toggleClass('active');
+            });
             app.initialize();
             var ts=new Date().getTime();
 
