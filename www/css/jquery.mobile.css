@@ -6488,13 +6488,11 @@ a.ui-link-inherit {
     background-image: url("../img/240/240-hf.png");
     width: 18px;
     height: 18px;
-    margin-top: 4px !important;
   }
   .lock-icon {
     background-image: url("../img/240/240-lock.png");
     width: 18px;
     height: 18px;
-    margin-top: 6px !important;
   }
   .analyse {
     background-image: url("../img/240/240-analyse.png");
@@ -6511,6 +6509,11 @@ a.ui-link-inherit {
   }
   .ui-body-c {
     background-image: url("../img/240/240-bg.png") !important;
+  }
+  .user {
+    background-image: url("../img/240/240-userpicture.png");
+    width: 83px;
+    height: 83px;
   }
 }
 @media screen and (min-width: 320px) {
@@ -6545,6 +6548,11 @@ a.ui-link-inherit {
   .ui-body-c {
     background-image: url("../img/320/320-bg.png") !important;
   }
+  .user {
+    background-image: url("../img/320/320-userpicture.png");
+    width: 111px;
+    height: 111px;
+  }
 }
 @media screen and (min-width: 360px) {
   .logo {
@@ -6577,6 +6585,11 @@ a.ui-link-inherit {
   }
   .ui-body-c {
     background-image: url("../img/360/360-bg.png") !important;
+  }
+  .user {
+    background-image: url("../img/360/360-userpicture.png");
+    width: 125px;
+    height: 125px;
   }
 }
 @media screen and (min-width: 480px) {
@@ -6611,6 +6624,11 @@ a.ui-link-inherit {
   .ui-body-c {
     background-image: url("../img/480/480-bg.png") !important;
   }
+  .user {
+    background-image: url("../img/480/480-userpicture.png");
+    width: 166px;
+    height: 166px;
+  }
 }
 @media screen and (min-width: 640px) {
   .logo {
@@ -6643,6 +6661,11 @@ a.ui-link-inherit {
   }
   .ui-body-c {
     background-image: url("../img/640/640-bg.png") !important;
+  }
+  .user {
+    background-image: url("../img/640/640-userpicture.png");
+    width: 222px;
+    height: 222px;
   }
 }
 @media screen and (min-width: 768px) {
@@ -6677,6 +6700,11 @@ a.ui-link-inherit {
   .ui-body-c {
     background-image: url("../img/768/768-bg.png") !important;
   }
+  .user {
+    background-image: url("../img/768/768-userpicture.png");
+    width: 267px;
+    height: 267px;
+  }
 }
 @media screen and (min-width: 1080px) {
   .logo {
@@ -6709,6 +6737,11 @@ a.ui-link-inherit {
   }
   .ui-body-c {
     background-image: url("../img/1080/1080-bg.png") !important;
+  }
+  .user {
+    background-image: url("../img/1080/1080-userpicture.png");
+    width: 373px;
+    height: 373px;
   }
 }
 .logo {
@@ -7007,6 +7040,58 @@ a.ui-link-inherit {
 .deal .content {
   border-top: 1px solid #fff;
   padding-top: 12px;
+}
+.user {
+  border-radius: 50%;
+  -webkit-box-shadow: inset 0px 0px 10px rgba(0, 0, 0, 0.8);
+  -moz-box-shadow: inset 0px 0px 10px rgba(0, 0, 0, 0.8);
+  -khtml-box-shadow: inset 0px 0px 10px rgba(0, 0, 0, 0.8);
+  -o-box-shadow: inset 0px 0px 10px rgba(0, 0, 0, 0.8);
+  box-shadow: inset 0px 0px 10px rgba(0, 0, 0, 0.8);
+  border: 4px solid #fff;
+  margin: 0 auto;
+}
+.userinfo {
+  background-color: rgba(255, 255, 255, 0.6);
+  margin-left: 10%;
+  margin-right: 10%;
+  text-align: center;
+  color: #666;
+  font-weight: lighter;
+  font-family: ProximaNovaLight;
+  border-radius: 2px;
+  line-height: 3em;
+  font-size: 1.05em;
+  -webkit-box-shadow: 0 1px 2px rgba(0, 0, 0, 0.4);
+  -moz-box-shadow: 0 1px 2px rgba(0, 0, 0, 0.4);
+  -khtml-box-shadow: 0 1px 2px rgba(0, 0, 0, 0.4);
+  -o-box-shadow: 0 1px 2px rgba(0, 0, 0, 0.4);
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.4);
+}
+.signin {
+  background-color: rgba(102, 102, 102, 0.5);
+  margin-left: 10%;
+  margin-right: 10%;
+  text-align: center;
+  color: #fff;
+  font-weight: lighter;
+  font-family: ProximaNovaLight;
+  border-radius: 2px;
+  line-height: 3em;
+  font-size: 1.05em;
+  -webkit-box-shadow: 0 1px 2px rgba(0, 0, 0, 0.4);
+  -moz-box-shadow: 0 1px 2px rgba(0, 0, 0, 0.4);
+  -khtml-box-shadow: 0 1px 2px rgba(0, 0, 0, 0.4);
+  -o-box-shadow: 0 1px 2px rgba(0, 0, 0, 0.4);
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.4);
+}
+.password-forgot {
+  margin-top: 5%;
+  text-align: center;
+  font-size: 0.9em;
+  color: #333;
+  text-decoration: underline;
+  margin-bottom: 5%;
 }
 /*
 *
