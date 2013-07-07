@@ -10672,49 +10672,50 @@ h3 {
   }
 }
 @media screen and (min-width: 1536px) {
-  /*
-  	.logo {
-  		background-image: url("../img/1080/1080-app-header-logo.png"); 
-  		width: 470px;
-  		height: 115px;
-  	}
-  	.logo-hf {
-  		background-image: url("../img/1080/1080-hf.png"); 
-  		width: 84px;
-  		height: 84px;
-  	}
-  	.lock-icon {
-  		background-image: url("../img/1080/1080-lock.png"); 
-  		width: 84px;
-  		height: 84px;
-  	}
-  	.analyse {
-  		background-image: url("../img/1080/1080-analyse.png"); 
-  		width: 84px;
-  		height: 84px;
-  	}
-  	.sportwatch-icon {
-  		background-image: url("../img/1080/1080-chrono.png"); 
-  		width: 84px;
-  		height: 84px;
-  	}
-  	.buydeal {
-  		background-image: url("../img/1080/1080-buybg.png");
-  	}
-  	.ui-body-c {
-  		background-image: url("../img/1080/1080-bg.png") !important;
-  	}
-  	.user {
-  		background-image: url("../img/1080/1080-userpicture.png");		
-  		width: 373px;
-  		height: 373px;
-  	}
-  	.back {
-  		background-image: url("../img/1080/1080-back2.png");		
-  		width: 134px;
-  		height: 134px;
-  	}
-  	*/
+  body {
+    font-size: 76.80000000000001px;
+  }
+  .logo {
+    background-image: url("../img/1080/1080-app-header-logo.png");
+    width: 470px;
+    height: 115px;
+  }
+  .logo-hf {
+    background-image: url("../img/1080/1080-hf.png");
+    width: 84px;
+    height: 84px;
+  }
+  .lock-icon {
+    background-image: url("../img/1080/1080-lock.png");
+    width: 84px;
+    height: 84px;
+  }
+  .analyse {
+    background-image: url("../img/1080/1080-analyse.png");
+    width: 84px;
+    height: 84px;
+  }
+  .sportwatch-icon {
+    background-image: url("../img/1080/1080-chrono.png");
+    width: 84px;
+    height: 84px;
+  }
+  .buydeal {
+    background-image: url("../img/1080/1080-buybg.png");
+  }
+  .ui-body-c {
+    background-image: url("../img/1080/1080-bg.png") !important;
+  }
+  .user {
+    background-image: url("../img/1080/1080-userpicture.png");
+    width: 373px;
+    height: 373px;
+  }
+  .back {
+    background-image: url("../img/1080/1080-back2.png");
+    width: 134px;
+    height: 134px;
+  }
   .ui-body-c {
     background-image: url("../img/1536/1536-bg.png") !important;
   }
@@ -11180,20 +11181,36 @@ h3 {
   padding-top: 0.8em;
 }
 .my-cash {
-  font-size: 3.5em;
+  font-size: 3.9em;
   color: #666;
   text-align: center;
   font-weight: 100;
+  margin-top: 20%;
+  margin-bottom: 20%;
 }
-.plus-min {
-  height: 45px;
-  width: 60px;
-  padding-top: 15px;
-  border: 2px solid #666;
+.plus {
+  height: 2.5125em;
+  width: 3.75em;
+  padding-top: 1.2375em;
+  cursor: pointer;
+  border: 0.07em solid #666666;
   border-radius: 50%;
   text-align: center;
   color: #666;
-  font-size: 2em;
+  font-size: 1.5em;
+  font-weight: normal;
+}
+.min {
+  height: 2.5125em;
+  width: 3.75em;
+  padding-top: 1.2375em;
+  cursor: pointer;
+  border: 0.07em solid #666666;
+  border-radius: 50%;
+  text-align: center;
+  color: #666;
+  font-size: 1.5em;
+  font-weight: normal;
 }
 @-ms-viewport {
   width: device-width;
