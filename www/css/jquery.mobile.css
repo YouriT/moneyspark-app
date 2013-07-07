@@ -7294,16 +7294,18 @@ h3 {
   font-size: 0.9em;
 }
 .imin {
+  display: block;
   width: 90%;
   height: 2.1875em;
   text-align: center;
-  color: #fff;
+  color: #fff !important;
   background-color: #82c729;
   border-radius: 0.1875em;
   line-height: 2.1875em;
   font-size: 0.9em;
-  font-weight: normal;
+  font-weight: normal !important;
   cursor: pointer;
+  text-decoration: none !important;
 }
 .maybe {
   font-family: cambria;
@@ -7329,6 +7331,10 @@ h3 {
   line-height: 1.3;
   display: block;
   text-align: justify;
+}
+.text.se {
+  font-size: 1em;
+  line-height: 1.5em;
 }
 .analyse {
   float: left;
