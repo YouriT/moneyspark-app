@@ -10388,8 +10388,8 @@ h3 {
   }
   .back {
     background-image: url("../img/240/240-back2.png");
-    width: 30px;
-    height: 30px;
+    width: 15px;
+    height: 22px;
   }
 }
 @media screen and (min-width: 320px) {
@@ -10437,8 +10437,8 @@ h3 {
   }
   .back {
     background-image: url("../img/320/320-back2.png");
-    width: 40px;
-    height: 40px;
+    width: 20px;
+    height: 30px;
   }
 }
 @media screen and (min-width: 360px) {
@@ -10483,8 +10483,8 @@ h3 {
   }
   .back {
     background-image: url("../img/360/360-back2.png");
-    width: 45px;
-    height: 45px;
+    width: 23px;
+    height: 34px;
   }
 }
 @media screen and (min-width: 480px) {
@@ -10529,8 +10529,8 @@ h3 {
   }
   .back {
     background-image: url("../img/480/480-back2.png");
-    width: 60px;
-    height: 60px;
+    width: 30px;
+    height: 45px;
   }
 }
 @media screen and (min-width: 640px) {
@@ -10575,8 +10575,8 @@ h3 {
   }
   .back {
     background-image: url("../img/640/640-back2.png");
-    width: 80px;
-    height: 80px;
+    width: 40px;
+    height: 60px;
   }
 }
 @media screen and (min-width: 768px) {
@@ -10621,8 +10621,8 @@ h3 {
   }
   .back {
     background-image: url("../img/768/768-back2.png");
-    width: 96px;
-    height: 96px;
+    width: 48px;
+    height: 72px;
   }
 }
 @media screen and (min-width: 1080px) {
@@ -10667,8 +10667,8 @@ h3 {
   }
   .back {
     background-image: url("../img/1080/1080-back2.png");
-    width: 134px;
-    height: 134px;
+    width: 67px;
+    height: 100px;
   }
 }
 @media screen and (min-width: 1536px) {
@@ -10727,6 +10727,14 @@ h3 {
 }
 .ml12 {
   margin-left: 0.75em;
+}
+.back {
+  position: absolute;
+  top: 0;
+  left: 0;
+  margin-top: 0.8125em;
+  margin-left: 0.5em;
+  opacity: 0.7;
 }
 .logo {
   margin: 0 auto;
@@ -11170,6 +11178,22 @@ h3 {
   text-align: center;
   color: #666;
   padding-top: 0.8em;
+}
+.my-cash {
+  font-size: 3.5em;
+  color: #666;
+  text-align: center;
+  font-weight: 100;
+}
+.plus-min {
+  height: 45px;
+  width: 60px;
+  padding-top: 15px;
+  border: 2px solid #666;
+  border-radius: 50%;
+  text-align: center;
+  color: #666;
+  font-size: 2em;
 }
 @-ms-viewport {
   width: device-width;
