@@ -143,15 +143,17 @@
 
     
         <script type="text/javascript">
-        $(function () {
-            var pad = $('.deal').width()-$('.deal').innerWidth();
-            $('.buydeal').css({
-                marginLeft: pad/2,
-                marginRight: pad/2
-            });
             var ts=new Date().getTime();
             $('#mycss').prop('href','css/jquery.mobile.css?'+ts);
-        });
+            $(window).load(function () {
+                var pad = $('.deal').width()-$('.deal').innerWidth();
+                console.log($('.deal').width(), $('.deal').css('padding-right'));
+                $('.buydeal').css({
+                    marginLeft: pad/2,
+                    marginRight: pad/2
+                });
+            });
+            // document.addEventListener("deviceready", buydealSize, false);
         </script>
     </body>
 </html>
