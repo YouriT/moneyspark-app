@@ -10086,6 +10086,8 @@ h3 {
 }
 .userinfo {
   background-color: rgba(255, 255, 255, 0.6);
+  margin-left: 10%;
+  margin-right: 10%;
   text-align: center;
   color: #666;
   font-weight: lighter;
@@ -10115,6 +10117,8 @@ h3 {
 }
 .signin {
   background-color: rgba(0, 0, 0, 0.5);
+  margin-left: 10%;
+  margin-right: 10%;
   text-align: center;
   color: #fff;
   font-weight: lighter;
