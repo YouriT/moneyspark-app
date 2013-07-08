@@ -34,7 +34,7 @@ var TableConfiguration = Class.extend({
                 db.transaction(function(tx) {
                     tx.executeSql('SELECT * FROM CFG WHERE key="'+key+'"', [],function(tx, rs) {
                     	if(rs.rows.length == 1){
-                        	success(rs.rows.item(0));
+                        	success(rs.rows.item(0)["value"]);
                         }
                         else
                         {
@@ -49,7 +49,8 @@ var TableConfiguration = Class.extend({
                 });
     },
     insert: function(o, success, error){
-    			object = $.parseJSON(o);     
+    			//object = $.parseJSON(o);
+                object = o;
                 db.transaction(function(tx){
                 	tx.executeSql('INSERT INTO CFG VALUES (NULL, "'+object.key+'", "'+object.value+'")');
     			}, function(e){
@@ -87,8 +88,8 @@ $(function(){
 	function onDeviceReady() {    
 	    var c = new TableConfiguration();
     	//Find One
-	    /*c.findValueByKey("name", function(result) {
-	    	console.log("result : "+result["value"])
+	    /*c.findValueByKey("name", function(v) {
+	    	console.log("result : "+v)
     	}, function(e){
     		console.log("error : "+e.message)
     	});*/
