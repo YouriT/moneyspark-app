@@ -1,3 +1,5 @@
+/*global Class*/
+/*global console*/
 var db = null;
 
 //Database & Tables initialization
@@ -86,7 +88,7 @@ $(function(){
 
 	// PhoneGap is ready
 	function onDeviceReady() {    
-	    var c = new TableConfiguration();
+	    // var c = new TableConfiguration();
     	//Find One
 	    /*c.findValueByKey("name", function(v) {
 	    	console.log("result : "+v)
