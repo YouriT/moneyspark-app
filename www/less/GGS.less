@@ -15,6 +15,7 @@
 @column: 100% / 18;
 @font-size: 16;
 @em:@font-size*1em;
+@font-family: Helvetica Neue;
 
 
 /*
@@ -76,7 +77,9 @@ html {
 }
 body {
 	min-height: 100%; 
-	//font-size: 100%;
+	font-size: 100%;
+	font-family: @font-family;
+	font-weight: lighter;
 }
 article, aside, details, figcaption, figure, 
 footer, header, hgroup, nav, section, audio, canvas, video {
