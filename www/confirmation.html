@@ -47,17 +47,12 @@
         <!-- Only when compile on device !-->
         <script type="text/javascript" src="cordova.js"></script>
         <script type="text/javascript" src="js/device.js"></script>
-        
-        <script type="text/javascript" src="js/jquery.mobile-1.3.1.min.js"></script>
-        <script type="text/javascript" src="js/coffee/project.js"></script>
 
     
         <script type="text/javascript">
             $(document).bind('pageinit', function () {
                 $('.ui-body-c').addClass('bg2');
             });
-            var ts=new Date().getTime();
-            $('#mycss').prop('href','css/jquery.mobile.css?'+ts);
         </script>
     </body>
 </html>

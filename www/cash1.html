@@ -27,7 +27,7 @@
         <link id="mycss" rel="stylesheet" type="text/css" href="css/moneyspark.css" />
         <title>Moneyspark</title>
     </head>
-    <body id="test">
+    <body class="bg2">
         <div class="container">
             <div class="cash-title">Cash Available</div>
             <i class="icon-angle-left icon-2x iconback"></i>
@@ -45,17 +45,9 @@
         <!-- Only when compile on device !-->
         <script type="text/javascript" src="cordova.js"></script>
         <script type="text/javascript" src="js/device.js"></script>
-        
-        <script type="text/javascript" src="js/jquery.mobile-1.3.1.min.js"></script>
-        <script type="text/javascript" src="js/coffee/project.js"></script>
 
     
         <script type="text/javascript">
-            $(document).bind('pageinit', function () {
-                $('.ui-body-c').addClass('bg2');
-            });
-            var ts=new Date().getTime();
-            $('#mycss').prop('href','css/jquery.mobile.css?'+ts);
         </script>
     </body>
 </html>
