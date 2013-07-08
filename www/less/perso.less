@@ -1049,52 +1049,53 @@
     position: fixed;
 }
  
-.menuvertical h3 {
-    color: #afdefa;
-    font-size: 1.9em;
-    padding: 20px;
-    margin: 0;
-    font-weight: 300;
-}
+// .menuvertical h3 {
+//     color: #afdefa;
+//     font-size: 1.9em;
+//     padding: 20/16em;
+//     margin: 0;
+//     font-weight: 300;
+// }
  
 .menuvertical a {
     display: block;
     color: #fff;
     font-size: 1.1em;
     font-weight: 300;
+    text-decoration: none;
 }
  
 .menuvertical a:hover {
-    background: #258ecd;
+    background: @blue;
 }
  
 .menuvertical a:active {
-    background: #afdefa;
+    background: @blue;
     color: #47a3da;
 }
  
 /* Orientation-dependent styles for the content of the menu */
  
 .menuvertical-vertical {
-    width: 240px;
+    width: 60/16em;
     height: 100%;
     top: 0;
     z-index: 1000;
 }
  
 .menuvertical-vertical a {
-    border-bottom: 1px solid #258ecd;
+    border-bottom: 1/16em solid @blue;
     padding: 1em;
 }
 
 /* Vertical menu that slides from the left or right */
  
 .menuvertical-left {
-    left: -240px;
+    left: -60/16em;
 }
  
 .menuvertical-left.menuvertical-open {
-    left: 0px;
+    left: 0/16em;
 }
 
 /* Push classes applied to the body */
@@ -1106,14 +1107,14 @@
 }
  
 .menuvertical-push-toright {
-    left: 240px;
+    left: 60/16em;
 }
  
 .menuvertical-toleft {
-    left: -240px;
+    left: -60/16em;
 }
  
-/* Transitions */
+/* Transitions */ 
  
 .menuvertical,
 .menuvertical-push {
@@ -1123,8 +1124,8 @@
 }
 
 .button-menuvertical {
-	height: 30px;
-	width: 37px;
+	height: 30/16em;
+	width: 37/16em;
 	border: none;
 	background-color: rgba(0, 0, 0, 0);
 	padding: 0;
@@ -1132,20 +1133,34 @@
 }
 
 .trait {
-	height: 5px;
-	width: 37px;
-	margin-bottom: 5px;
-	border-radius: 2px;
+	height: 0.2em;
+	width: 2.3125em;
+	margin-bottom: 0.3em;
+	// height: 5/16em;
+	// width: 37/16em;
+	// margin-bottom: 5/16em;
+	border-radius: 2/16em;
 	.box-shadow(0 0.0625em 0.125em rgba(0, 0, 0, 0.4));
 	background-color: rgba(255, 255, 255, 0.6);
 }
 
 .ensemble-pagenum-bottom-menu {
 	float: left;
-	margin-top: 9px;
+	margin-top: 0.63em;
 }
 
 .bottom-menu {
-	margin-top: 10px;
-	margin-bottom: 10px;
+	margin-top: 10/16em;
+	padding-bottom: 10/16em;
+}
+
+.mt34 {
+	height: 34/16em;
+	width: 100%;
+	margin-top: 13/16em;
+	margin-bottom: 7/16em;
+}
+.pb50 {
+	height: 50/16em;
+	width: 100%;
 }
