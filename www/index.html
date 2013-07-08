@@ -27,7 +27,7 @@
         <link id="mycss" rel="stylesheet" type="text/css" href="css/moneyspark.css" />
         <title>Moneyspark</title>
     </head>
-    <body class="ui-body-c">
+    <body>
         <div id="deal-model">
             <div class="container">
                 <div class="logo"></div>
@@ -176,7 +176,7 @@
                     {
                         var prod = products[prodIndex];
                         var newpage = $('#deal-model').html();
-                        // $('body').append('<div data-role="page" id="deal'+prodIndex+'">'+newpage+'</div>');
+                        $('body').append('<div id="deal'+prodIndex+'">'+newpage+'</div>');
                         // newpage = $('#deal'+prodIndex);
                         // console.log('oui');
                         // newpage.find('.title').html(prod.product.title);
