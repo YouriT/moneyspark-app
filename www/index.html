@@ -154,9 +154,23 @@
                     marginRight: pad/2
                 });
 
-                $('body').bind('swipe', function () {
-                    alert('swipped !');
+                $('body').bind('swiperight', function (e) {
+                    alert('right');
                 });
+                $('body').bind('swipeleft', function (e) {
+                    alert('left');
+                });
+                $.ajax({
+                    type: 'GET',
+                    url: 'http://api.moneyspark/product',
+                    dataType: 'json',
+                    contentType: "application/json; charset=utf-8",
+                    async: false,
+                    success: function (r) {
+                        console.log(r);
+                    }
+                });
+                
             });
             window.addEventListener('load', function() {
                 document.body.addEventListener('touchmove', function(e) {
