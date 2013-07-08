@@ -9324,6 +9324,11 @@ h3 {
     width: 105px;
     height: 26px;
   }
+  .logo2 {
+    background-image: url("../img/240/240-app-header-logo-grey.png");
+    width: 105px;
+    height: 26px;
+  }
   .logo-hf {
     background-image: url("../img/240/240-hf.png");
     width: 18px;
@@ -9367,6 +9372,11 @@ h3 {
   }
   .logo {
     background-image: url("../img/320/320-app-header-logo.png");
+    width: 140px;
+    height: 34px;
+  }
+  .logo2 {
+    background-image: url("../img/320/320-app-header-logo-grey.png");
     width: 140px;
     height: 34px;
   }
@@ -9419,6 +9429,11 @@ h3 {
     width: 157px;
     height: 38px;
   }
+  .logo2 {
+    background-image: url("../img/360/360-app-header-logo-grey.png");
+    width: 157px;
+    height: 38px;
+  }
   .logo-hf {
     background-image: url("../img/360/360-hf.png");
     width: 28px;
@@ -9462,6 +9477,11 @@ h3 {
   }
   .logo {
     background-image: url("../img/480/480-app-header-logo.png");
+    width: 210px;
+    height: 51px;
+  }
+  .logo2 {
+    background-image: url("../img/480/480-app-header-logo-grey.png");
     width: 210px;
     height: 51px;
   }
@@ -9511,6 +9531,11 @@ h3 {
     width: 280px;
     height: 69px;
   }
+  .logo2 {
+    background-image: url("../img/640/640-app-header-logo-grey.png");
+    width: 280px;
+    height: 69px;
+  }
   .logo-hf {
     background-image: url("../img/640/640-hf.png");
     width: 50px;
@@ -9554,6 +9579,11 @@ h3 {
   }
   .logo {
     background-image: url("../img/768/768-app-header-logo.png");
+    width: 336px;
+    height: 82px;
+  }
+  .logo2 {
+    background-image: url("../img/768/768-app-header-logo-grey.png");
     width: 336px;
     height: 82px;
   }
@@ -9603,6 +9633,11 @@ h3 {
     width: 470px;
     height: 115px;
   }
+  .logo2 {
+    background-image: url("../img/1080/1080-app-header-logo-grey.png");
+    width: 470px;
+    height: 115px;
+  }
   .logo-hf {
     background-image: url("../img/1080/1080-hf.png");
     width: 84px;
@@ -9643,6 +9678,11 @@ h3 {
 @media screen and (min-width: 1536px) {
   .logo {
     background-image: url("../img/1080/1080-app-header-logo.png");
+    width: 470px;
+    height: 115px;
+  }
+  .logo {
+    background-image: url("../img/1080/1080-app-header-logo-grey.png");
     width: 470px;
     height: 115px;
   }
@@ -9736,6 +9776,15 @@ h3 {
   margin: 0 auto;
   margin-top: 0.8125em;
   margin-bottom: 0.4375em;
+}
+.logo2 {
+  margin: 0 auto;
+  margin-top: 0.8125em;
+  margin-bottom: 0.4375em;
+  opacity: 0.5;
+  position: absolute;
+  bottom: 10px;
+  left: 30%;
 }
 .launch {
   background-image: url("../img/launch.png");
