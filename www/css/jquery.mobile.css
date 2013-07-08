@@ -9698,14 +9698,23 @@ h3 {
 .ml12 {
   margin-left: 0.75em;
 }
-.back {
+.iconback {
   position: absolute;
   top: 0;
   left: 0;
-  margin-top: 0.8125em;
-  margin-left: 0.5em;
-  opacity: 0.7;
+  margin-left: 3%;
   cursor: pointer;
+  color: rgba(0, 0, 0, 0.4);
+  line-height: 1.6875em !important;
+}
+.iconback.text {
+  float: left;
+  line-height: 2.99em !important;
+  margin-left: 8%;
+  color: rgba(0, 0, 0, 0.5);
+  font-size: 1.2em;
+  font-family: helvetica neue;
+  font-weight: lighter;
 }
 .button-bg2 {
   background-color: rgba(0, 0, 0, 0.3);
