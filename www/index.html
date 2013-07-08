@@ -28,11 +28,11 @@
         <title>Moneyspark</title>
     </head>
     <body>
-        <div id="deal-model">
+        <div>
             <div class="container">
                 <div class="logo"></div>
                 
-                <div class="row-fluid deal">
+                <div id="deal-model" class="row-fluid deal">
                     
                     <div class="row-fluid">
                         <div class="span4 title">Apple Sunrise</div>
@@ -59,7 +59,7 @@
                                 <div class="progress-bar-hover"></div>
                             </div>
                             <div class="row-fluid">
-                                <div class="progress-number">80% <span class="maybe">founded</span></div>
+                                <div class="progress-number"><span class="maybe may-funded">founded</span></div>
                             </div>
                         </div>
                         <div class="span1">
@@ -107,12 +107,12 @@
 
                         <div class="span3 mt4">
                             <div class="row-fluid" style="padding-right: 10%;">
-                                <div class="progress-number maybe" style="float: none;">Rentability max & min</div>
+                                <div class="progress-number maybe" style="float: none;">Rentability max &amp; min</div>
                                 <div class="opportunity-bar-layout"></div>
                             </div>
                             <div class="row-fluid" style="padding-right: 10%;">
-                                <div class="progress-number" style="float: left;">-20%</div>
-                                <div class="progress-number" style="float: right;">+60%</div>
+                                <div class="progress-number loss-expected" style="float: left;">-20%</div>
+                                <div class="progress-number renta-expected" style="float: right;">+60%</div>
                             </div>
                         </div>
                         <div class="span1 chrono-pt">
@@ -147,6 +147,8 @@
         <script type="text/javascript" src="js/project.js"></script>
         <script type="text/javascript" src="js/jquery.nicescroll.min.js"></script>
         <script type="text/javascript" src="js/device.js"></script>
+        <script type="text/javascript" src="js/transit.min.js"></script>
+        <script type="text/javascript" src="js/jquery.touchSwipe.min.js"></script>
         <script type="text/javascript" src="js/sql.js"></script>
         <script type="text/javascript" src="js/rest.js"></script>
 
@@ -163,53 +165,89 @@
 
                 var products;
                 var prodIndex = -1;
+                function parseProduct(prod, i)
+                {
+                    prodObj = products[i];
+                    prod.find('.title').html(prodObj.product.title);
+                    prod.find('.hf-name').html(prodObj.hedgefund.title);
+                    var funded = prodObj.product.sumInvestedAmounts == null ? 0 : prodObj.product.sumInvestedAmounts / prodObj.product.requiredAmount;
+                    var fundedNumBar = funded > 1 ? 1 : funded;
+                    var fundedBar = prod.find('.progress-bar-hover').width()*fundedNumBar;
+                    prod.find('.progress-bar-hover').width('-='+fundedBar);
+                    prod.find('.progress-bar-hover').css({marginLeft:fundedBar});
+                    prod.find('.may-funded').before(Math.round(funded*10000)/100+'% ');
+                    var endFundDate = new Date(prodObj.product.dateBeginExpected.date);
+                    var today = new Date();
+                    var left = (endFundDate.getTime()/1000 - today.getTime()/1000)/(24*3600);
+                    var leftText = Math.round(left) > 1 ? Math.round(left)+' days' : Math.round(left) < 1 ? Math.round(left*24) > 1 ? Math.round(left*24)+' hours' : Math.round(left*24)+' hour' : '1 day';
+                    prod.find('.lock-time').html(leftText);
+                    prod.find('.ana > .text').html(prodObj.product.description);
+                    var endExpect = new Date(prodObj.product.dateEndExpected.date);
+                    var dealTime = (endExpect.getTime()/1000 - endFundDate.getTime()/1000)/(24*3600);
+                    var dealTimeText = Math.round(dealTime) > 1 ? Math.round(dealTime)+' days' : Math.round(dealTime) < 1 ? Math.round(dealTime*24) > 1 ? Math.round(dealTime*24)+' hours' : Math.round(dealTime*24)+' hour' : '1 day';
+                    prod.find('.sportwatch-time').html(dealTimeText);
+                    prod.find('.renta-expected').html('+'+prodObj.product.profitsRateExpected*100+'%');
+                    prod.find('.loss-expected').html('-'+prodObj.product.lossRateExpected*100+'%');
+                }
+                function createProducts()
+                {
+                    // console.log($('#deal-model').width());
+                    for (var i = 0; i < products.length; i++)
+                    {
+                        var newpage = $('#deal-model').html();
+                        $('#deal-model').before('<div id="deal'+i+'" class="deal" style="width:'+$('#deal-model').width()+'px;position:absolute;right:-'+$(window).width()+'px">'+newpage+'</div>');
+                        parseProduct($('#deal-model').prev(), i);
+                    }
+                    $('#deal-model').hide();
+                }
                 function changeProduct(toPage)
                 {
-                    if ((prodIndex+1 > products.length && toPage === 'next') ||
-                        (prodIndex-1 < 0 && toPage === 'prev'))
+                    var toIndex = toPage === 'next' ? prodIndex+1 : prodIndex-1;
+                    if ((toIndex >= products.length && toPage === 'next') ||
+                        (toIndex < 0 && toPage === 'prev'))
                     {
                         alert('no more dude');
                         return;
                     }
-                    else if (toPage === 'next')
-                        prodIndex++;
-                    else if (toPage === 'prev')
-                        prodIndex--;
-                    if ($('body').find('#deal'+prodIndex).length == 0)
+
+                    if ($('body').find('#deal'+toPage).length == 0)
                     {
-                        var prod = products[prodIndex];
-                        var newpage = $('#deal-model').html();
-                        $('body').append('<div id="deal'+prodIndex+'">'+newpage+'</div>');
-                        // newpage = $('#deal'+prodIndex);
-                        // console.log('oui');
-                        // newpage.find('.title').html(prod.product.title);
-                        // newpage.attr('id','deal'+prodIndex);
-                        // $.mobile.initializePage();
-                        // $('#deal'+prodIndex).page()
+                        var mult = 1;
+                        var margin = 0;
+                        if (toPage === 'next') {
+                            mult = -1;
+                            margin = ($(window).width() - $('#deal'+toIndex).outerWidth())/2;
+                        }
+                        else margin = ($(window).width() - $('#deal'+prodIndex).outerWidth())/2;
+
+                        if (toIndex >= 0 && toIndex < products.length)
+                            $('#deal' + toIndex).transition({x: '+='+(mult*($(window).width()+margin))});
+                        if (prodIndex >= 0 && prodIndex < products.length)
+                            $('#deal' + prodIndex).transition({x: '+='+(mult*($(window).width()+margin))});
+                        prodIndex = toIndex;
                     }
-                    // alert('pagechange'+prodIndex);
-                    // $.mobile.changePage('#deal'+prodIndex, {
-                    //     changeHash: false,
-                    //     // dataUrl: 'deal'+prodIndex,
-                    //     // transition: 'slide'
-                    //     // reloadPage: true
-                    // });
-                    // $('#mycss').prop('href','css/jquery.mobile.css?'+ts);
                 }
-                $(document).bind("pagebeforechange", function( e, data ) {
-                    // var u = $.mobile.path.parseUrl( data.toPage );
-                    // if (u.hash === '#next')
-                    //     changeProduct('next');
-                    // else if (u.hash === '#prev')
-                    //     changeProduct('prev');
-                    // alert('gertgh');
+                $('.pagenum').click(function () {
+                    if ($(this).index() == 2)
+                        changeProduct('next');
+                    else if ($(this).index() == 0)
+                        changeProduct('prev');
                 });
-                $('body').bind('swiperight', function (e) {
-                    changeProduct('next');
+                
+                $(window).swipe({
+                    swipe: function(event, direction, distance, duration, fingerCount) {
+                        if (distance > $(window).width()*0.07)
+                        {
+                            if (direction === 'right')
+                                changeProduct('prev');
+                            else
+                                changeProduct('next');
+                        }
+                    }
                 });
-                $('body').bind('swipeleft', function (e) {
-                    changeProduct('prev');
-                });
+                // function createProducts() {
+
+                // }
                 $.ajax({
                     type: 'GET',
                     headers: {'api-key':'dwhR8ASVS1S6KWQ0Ye1Gndm2Ty6LAsFKQrXAitWqz0W9d1MQnL5c1a9NjLCiKs0yxY3KCj'},
@@ -217,10 +255,19 @@
                     dataType: 'json',
                     contentType: "application/json; charset=utf-8",
                     // async: false,
+                    timeout: 2000,
                     crossDomain: true,
                     success: function (r) {
                         products  = r;
-                        changeProduct('next');
+                        createProducts();
+                        changeProduct('next', 0);
+                        console.log(r);
+                        alert('succes');
+                    },
+                    error: function (x, t, z) {
+                        if(t==="timeout")
+                            alert("got timeout");
+                        alert('error');
                     }
                 });
 

@@ -587,8 +587,8 @@
 .progress-bar-hover {
 	background-color: #aaa;
 	height: 13/16em;
-	width: 20%;
-	margin-left: 65%;
+	width: 85%;
+	margin-left: 0%;
 	margin-top: -14/16em;
 	//box-shadow: inset -1/16em 1/16em 6/16em rgba(0, 0, 0, 0.9);;
 }
@@ -724,6 +724,11 @@
 	height: 14/16em;
 	margin-top: 15/16em;
 	margin-bottom: 15/16em;
+	position: absolute;
+	z-index: 1000;
+	left:50%;
+	margin-left: -72/2/16em;
+	bottom:0;
 }
 
 .pagenum {
@@ -827,43 +832,6 @@
 	width: 100%;
 	&:hover {
 		background-color: rgba(0,0,0,0.6);
-	}
-}
-
-.deal {
-	padding: 4%;
-	padding-top: 4%;
-	.border-radius(0/16em);
-	//.box-shadow(0 1/16em 2/16em rgba(0,0,0,0.3));
-	.box-shadow(0 1/16em 2/16em rgba(0,0,0,0.4));
-	background-color: rgba(255,255,255,0.60);
-	position: relative;
-	z-index: 1000000;
-	&.a {
-		.box-shadow(0 2/16em 4/16em rgba(0,0,0,0.4));
-	}
-	&.b {
-		.box-shadow(0 -2/16em 4/16em rgba(0,0,0,0.4));
-	}
-	.title {
-		font-family: ProximaNovaLight;
-		font-size: 1.1em;
-		text-align: center;
-		color: #666;
-		padding-bottom: 4/16em;
-		border-bottom: 1/16em solid rgba(94,101,109,0.6);
-	}
-	.subtitle {
-		font-size: 0.75em;
-		color: rgba(94, 101, 109, 0.9);
-		float: left;
-		line-height: 30/16em;
-		//font-weight: normal;
-		//font-family: Proxima Nova;
-	}
-	.content {
-		border-top: 1/16em solid #fff;
-		padding-top: 12/16em;
 	}
 }
 
