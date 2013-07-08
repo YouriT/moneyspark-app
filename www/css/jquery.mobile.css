@@ -9738,6 +9738,16 @@ h3 {
 .ml12 {
   margin-left: 0.75em;
 }
+.attention {
+  text-decoration: underline;
+}
+.light {
+  color: #888;
+}
+.cambria {
+  font-style: italic;
+  font-family: Cambria;
+}
 .iconback {
   position: absolute;
   top: 0;
@@ -10292,6 +10302,39 @@ h3 {
   color: #555;
 }
 .cash-info li {
+  margin-bottom: 5%;
+}
+.check-little-grey {
+  float: left;
+  width: 0.35em;
+  height: 0.35em;
+  margin-top: 0.125em;
+  border: 0.125em solid #666666;
+  border-radius: 50%;
+  margin-right: 0.6875em;
+  margin-left: 0.0625em;
+  cursor: pointer;
+}
+.check-little-grey.active {
+  background-color: rgba(102, 102, 102, 0.7);
+}
+.check-text-little-grey {
+  font-size: 0.8em;
+  color: #666;
+  line-height: 1.1em;
+  padding-left: 1.4375em;
+}
+.confirmation-deal {
+  font-family: ProximaNovaRegular;
+  font-weight: normal;
+  color: #666;
+  font-size: 0.75em;
+  display: block;
+  line-height: 1.3em;
+  padding-left: 6%;
+  margin-top: 1%;
+}
+.confirmation-deal li {
   margin-bottom: 5%;
 }
 @-ms-viewport {

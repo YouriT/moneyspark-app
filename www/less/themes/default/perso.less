@@ -449,6 +449,19 @@
 	margin-left: 12/16em;
 }
 
+.attention {
+	text-decoration: underline;
+}
+
+.light {
+	color: #888;
+}
+
+.cambria {
+	font-style: italic;
+	font-family: Cambria;	
+}
+
 .iconback {
 	position: absolute;
 	top: 0;
@@ -1008,6 +1021,45 @@
 	text-align: justify;
 	margin-top: 4%;
 	color: #555;
+	li {
+		margin-bottom: 5%;
+	}
+}
+
+// Confirmation deal
+
+.check-little-grey {
+	float: left;
+	width: 0.35em;
+	height: 0.35em;
+	margin-top: 2/16em;
+	border: 2/16em solid #666;
+	border-radius: 50%;
+	margin-right: 11/16em;
+	margin-left: 1/16em;
+	cursor: pointer;
+	&.active {
+		background-color: rgba(102,102,102,0.7);
+	}
+}
+
+.check-text-little-grey {
+	font-size: 0.8em;
+	color: #666;
+	line-height: 1.1em;
+	padding-left: 23/16em;
+}
+
+
+.confirmation-deal {
+	font-family: ProximaNovaRegular;
+	font-weight: normal;
+	color: #666;
+	font-size: 0.75em;
+	display: block;
+	line-height: 1.3em;
+	padding-left: 6%;
+	margin-top: 1%;
 	li {
 		margin-bottom: 5%;
 	}
