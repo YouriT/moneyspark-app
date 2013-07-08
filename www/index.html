@@ -27,8 +27,16 @@
         <link id="mycss" rel="stylesheet" type="text/css" href="css/moneyspark.css" />
         <title>Moneyspark</title>
     </head>
-    <body>
-        <div>
+    <body class="menuvertical-push">
+        <nav class="menuvertical menuvertical-vertical menuvertical-left">
+            <h3>Menu</h3>
+            <a href="#">Celery seakale</a>
+            <a href="#">Dulse daikon</a>
+            <a href="#">Zucchini garlic</a>
+            <a href="#">Catsear azuki bean</a>
+            <a href="#">Dandelion bunya</a>
+            <a href="#">Rutabaga</a>
+        </nav>
             <div class="container">
                 <div class="logo"></div>
                 
@@ -125,11 +133,21 @@
                 </div>
             </div>
 
-            <div class="ensemble-pagenum zeroauto">
-                <a class="pagenum" href="#prev" rel="1"></a>
-                <a class="pagenum center active" href="#" rel="2"></a>
-                <a class="pagenum" href="#next" rel="3"></a>
-                <div class="clear"></div>
+            <div class="container">
+                <div class="bottom-menu">
+                    <button id="showLeftPush" class="button-menuvertical">
+                        <div class="trait"></div>
+                        <div class="trait"></div>
+                        <div class="trait"></div>
+                    </button>
+                    <div class="ensemble-pagenum-bottom-menu">
+                        <a class="pagenum" href="#prev" rel="1"></a>
+                        <a class="pagenum center active" href="#" rel="2"></a>
+                        <a class="pagenum" href="#next" rel="3"></a>
+                        <div class="clear"></div>
+                    </div>
+                    <div class="clear"></div>
+                </div>
             </div>
         </div>
         <script type="text/javascript" src="js/jquery.js"></script>
@@ -161,6 +179,16 @@
                 $('.buydeal').css({
                     marginLeft: pad/2,
                     marginRight: pad/2
+                });
+
+                var middle = $('.container:last').width()/2 - $('.ensemble-pagenum-bottom-menu').width()/2 - $('.button-menuvertical').width();
+                $('.ensemble-pagenum-bottom-menu').css({
+                    marginLeft: middle+'px'
+                });
+
+                $('#showLeftPush').click(function () {
+                    $('body').toggleClass('menuvertical-push-toright');
+                    $('nav').toggleClass('menuvertical-left');
                 });
 
                 var products;
@@ -197,6 +225,7 @@
                         var newpage = $('#deal-model').html();
                         $('#deal-model').before('<div id="deal'+i+'" class="deal" style="width:'+$('#deal-model').width()+'px;position:absolute;right:-'+$(window).width()+'px">'+newpage+'</div>');
                         parseProduct($('#deal-model').prev(), i);
+                        $('#deal-model').prev().trigger('resize');
                     }
                     $('#deal-model').hide();
                 }
@@ -261,8 +290,6 @@
                         products  = r;
                         createProducts();
                         changeProduct('next', 0);
-                        console.log(r);
-                        alert('succes');
                     },
                     error: function (x, t, z) {
                         if(t==="timeout")
