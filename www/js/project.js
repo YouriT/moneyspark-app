@@ -58,7 +58,7 @@ $(window).on('pageCreated', function(){
 				var email = $(this).find('input[name=email]').val();
 				var password = $(this).find('input[name=password]').val();
 				auth = new Auth();
-		        auth.login(email, password, function(){ alert("Yeah, welcome to Moneyspark baby !") }, function(){ $('.popupLogin').fadeIn('fast'); });
+		        auth.login(email, password, function(){ $(window).changePage("cash1.html"); }, function(){ $('.popupLogin').fadeIn('fast'); });
 		        return false;
 		});
 	}
