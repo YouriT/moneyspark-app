@@ -32,8 +32,10 @@
             <div class="mt34"></div>
             <div class="ensemble-menu">
                 <a href="#"><i class="icon-user iconmenu"></i></a>
+                <div class="inter-menu"></div>
                 <a href="#"><i class="icon-lock iconmenu"></i></a>
-                <a href="#" style="border-bottom: none;"><i class="icon-bolt iconmenu"></i></a>
+                <div class="inter-menu"></div>
+                <a href="#"><i class="icon-bolt iconmenu"></i></a>
             </div>
         </nav>
             <div class="container">
@@ -178,12 +180,6 @@
                 $('.buydeal').css({
                     marginLeft: pad/2,
                     marginRight: pad/2
-                });
-
-                var hgt = $('#deal-model').outerHeight();
-                hgt += parseInt($('#deal-model').css('padding-top'),10);
-                $('.ensemble-menu').css({
-                    height: (hgt/16+2/16)+'em'
                 });
 
                 var middle = $('.container:last').width()/2 - $('.ensemble-pagenum-bottom-menu').width()/2 - $('.button-menuvertical').width();
