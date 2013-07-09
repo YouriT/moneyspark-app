@@ -56,6 +56,11 @@
 		width: 83px;
 		height: 83px;
 	}
+	.user-little {
+		background-image: url("../img/240/240-userpicture.png");		
+		width:55px;
+		height:55px;
+	}
 }
 @media screen and (min-width: 320px) {
 	body {font-size: @font-size*1px;}
@@ -106,6 +111,11 @@
 		width: 111px;
 		height: 111px;
 	}
+	.user-little {
+		background-image: url("../img/320/320-userpicture.png");		
+		width: 73px;
+		height: 73px;
+	}
 }
 @media screen and (min-width: 360px) {
 	body {font-size: @font-size/320*360px;}
@@ -153,6 +163,12 @@
 		width: 125px;
 		height: 125px;
 	}
+	.user-little {
+		background-image: url("../img/360/360-userpicture.png");		
+		width: 83px;
+		height: 83px;
+	}
+
 }
 @media screen and (min-width: 480px) {
 	body {font-size: @font-size/320*480px;}
@@ -199,6 +215,11 @@
 		background-image: url("../img/480/480-userpicture.png");		
 		width: 166px;
 		height: 166px;
+	}
+	.user-little {
+		background-image: url("../img/480/480-userpicture.png");		
+		width: 110px;
+		height: 110px;
 	}
 }	
 @media screen and (min-width: 640px) {
@@ -247,6 +268,11 @@
 		width: 222px;
 		height: 222px;
 	}
+	.user-little {
+		background-image: url("../img/640/640-userpicture.png");		
+		width: 147px;
+		height: 147px;
+	}
 }
 @media screen and (min-width: 768px) {
 	body {font-size: @font-size/320*768px;}
@@ -294,6 +320,11 @@
 		width: 267px;
 		height: 267px;
 	}
+	.user-little {
+		background-image: url("../img/768/768-userpicture.png");		
+		width: 176px;
+		height: 176px;
+	}
 }
 @media screen and (min-width: 1080px) {
 	body {font-size: @font-size/320*1080px;}
@@ -340,6 +371,11 @@
 		background-image: url("../img/1080/1080-userpicture.png");		
 		width: 373px;
 		height: 373px;
+	}
+	.user-little {
+		background-image: url("../img/1080/1080-userpicture.png");		
+		width: 246px;
+		height: 246px;
 	}
 }
 
@@ -390,6 +426,11 @@
 		background-image: url("../img/1080/1080-userpicture.png");		
 		width: 373px;
 		height: 373px;
+	}
+	.user-little {
+		background-image: url("../img/1080/1080-userpicture.png");		
+		width: 246px;
+		height: 246px;
 	}
 }
 
@@ -824,6 +865,13 @@
 	margin: 0 auto;
 }
 
+.user-little {
+	border-radius: 50%;
+	.box-shadow(inset 0/16em 0/16em 5/16em rgba(0,0,0,0.8));
+	margin: 0 auto;
+	background-size: 100%;
+}
+
 .userinfo {
 	.placeholder-color(#666);
 	background-color: rgba(255,255,255,0.6);
@@ -1012,33 +1060,6 @@
 	}
 }
 
-// User Profil
-
-.profil-hover {
-	padding: 4%;
-	background-color: rgba(255,255,255,0.60);
-	.title {
-		font-family: ProximaNovaLight;
-		font-size: 1.1em;
-		text-align: center;
-		color: #666;
-		padding-bottom: 4/16em;
-		border-bottom: 1/16em solid rgba(94,101,109,0.6);
-	}
-	.subtitle {
-		font-size: 0.75em;
-		color: rgba(94, 101, 109, 0.9);
-		float: left;
-		line-height: 30/16em;
-		//font-weight: normal;
-		//font-family: Proxima Nova;
-	}
-	.content {
-		border-top: 1/16em solid #fff;
-		padding-top: 12/16em;
-	}
-}
-
 
 // Menu vertical
 
@@ -1046,6 +1067,7 @@
 
 .menuvertical {
     position: fixed;
+    height: 97%;
 }
  
 // .menuvertical h3 {
@@ -1068,6 +1090,12 @@
 	color: rgba(255, 255, 255, 0.8);
 }
 
+.ensemble-menu {
+	position: absolute;
+	bottom: 0;
+	padding-bottom: 40/16em;
+}
+
 .menuvertical a {
     display: block;
     color: #fff;
@@ -1076,6 +1104,7 @@
     text-decoration: none;
     line-height: 3.5em;
     padding-left: 20/16em;
+    padding-right: 18/16em;
 }
 
 .menuvertical a:hover {
@@ -1137,6 +1166,8 @@
     transition: all 0.3s ease;
 }
 
+/* Menu button */
+
 .button-menuvertical {
 	height: 30/16em;
 	width: 37/16em;
@@ -1156,6 +1187,14 @@
 	border-radius: 2/16em;
 	.box-shadow(0 0.0625em 0.125em rgba(0, 0, 0, 0.4));
 	background-color: rgba(255, 255, 255, 0.6);
+}
+
+.trait2 {
+	height: 0.2em;
+	width: 2.3125em;
+	margin-bottom: 0.3em;
+	border-radius: 2/16em;
+	background-color: rgba(0, 0, 0, 0.4);
 }
 
 .ensemble-pagenum-bottom-menu {
@@ -1181,6 +1220,11 @@
 .iconmenu {
 	font-size: 1.2em;
 }
+
+
+
+/* Flip effect */ 
+
 .flip-container {
 	-webkit-perspective: 1000;
 	-moz-perspective: 1000;
@@ -1232,4 +1276,66 @@
 	-webkit-transform: rotateY(180deg);
 			-moz-transform: rotateY(180deg);
 			transform: rotateY(180deg);
+}
+
+// Profil User
+
+.profil-header {
+	padding-top: 25px;
+	padding-bottom: 20px;
+	.box-shadow(0px 0px 10px #000);
+	position:relative;
+	z-index: 100;
+}
+
+.result {
+	z-index: 1;
+	font-size: 1.1em;
+	&.positif {
+		background-color: @green;
+		color: #fff;
+	}
+	&.negatif {
+		background-color: rgb(255,60,112);
+		color: #fff;
+	}
+	.b {
+		float: left;
+		padding-top: 7px;
+		padding-bottom: 7px;
+		width: 50%;
+		text-align: center;
+	}
+	.a {
+		float: right;
+		padding-top: 7px;
+		padding-bottom: 7px;
+		width: 50%;
+		text-align: center;
+	}
+}
+
+.deal-funding {
+	line-height: 1.5em;
+	.progress-bar-layout {
+		margin-top: 0.34375em;
+	}
+	.progress-bar-hover {
+	}
+}
+.deal-current {
+	line-height: 1.5em;
+	.opportunity-bar-layout {
+		margin-top: 0.34375em;
+	}
+}
+.percent-current {
+	font-size: 0.65em;
+	position: absolute;
+	margin-top: -1.85em;
+	color: #fff;
+}
+
+.positif {
+	color: @green
 }
