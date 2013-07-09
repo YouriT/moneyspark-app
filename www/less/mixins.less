@@ -223,3 +223,14 @@
 .reset-filter() {
   filter: e(%("progid:DXImageTransform.Microsoft.gradient(enabled = false)"));
 }
+
+.gradient-percent(@pos: left, @color1: @red, @percent1: 50%, @color2: @green, @percent2: 51%) {
+  /*Official Syntax*/
+  background-image: linear-gradient(@pos, @color1 @percent1, @color2 @percent2);
+
+  /*Browser Syntax*/
+  background-image: -webkit-linear-gradient(@pos, @color1 @percent1, @color2 @percent2);
+  background-image: -moz-linear-gradient(@pos, @color1 @percent1, @color2 @percent2);
+  background-image: -o-linear-gradient(@pos, @color1 @percent1, @color2 @percent2);
+  background-image: -ms-linear-gradient(@pos, @color1 @percent1, @color2 @percent2); 
+}

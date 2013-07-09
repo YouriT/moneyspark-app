@@ -4,6 +4,7 @@
 @grey: #666;
 @turquoise: #3acac6;
 @green: #82c729;
+@red:rgb(255,60,112);
 @font-size: 16;
 
 // mediaquiries pictures
@@ -724,8 +725,10 @@
 .opportunity-bar-layout {
 	height: 13/16em;
 	width: 100%;
-	#gradient > .horizontal(rgb(255,60,112), rgb(130,199,41));
+	.gradient-percent(left, @red, 10%, @green, 40%);
+	//.background-image: linear-gradient(left, #ff3c70 50%, #82c729 51%);
 	border-bottom: 1/16em solid rgba(255,255,255,0.95);
+	opacity: 0.8;
 }
 
 .sportwatch-icon {
@@ -1315,27 +1318,70 @@
 	}
 }
 
-.deal-funding {
-	line-height: 1.5em;
-	.progress-bar-layout {
-		margin-top: 0.34375em;
-	}
-	.progress-bar-hover {
-	}
-}
-.deal-current {
-	line-height: 1.5em;
-	.opportunity-bar-layout {
-		margin-top: 0.34375em;
-	}
-}
-.percent-current {
-	font-size: 0.65em;
-	position: absolute;
-	margin-top: -1.85em;
-	color: #fff;
+.deal-resume {
+	cursor: pointer;
+	padding-bottom: 4%;
+	padding-top: 3%;
+	border-bottom: 1px solid rgba(0,0,0,0.1);
+	.part {
+		.title {
+			float:left;
+			width:70%;
+			font-size: 1em;
+			overflow: hidden;
+		}
+		.money-result {
+			float:right;
+			margin-right: 3%;
+			font-size: 0.9em;
+		}
+		.progress-bar-layout {
+			margin-top: 0.34375em;
+			height: 4/16em;
+		}
+		.progress-bar-hover {
+			height: 4/16em;
+			margin-top: -5/16em;
+		}
+		.positif-bar-close {
+			margin-top: 0.34375em;
+			height: 4/16em;
+			background-color: @green;
+			width: 85%;
+		}
+		.negatif-bar-close {
+			margin-top: 0.34375em;
+			height: 4/16em;
+			background-color: @red;
+			width: 85%;
+		}
+		.statut {
+			float:right;
+			margin-right: 3%;
+			font-size: 0.7em;
+			line-height: 0.8em;
+		}
+		.opportunity-bar-layout{
+			width: 85%;
+			margin-top: 0.34375em;
+			height: 4/16em;
+		}
+		.puce {
+			height: 8px;
+			width: 8px;
+			background-color: #aaa;
+			margin-top: -7px;
+			z-index: 10000000;
+			position: relative;
+			.border-radius(50%);
+		}
+	} 
 }
 
 .positif {
-	color: @green
+	color: @green;
+}
+
+.negatif {
+	color: @red;
 }

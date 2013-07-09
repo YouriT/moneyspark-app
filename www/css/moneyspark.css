@@ -3909,7 +3909,8 @@ h3 {
   .menu-bg {
     background-image: url("../img/240/240-buybg.png");
   }
-  body {
+  body,
+  .bg1 {
     background-image: url("../img/240/240-bg.png") !important;
   }
   .user {
@@ -3963,7 +3964,8 @@ h3 {
   .menu-bg {
     background-image: url("../img/320/320-buybg.png");
   }
-  body {
+  body,
+  .bg1 {
     background-image: url("../img/320/320-bg.png") !important;
   }
   .bg2 {
@@ -4020,7 +4022,8 @@ h3 {
   .menu-bg {
     background-image: url("../img/360/360-buybg.png");
   }
-  body {
+  body,
+  .bg1 {
     background-image: url("../img/360/360-bg.png") !important;
   }
   .user {
@@ -4074,7 +4077,8 @@ h3 {
   .menu-bg {
     background-image: url("../img/480/480-buybg.png");
   }
-  body {
+  body,
+  .bg1 {
     background-image: url("../img/480/480-bg.png") !important;
   }
   .user {
@@ -4128,7 +4132,8 @@ h3 {
   .menu-bg {
     background-image: url("../img/640/640-buybg.png");
   }
-  body {
+  body,
+  .bg1 {
     background-image: url("../img/640/640-bg.png") !important;
   }
   .user {
@@ -4182,7 +4187,8 @@ h3 {
   .menu-bg {
     background-image: url("../img/768/768-buybg.png");
   }
-  body {
+  body,
+  .bg1 {
     background-image: url("../img/768/768-bg.png") !important;
   }
   .user {
@@ -4236,7 +4242,8 @@ h3 {
   .menu-bg {
     background-image: url("../img/1080/1080-buybg.png");
   }
-  body {
+  body,
+  .bg1 {
     background-image: url("../img/1080/1080-bg.png") !important;
   }
   .user {
@@ -4287,7 +4294,8 @@ h3 {
   .menu-bg {
     background-image: url("../img/1080/1080-buybg.png");
   }
-  body {
+  body,
+  .bg1 {
     background-image: url("../img/1536/1536-bg.png") !important;
   }
   .user {
@@ -4532,15 +4540,17 @@ h3 {
 .opportunity-bar-layout {
   height: 0.8125em;
   width: 100%;
-  background-color: #82c729;
-  background-image: -moz-linear-gradient(left, #ff3c70, #82c729);
-  background-image: -webkit-gradient(linear, 0 0, 100% 0, from(#ff3c70), to(#82c729));
-  background-image: -webkit-linear-gradient(left, #ff3c70, #82c729);
-  background-image: -o-linear-gradient(left, #ff3c70, #82c729);
-  background-image: linear-gradient(to right, #ff3c70, #82c729);
-  background-repeat: repeat-x;
-  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffff3c70', endColorstr='#ff82c729', GradientType=1);
+  /*Official Syntax*/
+
+  background-image: linear-gradient(left, #ff3c70 10%, #82c729 40%);
+  /*Browser Syntax*/
+
+  background-image: -webkit-linear-gradient(left, #ff3c70 10%, #82c729 40%);
+  background-image: -moz-linear-gradient(left, #ff3c70 10%, #82c729 40%);
+  background-image: -o-linear-gradient(left, #ff3c70 10%, #82c729 40%);
+  background-image: -ms-linear-gradient(left, #ff3c70 10%, #82c729 40%);
   border-bottom: 0.0625em solid rgba(255, 255, 255, 0.95);
+  opacity: 0.8;
 }
 .sportwatch-icon {
   margin: 0 auto;
@@ -5056,26 +5066,70 @@ h3 {
   width: 50%;
   text-align: center;
 }
-.deal-funding {
-  line-height: 1.5em;
+.deal-resume {
+  cursor: pointer;
+  padding-bottom: 4%;
+  padding-top: 3%;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
 }
-.deal-funding .progress-bar-layout {
+.deal-resume .part .title {
+  float: left;
+  width: 70%;
+  font-size: 1em;
+  overflow: hidden;
+}
+.deal-resume .part .money-result {
+  float: right;
+  margin-right: 3%;
+  font-size: 0.9em;
+}
+.deal-resume .part .progress-bar-layout {
   margin-top: 0.34375em;
+  height: 0.25em;
 }
-.deal-current {
-  line-height: 1.5em;
+.deal-resume .part .progress-bar-hover {
+  height: 0.25em;
+  margin-top: -0.3125em;
 }
-.deal-current .opportunity-bar-layout {
+.deal-resume .part .positif-bar-close {
   margin-top: 0.34375em;
+  height: 0.25em;
+  background-color: #82c729;
+  width: 85%;
 }
-.percent-current {
-  font-size: 0.65em;
-  position: absolute;
-  margin-top: -1.85em;
-  color: #fff;
+.deal-resume .part .negatif-bar-close {
+  margin-top: 0.34375em;
+  height: 0.25em;
+  background-color: #ff3c70;
+  width: 85%;
+}
+.deal-resume .part .statut {
+  float: right;
+  margin-right: 3%;
+  font-size: 0.7em;
+  line-height: 0.8em;
+}
+.deal-resume .part .opportunity-bar-layout {
+  width: 85%;
+  margin-top: 0.34375em;
+  height: 0.25em;
+}
+.deal-resume .part .puce {
+  height: 8px;
+  width: 8px;
+  background-color: #aaa;
+  margin-top: -7px;
+  z-index: 10000000;
+  position: relative;
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
+  border-radius: 50%;
 }
 .positif {
   color: #82c729;
+}
+.negatif {
+  color: #ff3c70;
 }
 @-ms-viewport {
   width: device-width;
