@@ -181,8 +181,9 @@
                 });
 
                 var hgt = $('#deal-model').outerHeight();
+                hgt += parseInt($('#deal-model').css('padding-top'),10);
                 $('.ensemble-menu').css({
-                    height: hgt+'px'
+                    height: (hgt/16+2/16)+'em'
                 });
 
                 var middle = $('.container:last').width()/2 - $('.ensemble-pagenum-bottom-menu').width()/2 - $('.button-menuvertical').width();
