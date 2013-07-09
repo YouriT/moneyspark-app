@@ -48,4 +48,17 @@ function iminClick () {
 
 $(window).load(function () {
 	$(window).bind('imin', iminClick);
+	$(window).trigger("pageCreated");
+});
+
+$(window).on('pageCreated', function(){
+	$(window).trigger("askRetrieve");
+	$('form[name=login]').submit(function(){
+			var email = $(this).find('input[name=email]').val();
+			var password = $(this).find('input[name=password]').val();
+			auth = new Auth();
+	        auth.login(email, password, function(){ alert("Yeah, welcome to Moneyspark baby !") }, function(){ $('.popupLogin').fadeIn('fast'); });
+	        return false;
+	});
+
 });
