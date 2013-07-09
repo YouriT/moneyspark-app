@@ -27,11 +27,20 @@
         <link id="mycss" rel="stylesheet" type="text/css" href="css/moneyspark.css" />
         <title>Moneyspark</title>
     </head>
-    <body>
+    <body class="menuvertical-push">
+
+        <nav class="menuvertical menuvertical-vertical menuvertical-left">
+            <div class="mt34"></div>
+            <div class="ensemble-menu">
+                <a href="#"><i class="icon-user iconmenu"></i></a>
+                <div class="inter-menu"></div>
+                <a href="#"><i class="icon-lock iconmenu"></i></a>
+                <div class="inter-menu"></div>
+                <a href="#"><i class="icon-bolt iconmenu"></i></a>
+            </div>
+        </nav>
 
         <div class="container">
-            <i class="icon-angle-left icon-2x iconback"></i>
-            <div class="iconback text">back</div>
             <div class="row-fluid" style="margin-top: 40%">
                 <div class="ensemble-pagenum zeroauto">
                     <a class="pagenum active" href="#" rel="1"></a>
@@ -47,7 +56,26 @@
                 <button class="signin" style="margin-bottom: 5%;margin-top: 10%;" data-role="none">next</button>
             </div>
             
-        </div>   
+        </div>
+
+        <div class="container">
+                <div class="bottom-menu">
+                    <button id="showLeftPush" class="button-menuvertical">
+                        <div class="trait"></div>
+                        <div class="trait"></div>
+                        <div class="trait"></div>
+                    </button>
+                    <!--
+                    <div class="ensemble-pagenum-bottom-menu">
+                        <a class="pagenum" href="#prev" rel="1"></a>
+                        <a class="pagenum center active" href="#" rel="2"></a>
+                        <a class="pagenum" href="#next" rel="3"></a>
+                        <div class="clear"></div>
+                    </div>
+                    -->
+                    <div class="clear"></div>
+                </div>
+            </div>   
         <script type="text/javascript" src="js/jquery.js"></script>
         <script type="text/javascript" src="js/app.js"></script>
         <script type="text/javascript" src="cordova.js"></script>
