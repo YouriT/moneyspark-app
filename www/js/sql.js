@@ -9,7 +9,8 @@ var Database = Class.extend({
     db.transaction(function(tx){
         //Mode debug
         //tx.executeSql('DROP TABLE IF EXISTS CFG');
-    	tx.executeSql('CREATE TABLE IF NOT EXISTS CFG (id INTEGER NOT NULL, "key" VARCHAR(255), value VARCHAR(255), PRIMARY KEY (id), UNIQUE ("key"))');
+    	tx.executeSql('CREATE TABLE IF NOT EXISTS CFG (id INTEGER NOT NULL,"key" VARCHAR(255), value VARCHAR(255),PRIMARY KEY (id), UNIQUE ("key"))');
+        tx.executeSql('CREATE TABLE IF NOT EXISTS PRODUCTS (id INTEGER NOT NULL, title VARCHAR(255), hedgefundTitle VARCHAR(255), dateBeginExpected VARCHAR(25), dateEndExpected VARCHAR(25), description TEXT, profitsRateExpected DOUBLE, lossRateExpected DOUBLE, sumInvestedAmounts DOUBLE, requiredAmount DOUBLE, PRIMARY KEY (id))');
     }, function(e){
     	console.log(e.message);
     }, function(){
@@ -80,6 +81,54 @@ var TableConfiguration = Class.extend({
     			}, function(){
     				success();
     			});
+    }
+
+
+});
+
+
+var TableProducts = Class.extend({
+  init: function(){
+    if(db==null)
+        new Database();
+    //this.dancing = isDancing;
+  },
+  findAll: function(success, error){     
+                db.transaction(function(tx) {
+                    tx.executeSql('SELECT * FROM PRODUCTS', [],function(tx, rs) {
+                        success(rs.rows); 
+                    }, function(tx, e) {
+                        error(e); 
+                    });
+                });
+    },
+   insertAll: function(products, success, error){
+                this.deleteAll(function(){
+                    db.transaction(function(tx){
+                        for (var i = 0; i < products.length; i++)
+                        {
+
+                            object = products[i];
+                            console.log("Product "+object.product.title+" added to database");
+                            tx.executeSql('INSERT INTO PRODUCTS VALUES (NULL, "'+object.product.title+'", "'+object.hedgefund.title+'", "'+object.product.dateBeginExpected.date+'", "'+object.product.dateEndExpected.date+'", "'+object.product.description+'", "'+object.product.profitsRateExpected+'", "'+object.product.lossRateExpected+'", "'+object.product.sumInvestedAmounts+'", "'+object.product.requiredAmount+'")');
+                        }
+                    }, function(e){
+                        error(e);
+                    }, function(){
+                        success();
+                    });
+                }, function(e){});
+    },
+    deleteAll: function(success, error){     
+                db.transaction(function(tx){
+                    tx.executeSql('DELETE FROM PRODUCTS');
+                }, function(e){
+                    console.log("All products from db not deleted because "+e.message);
+                    error(e);
+                }, function(){
+                    success();
+                    console.log("All products from db deleted");
+                });
     }
 
 

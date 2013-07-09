@@ -1,10 +1,23 @@
+var TableConfiguration = c = new TableConfiguration();
+//var nav = navigator = null;
 var Ajax = Class.extend({
+  currentRetry:0,
   init: function(urlRequest, successCallBack, params, typeRequest, apiKey){
-    TableConfiguration = new TableConfiguration();
+    aj = this;
     if(params == undefined || params == "")
         params = {};
     if(typeRequest == undefined || typeRequest == "GET"){
         typeRequest = "GET";
+
+/*        if(urlRequest.indexOf("product") !== -1){
+            nav.globalization.getLocaleName(function (locale) {
+                urlRequest = urlRequest+"?locale="+locale.value;
+            }, function () {
+                urlRequest = urlRequest+"?locale=en_US";
+            });
+
+        }*/
+
         contentType = "application/json; charset=utf-8"
     }
     else if(typeRequest == "POST"){
@@ -29,6 +42,18 @@ var Ajax = Class.extend({
                 if(r.error != undefined  && r.error.code == 1200){ 
                     TableConfiguration.delete("token", function(){ console.log("token deleted because expired"); }, function(e){ console.log("error while deleting expired token"); }); 
                 } else{ successCallBack(r); }  0
+            },
+            error: function(){
+                aj.currentRetry++;
+                if(aj.currentRetry == 5){
+                    console.log("Request "+urlRequest+" stopped");
+                }
+                else
+                {
+                    aj.init(urlRequest, successCallBack, params, typeRequest, apiKey);
+                    console.log("Request "+urlRequest+" retried");
+                }
+                
             }
             });
     
@@ -36,14 +61,19 @@ var Ajax = Class.extend({
 });
 
 var Auth = Class.extend({
-    init:function(emailRequest, passwordRequest){
-        c = new TableConfiguration();
+    login:function(emailRequest, passwordRequest, successCallBack, errorCallBack){
         params = {email: emailRequest, password: passwordRequest};
         new Ajax("http://api.moneyspark/auth", function(r){ 
             if(r != undefined && r.token != undefined){
-                c.insert({key:"token",value:r.token}, function(){
-                     console.log("Token "+r.token+" added to database");
-                }, function(e){ console.log("token not added"); });
+                c.findValueByKey("token", function(v){
+                    c.delete("token", function(){ console.log("old token deleted from database"); c.insert({key:"token",value:r.token}, function(){ console.log("Token "+r.token+" added to database"); successCallBack(); }, function(e){ console.log("token not added"); }); }, function(e){});
+                }, function(e){
+                    c.insert({key:"token",value:r.token}, function(){ console.log("Token "+r.token+" added to database"); successCallBack(); }, function(e){ console.log("token not added"); });
+                });
+            }
+            else
+            {
+                errorCallBack();
             }
         }, params, 'POST');
     }
@@ -52,20 +82,37 @@ var Auth = Class.extend({
 
 
 $(function(){
-   /* new Ajax("http://api.moneyspark/product", 
-        function(r){ alert(r); }, "", "GET", "ktVVPqNL2I0viGhv6BNm8xzwG8iF7SuQUxcZhQ6lgukNQfua6zowgwB5KblWoAMVSPuBhG");*/
-    c = new TableConfiguration();
+    p = new TableProducts();
 	// PhoneGap is ready
 	function onDeviceReady() {
-        new Auth("lcyril@gmail.com", "lala");
+        //nav = navigator;
+        auth = new Auth();
+        auth.login("lcyril@gmail.com", "lala", function(){ console.log('You are now connected'); }, function(){ console.log('Bad login'); });
 
         //if lastRetrieving exists && too old
         c.findValueByKey("lastRetrieving", function(v){
             var d = new Date();
             var n = d.getTime();
-            if(v < (n-3600*6)){
-                //==>UPDATE table products, update lastRetrieving products
+
+            if(v < (n-(3600000*6)) ){
+                //Update products and lastRetrieving
+                new Ajax("http://api.moneyspark/product", function(r){
+                    p.insertAll(r, function(){ 
+                        //Products added, now update lastRetrieving
+                        c.updateValue("lastRetrieving", n, function(){
+                            $(window).trigger('productsGranted');
+                            console.log("Table products updated");
+                        }, function(e){})
+                     }, function(e){
+                        //Error products not added
+                     });
+                });
                 //if token exists, UPDATE investments, profile
+
+            }
+            else
+            {
+                $(window).trigger('productsGranted');
             }
         }, function(e){ //if lastRetrieving does not exists
             //==>UPDATE only table products, insert lastRetrieving products
