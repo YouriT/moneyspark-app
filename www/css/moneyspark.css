@@ -4841,7 +4841,7 @@ h3 {
 .menuvertical {
   position: fixed;
 }
-.ensemble-menu a {
+.menuvertical a {
   display: block;
   height: 33%;
   color: #fff;
@@ -4865,7 +4865,6 @@ h3 {
 }
 .menuvertical-vertical a {
   border-bottom: 0.0625em solid #21aecb;
-  padding: 1em;
 }
 /* Vertical menu that slides from the left or right */
 .menuvertical-left {
@@ -4915,7 +4914,7 @@ h3 {
   margin-top: 0.63em;
 }
 .bottom-menu {
-  margin-top: 0.625em;
+  padding-top: 0.625em;
   padding-bottom: 0.625em;
   position: absolute;
   bottom: 0;
@@ -4930,6 +4929,9 @@ h3 {
 .pb50 {
   height: 3.125em;
   width: 100%;
+}
+.iconmenu {
+  font-size: 1.2em;
 }
 @-ms-viewport {
   width: device-width;
