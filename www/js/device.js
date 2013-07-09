@@ -1,25 +1,16 @@
 $(function(){
 	/*global device*/
-	/*global console*/
 	var resize = function(){
-		var windowHeight = $(window).height();
-		var diff = windowHeight - $(".ana .text",this).offset().top - (windowHeight - $('.bordertop:last',this).offset().top) - $('.bottom-menu').height();
-console.debug(diff);
-		if(diff > 0) {
-			$(".ana .text",this).height(diff);
+		var anaHeight = $(window).height() - $('.ana > .text').offset().top - ($(window).height()*0.04+118+(0.62+0.75*16))/16*parseInt($('body').css('font-size'),10);
+		$(".ana .text").height(anaHeight);
 
-			
-			// if(device && device.platform === "Android" && parseInt(device.version, 10) < 3) {
-			// 	$(".ana .text",this).niceScroll();
-			// }
-			// else {
-				$(".ana .text",this).css("overflow-y", "scroll");
-			// }
-		}
-		else {
-			var heightDiff = $(window).height() - $('.ensemble-pagenum-bottom-menu').position().top - $('.ensemble-pagenum-bottom-menu').height() - parseInt($('.ensemble-pagenum-bottom-menu').css('marginTop'), 10) - parseInt($('.ensemble-pagenum-bottom-menu').css('marginBottom'), 10);
-			$(".ana .text",this).height($(".ana .text",this).height()+heightDiff);
-		}
+		
+		// if(device && device.platform === "Android" && parseInt(device.version, 10) < 3) {
+			$(".ana .text").niceScroll();
+		// }
+		// else {
+		// 	$(".ana .text").css({'overflow-y': 'scroll'});
+		// }
 	};
 
 	function onDeviceReady() {
@@ -28,6 +19,6 @@ console.debug(diff);
 	
 	document.addEventListener("deviceready", onDeviceReady, false);
 	$(window).load(function () {
-		$(document).bind('resize', resize);
+		resize();
 	});
 });

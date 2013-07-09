@@ -229,7 +229,7 @@
                         var newpage = $('#deal-model').html();
                         $('#deal-model').before('<div id="deal'+i+'" class="deal" style="width:'+$('#deal-model').width()+'px;position:absolute;right:-'+$(window).width()+'px">'+newpage+'</div>');
                         parseProduct($('#deal-model').prev(), i);
-                        $('#deal-model').prev().trigger('resize');
+                        // $('#deal-model').prev().trigger('resize');
                     }
                     $('#deal-model').hide();
                 }
@@ -252,9 +252,24 @@
                             margin = ($(window).width() - $('#deal'+toIndex).outerWidth())/2;
                         }
                         else margin = ($(window).width() - $('#deal'+prodIndex).outerWidth())/2;
+                        
+                        var cacheIndex = prodIndex;
+                        $('#deal' + toIndex).show();
+                        
+                        $('.pagenum').each(function () {
+                            $(this).removeClass('active');
+                            if (toIndex == 0 && $(this).index() == 0)
+                                $(this).addClass('active');
+                            else if (toIndex == products.length-1 && $(this).index() == 2)
+                                $(this).addClass('active');
+                            else if (toIndex != 0 && toIndex != products.length-1 && $(this).index() == 1)
+                                $(this).addClass('active');
+                        });
 
                         if (toIndex >= 0 && toIndex < products.length)
-                            $('#deal' + toIndex).transition({x: '+='+(mult*($(window).width()+margin))});
+                            $('#deal' + toIndex).transition({x: '+='+(mult*($(window).width()+margin))}, function () {
+                                $('#deal' + cacheIndex).hide();
+                            });
                         if (prodIndex >= 0 && prodIndex < products.length)
                             $('#deal' + prodIndex).transition({x: '+='+(mult*($(window).width()+margin))});
                         prodIndex = toIndex;
