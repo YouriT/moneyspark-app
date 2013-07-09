@@ -7,6 +7,8 @@ var Database = Class.extend({
   init: function(){
     db = window.openDatabase("moneyspark", "1.0", "moneyspark db", 1000000);
     db.transaction(function(tx){
+        //Mode debug
+        //tx.executeSql('DROP TABLE IF EXISTS CFG');
     	tx.executeSql('CREATE TABLE IF NOT EXISTS CFG (id INTEGER NOT NULL, "key" VARCHAR(255), value VARCHAR(255), PRIMARY KEY (id), UNIQUE ("key"))');
     }, function(e){
     	console.log(e.message);
@@ -56,27 +58,27 @@ var TableConfiguration = Class.extend({
                 db.transaction(function(tx){
                 	tx.executeSql('INSERT INTO CFG VALUES (NULL, "'+object.key+'", "'+object.value+'")');
     			}, function(e){
-    				console.log(e.message);
+                    error(e);
     			}, function(){
-    				console.log("Pair key/value successfully added");
+    				success();
     			});
     },
     delete: function(key, success, error){     
                 db.transaction(function(tx){
                 	tx.executeSql('DELETE FROM CFG WHERE key="'+key+'" ');
     			}, function(e){
-    				console.log(e.message);
+    				error(e);
     			}, function(){
-    				console.log("Pair key/value successfully deleted");
+    				success();
     			});
     },
     updateValue: function(key, value, success, error){     
                 db.transaction(function(tx){
                 	tx.executeSql('UPDATE CFG SET value="'+value+'" WHERE key="'+key+'"');
     			}, function(e){
-    				console.log(e.message);
+    				error(e);
     			}, function(){
-    				console.log("Pair key/value successfully updated");
+    				success();
     			});
     }
 

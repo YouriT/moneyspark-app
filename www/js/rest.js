@@ -1,5 +1,6 @@
 var Ajax = Class.extend({
   init: function(urlRequest, successCallBack, params, typeRequest, apiKey){
+    TableConfiguration = new TableConfiguration();
     if(params == undefined || params == "")
         params = {};
     if(typeRequest == undefined || typeRequest == "GET"){
@@ -10,7 +11,6 @@ var Ajax = Class.extend({
         contentType = "application/x-www-form-urlencoded; charset=UTF-8";
     }
     if(apiKey == undefined){
-        TableConfiguration = new TableConfiguration();
         TableConfiguration.findValueByKey('apiKey', function(v){
             apiKey=v;
         }, function(e){
@@ -25,42 +25,52 @@ var Ajax = Class.extend({
             dataType: 'json',
             contentType: contentType,
             crossDomain: true,
-            success: successCallBack
+            success: function(r){ 
+                if(r.error != undefined  && r.error.code == 1200){ 
+                    TableConfiguration.delete("token", function(){ console.log("token deleted because expired"); }, function(e){ console.log("error while deleting expired token"); }); 
+                } else{ successCallBack(r); }  0
+            }
             });
     
   }
 });
 
-
-var Login = Class.extend({
+var Auth = Class.extend({
     init:function(emailRequest, passwordRequest){
         c = new TableConfiguration();
         params = {email: emailRequest, password: passwordRequest};
         new Ajax("http://api.moneyspark/auth", function(r){ 
-
             if(r != undefined && r.token != undefined){
-                c.insert({key:"token",value:r.token}, function(){ alert("token received"+r.token)}, function(e){})
+                c.insert({key:"token",value:r.token}, function(){
+                     console.log("Token "+r.token+" added to database");
+                }, function(e){ console.log("token not added"); });
             }
         }, params, 'POST');
     }
 });
 
+
+
 $(function(){
    /* new Ajax("http://api.moneyspark/product", 
         function(r){ alert(r); }, "", "GET", "ktVVPqNL2I0viGhv6BNm8xzwG8iF7SuQUxcZhQ6lgukNQfua6zowgwB5KblWoAMVSPuBhG");*/
-    
-    new Login("lcyril@gmail.com", "lala");
-
+    c = new TableConfiguration();
 	// PhoneGap is ready
 	function onDeviceReady() {
+        new Auth("lcyril@gmail.com", "lala");
 
-        
+        //if lastRetrieving exists && too old
+        c.findValueByKey("lastRetrieving", function(v){
+            var d = new Date();
+            var n = d.getTime();
+            if(v < (n-3600*6)){
+                //==>UPDATE table products, update lastRetrieving products
+                //if token exists, UPDATE investments, profile
+            }
+        }, function(e){ //if lastRetrieving does not exists
+            //==>UPDATE only table products, insert lastRetrieving products
+        });
 
-        
-        //if lastRetrieving from Configuration does not exist OR token invalid = USER IS NOT CONNECTED
-        //==>UPDATE table products
-        //elseif lastRetrieving exists et trop ancienne et que TOKEN valid
-        //==>UPDATE table products, investments, profile
 	}
 	// Wait for PhoneGap to load
 	document.addEventListener("deviceready", onDeviceReady, false);
