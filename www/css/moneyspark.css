@@ -3966,7 +3966,7 @@ h3 {
   body {
     background-image: url("../img/320/320-bg.png") !important;
   }
-  body.bg2 {
+  .bg2 {
     background-image: url("../img/bg2.png") !important;
   }
   .user {
@@ -4358,9 +4358,11 @@ h3 {
   background-color: rgba(0, 0, 0, 0.4);
 }
 .logo {
+  padding-bottom: 0.4375em;
   margin: 0 auto;
-  margin-top: 0.8125em;
-  margin-bottom: 0.4375em;
+  padding-top: 0.8125em;
+  background-repeat: no-repeat;
+  background-position-y: 0.8125em;
 }
 .logo2 {
   margin: 0 auto;
