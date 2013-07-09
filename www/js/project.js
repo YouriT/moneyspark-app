@@ -1,7 +1,6 @@
 function iminClick () {
 		$('button.letsgo').click(function () {
 			$('.flip-container').toggleClass('hover');
-			console.log('test');
 		});
 		$('.imin').click(function(){
 		$('.buydeal').toggleClass('active');
@@ -21,28 +20,27 @@ function iminClick () {
 			cache: false
 		});
 		$.get(page, function (r) {
-			console.log($(r).html());
-			// // $('#page').css({position:'absolute',top:0,left:0,backfaceVisibility: 'hidden'});
-			// $('body').apped($(r).html());
-			// $('.deal').transition({
-			// 	perspective: '1200px',
-			// 	rotateY: '180deg'
-			// }, function () {
-			// 	// $('body').prop('class',$(r).find('#page').prop('class'));
-
-			// 	$('.deal').transition({
-			// 		perspective: '1200px',
-			// 		rotateY: '180deg'
-			// 	});
-			// });
+			var $page = $(r).find('#page');
+			$page.prop('id','page2');
+			$page.css({position:'absolute',left:$(window).width()+'px'});
+			$page.width($(window).width());
+			$page.height($(window).height());
+			$('#page').before($page.parent().html());
+			$('#page').css('overflow','hidden');
+			var add = 0;
+			if ($('body').hasClass('menuvertical-push-toright')) {
+				add = parseInt($('.menuvertical-push-toright').css('left'),10);
+			}
+			$('#page').transition({x:-$(window).width()-add});
+			$('#page2').transition({x:-$(window).width()-add},function () {
+				var $p2 = $('#page2');
+				$('body').prop('class',$p2.prop('class'));
+				$('#page').remove();
+				$p2.removeAttr('style');
+				$p2.prop('id','page');
+				$(window).trigger('pageCreated');
+			});
 		});
-		// $('body').load(page+ '#page', function () {
-		// 	$('body').prop('class',$('#page').prop('class'));
-		// 	$('body').transition({
-		// 		perspective: '100px',
-		// 		rotateY: '180deg'
-		// 	});
-		// });
 	};
 }(jQuery));
 

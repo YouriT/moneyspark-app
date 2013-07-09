@@ -7,9 +7,15 @@ $(function(){
 	};
 
 	function onDeviceReady() {
-		if (device.platform.name === '') {
+		if (device.platform.name !== '') {
 			navigator.splashscreen.hide();
 		}
+		/*
+		if (device.platform.name === 'iOs')
+		{
+			var toolbar = cordova.require('cordova/plugin/keyboard_toolbar_remover');
+			toolbar.hide();
+		}*/
 	}
 	
 	document.addEventListener("deviceready", onDeviceReady, false);
