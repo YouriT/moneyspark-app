@@ -141,9 +141,9 @@ var Subscribe = Input.extend({
 var Retrieve = function retrieve() {
         console.log("Trying to retrieve contents");
         //if lastRetrieving exists && too old
+        var d = new Date();
+        var n = d.getTime();
         c.findValueByKey("lastRetrieving", function(v){
-            var d = new Date();
-            var n = d.getTime();
             if(v < (n-(3600000*6)) ){
                 //Update products and lastRetrieving
                 new Ajax("Product", function(r){
@@ -165,6 +165,17 @@ var Retrieve = function retrieve() {
             }
         }, function(e){ //if lastRetrieving does not exists
             //==>UPDATE only table products, insert lastRetrieving products
+            new Ajax("Product", function(r){
+                p.insertAll(r, function(){ 
+                    //Products added, now update lastRetrieving
+                    c.insert({key:"lastRetrieving",value:n}, function(){
+                        $(window).trigger('productsGranted');
+                        console.log("Table products updated");
+                    }, function(e){})
+                 }, function(e){
+                    //Error products not added
+                 });
+            });
         });
     };
 

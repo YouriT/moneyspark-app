@@ -14,33 +14,63 @@ function iminClick () {
 		}
 	});
 }
+
+function eventCounts(name) {
+	var arr = $._data($(window)[0], 'events');
+	if (arr[name] == undefined)
+		return 0;
+	else
+		return arr[name].length;
+}
+
 (function ($) {
-	$.fn.changePage = function (page) {
+	$.fn.changePage = function (page, direction) {
 		$.ajaxSetup ({
 			cache: false
 		});
 		$.get(page, function (r) {
+			var mult = -1;
+			if (direction == undefined) {
+				direction = 'left';
+			}
+			if (direction == 'right') {
+				mult = 1;
+			}
+
+			var pattern = /<body[^>]*>((.|[\n\r])*)<\/body>/im
+			var body = pattern.exec(r);
+			if (body != null) {
+				r = body[0].replace('<body','<div').replace('</body>','</div>');
+			}
 			var $page = $(r).find('#page');
+
 			$page.prop('id','page2');
-			$page.css({position:'absolute',left:$(window).width()+'px'});
+			if (direction === 'left') {
+				$page.css({position:'absolute',left:$(window).width()+'px'});
+			} else {
+				$page.css({position:'absolute',left:-$(window).width()+'px'});
+			}
+
 			$page.width($(window).width());
 			$page.height($(window).height());
+			$page.parent().find('script').remove();
 			$('#page').before($page.parent().html());
 			$('#page').css('overflow','hidden');
 			var add = 0;
 			if ($('body').hasClass('menuvertical-push-toright')) {
 				add = parseInt($('.menuvertical-push-toright').css('left'),10);
 			}
-			$('#page').transition({x:-$(window).width()-add});
-			$('#page2').transition({x:-$(window).width()-add},function () {
+			$('#page').transition({x:mult*($(window).width()-add)});
+			$('#page2').transition({x:mult*($(window).width()-add)},function () {
 				var $p2 = $('#page2');
-				$('body').prop('class',$p2.prop('class'));
+				$('body').prop('class', $p2.prop('class'));
+				$('body').attr('data-url', $p2.attr('data-url'));
 				$('#page').remove();
 				$p2.removeAttr('style');
 				$p2.prop('id','page');
 				$(window).trigger('pageCreated');
 			});
-		});
+		}, 'html');
 	};
 }(jQuery));
 
@@ -50,26 +80,167 @@ $(window).load(function () {
 });
 
 $(window).on('pageCreated', function(){
-
 	console.log("Current page: "+$('body').attr("data-url"));
+	// All pages
+	$('a').click(function (e) {
+		e.preventDefault();
+		var dir = 'left';
+		if ($(this).attr('data-direction') === 'right')
+			dir = 'right';
+		$(window).changePage($(this).prop('href'), dir);
+	});
+	
 	//Page login
 	if($('body').attr("data-url") == "login"){
 		$('form[name=login]').submit(function(){
-				var email = $(this).find('input[name=email]').val();
-				var password = $(this).find('input[name=password]').val();
-				auth = new Auth();
-		        auth.login(email, password, function(){ $(window).changePage("cash1.html"); }, function(){ $('.popupLogin').fadeIn('fast'); });
-		        return false;
+			var email = $(this).find('input[name=email]').val();
+			var password = $(this).find('input[name=password]').val();
+			auth = new Auth();
+	        auth.login(email, password, function(){ $(window).changePage("cash1.html"); }, function(){ $('.popupLogin').fadeIn('fast'); });
+	        return false;
 		});
 	}
 
 	//Page deals
 	if($('body').attr("data-url") == "deals"){
-		$(window).on('productsGranted', function(){
-			//Display products on index !
-		});
-	}
+		var products;
+        var prodIndex = -1;
+        function parseProduct(prod, i)
+        {
+            prodObj = products.item(i);
+            prod.find('.title').html(prodObj.title);
+            prod.find('.hf-name').html(prodObj.hedgefundTitle);
+            var funded = prodObj.sumInvestedAmounts / prodObj.requiredAmount;
+            var fundedNumBar = funded > 1 ? 1 : funded;
+            var fundedBar = prod.find('.progress-bar-hover').width()*fundedNumBar;
+            prod.find('.progress-bar-hover').width('-='+fundedBar);
+            prod.find('.progress-bar-hover').css({marginLeft:fundedBar});
+            prod.find('.may-funded').before(Math.round(funded*10000)/100+'% ');
+            var endFundDate = new Date(prodObj.dateBeginExpected.date);
+            var today = new Date();
+            var left = (endFundDate.getTime()/1000 - today.getTime()/1000)/(24*3600);
+            var leftText = Math.round(left) > 1 ? Math.round(left)+' d' : Math.round(left) < 1 ? Math.round(left*24) > 1 ? Math.round(left*24)+' h' : Math.round(left*24)+' h' : '1 d';
+            prod.find('.lock-time').html(leftText);
+            prod.find('.ana > .text').html(prodObj.description);
+            var endExpect = new Date(prodObj.dateEndExpected.date);
+            var dealTime = (endExpect.getTime()/1000 - endFundDate.getTime()/1000)/(24*3600);
+            var dealTimeText = Math.round(dealTime) > 1 ? Math.round(dealTime)+' days' : Math.round(dealTime) < 1 ? Math.round(dealTime*24) > 1 ? Math.round(dealTime*24)+' hours' : Math.round(dealTime*24)+' hour' : '1 day';
+            prod.find('.sportwatch-time').html(dealTimeText);
+            prod.find('.renta-expected').html('+'+prodObj.profitsRateExpected*100+'%');
+            prod.find('.loss-expected').html('-'+prodObj.lossRateExpected*100+'%');
+        }
+        function createProducts ()
+        {
+            for (var i = 0; i < products.length; i++)
+            {
+                var newpage = $('#deal-model').html();
+                $('#deal-model').before('<div id="deal'+i+'" class="deal" style="width:'+$('#deal-model').width()+'px;position:absolute;right:-'+$(window).width()+'px">'+newpage+'</div>');
+                parseProduct($('#deal-model').prev(), i);
+                $('#deal-model').prev().trigger('resize-product', $('#deal-model'));
+            }
+            $(window).trigger('imin');
+            $('.flip-container .front').width($('#deal-container').width());
+            $('.flip-container .front').height($('#deal-container').height());
+            $('#deal-model').hide();
+            prodIndex = -1;
+            changeProduct('next');
+        }
+        function changeProduct (toPage)
+        {
+            var toIndex = toPage === 'next' ? prodIndex+1 : prodIndex-1;
+            if ((toIndex >= products.length && toPage === 'next') ||
+                (toIndex < 0 && toPage === 'prev'))
+            {
+                alert('no more dude');
+                return;
+            }
 
+            if ($('body').find('#deal'+toPage).length == 0)
+            {
+                var mult = 1;
+                var margin = 0;
+                if (toPage === 'next') {
+                    mult = -1;
+                }
+                
+                var cacheIndex = prodIndex;
+                $('#deal' + toIndex).show();
+                
+                $('.pagenum').each(function () {
+                    $(this).removeClass('active');
+                    if (toIndex == 0 && $(this).index() == 0)
+                        $(this).addClass('active');
+                    else if (toIndex == products.length-1 && $(this).index() == 2)
+                        $(this).addClass('active');
+                    else if (toIndex != 0 && toIndex != products.length-1 && $(this).index() == 1)
+                        $(this).addClass('active');
+                });
+
+                if (toIndex >= 0 && toIndex < products.length)
+                    $('#deal' + toIndex).transition({x: '+='+(mult*($(window).width()+margin))}, function () {
+                        $('#deal' + cacheIndex).hide();
+                    });
+                if (prodIndex >= 0 && prodIndex < products.length)
+                    $('#deal' + prodIndex).transition({x: '+='+(mult*($(window).width()+margin))});
+                prodIndex = toIndex;
+            }
+        }
+        $('.pagenum').click(function () {
+            if ($(this).index() == 2)
+                changeProduct('next');
+            else if ($(this).index() == 0)
+                changeProduct('prev');
+        });
+        
+        $(window).swipe({
+            swipe: function(event, direction, distance, duration, fingerCount) {
+                if (distance > $(window).width()*0.07)
+                {
+                    if (direction === 'right')
+                        changeProduct('prev');
+                    else
+                        changeProduct('next');
+                }
+            }
+        });
+		if (eventCounts('productsGranted') == 0) {
+			$(window).on('productsGranted', function () {
+				productsDb = new TableProducts();
+				console.log('bla');
+	            productsDb.findAll(function (r) {
+					products = r;
+					console.log(r);
+					createProducts();
+	            }, function (e) {
+
+	            });
+			});
+		}
+		$('#page').width($(window).width());
+        $('#page').height($(window).height());
+        var pad = $('.deal').width() - $('.deal').innerWidth();
+        $('.buydeal').css({
+            marginLeft: pad/2,
+            marginRight: pad/2
+        });
+
+        $('#page').removeAttr('class');
+
+        var hgt = $('#deal-model').outerHeight();
+        hgt += parseInt($('#deal-model').css('padding-top'),10);
+        $('.ensemble-menu').css({
+            height: (hgt/16+2/16)+'em'
+        });
+        var middle = $('.container:last').width()/2 - $('.ensemble-pagenum-bottom-menu').width()/2 - $('.button-menuvertical').width();
+        $('.ensemble-pagenum-bottom-menu').css({
+            marginLeft: middle+'px'
+        });
+
+        $('#showLeftPush').click(function () {
+            $('.menuvertical-push').toggleClass('menuvertical-push-toright');
+            $('nav').toggleClass('menuvertical-left');
+        });
+	}
 
 	$(window).trigger("askRetrieve");
 });

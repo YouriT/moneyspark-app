@@ -8,7 +8,8 @@ var Database = Class.extend({
     db = window.openDatabase("moneyspark", "1.0", "moneyspark db", 1000000);
     db.transaction(function(tx){
         //Mode debug
-        //tx.executeSql('DROP TABLE IF EXISTS CFG');
+        // tx.executeSql('DROP TABLE IF EXISTS CFG');
+        // tx.executeSql('DROP TABLE IF EXISTS PRODUCTS');
     	tx.executeSql('CREATE TABLE IF NOT EXISTS CFG (id INTEGER NOT NULL,"key" VARCHAR(255), value VARCHAR(255),PRIMARY KEY (id), UNIQUE ("key"))');
         tx.executeSql('CREATE TABLE IF NOT EXISTS PRODUCTS (id INTEGER NOT NULL, title VARCHAR(255), hedgefundTitle VARCHAR(255), dateBeginExpected VARCHAR(25), dateEndExpected VARCHAR(25), description TEXT, profitsRateExpected DOUBLE, lossRateExpected DOUBLE, sumInvestedAmounts DOUBLE, requiredAmount DOUBLE, PRIMARY KEY (id))');
     }, function(e){

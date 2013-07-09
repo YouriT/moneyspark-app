@@ -9,14 +9,14 @@
     <link id="mycss" rel="stylesheet" type="text/css" href="css/moneyspark.css" />
     <title>Moneyspark</title>
 </head>
-<body class="menuvertical-push">
-    <div id="page">
+<body class="menuvertical-push" data-url="deals">
+    <div id="page" class="bg1 menuvertical-push" data-url="deals">
         <nav class="menuvertical menuvertical-vertical menuvertical-left">
             <div class="mt34"></div>
             <div class="ensemble-menu">
-                <a href="#"><i class="icon-user iconmenu"></i></a>
+                <a href="connexion.html"><i class="icon-user iconmenu"></i></a>
                 <div class="inter-menu"></div>
-                <a href="#" onclick="$(this).changePage('cash1.html');"><i class="icon-lock iconmenu"></i></a>
+                <a href="cash1.html"><i class="icon-lock iconmenu"></i></a>
                 <div class="inter-menu"></div>
                 <a href="#"><i class="icon-bolt iconmenu"></i></a>
             </div>
@@ -193,177 +193,13 @@
     </div>
     <script type="text/javascript" src="js/jquery.js"></script>
     <script type="text/javascript" src="js/jquery.inheritance.js"></script>
-
-    <!-- Only when compile on device !-->
     <script type="text/javascript" src="cordova.js"></script>
-
-            <!--<script language="text/javascript">
-            $(document).one("mobileinit", function () {
-                $.mobile.defaultPageTransition = 'slide';
-            });
-            </script>-->
-            <!--<script type="text/javascript" src="js/jquery.mobile-1.3.1.js"></script>-->
-            
-            <script type="text/javascript" src="js/jquery.nicescroll.min.js"></script>
-            <script type="text/javascript" src="js/device.js"></script>
-            <script type="text/javascript" src="js/transit.min.js"></script>
-            <script type="text/javascript" src="js/jquery.touchSwipe.min.js"></script>
-            <script type="text/javascript" src="js/sql.js"></script>
-            <script type="text/javascript" src="js/rest.js"></script>
-            <script type="text/javascript" src="js/project.js"></script>
-
-        
-        <script type="text/javascript">
-                // var ts=new Date().getTime();
-                // $('#mycss').prop('href','css/jquery.mobile.css?'+ts);
-                $(window).load(function () {
-                    $('#page').width($(window).width());
-                    $('#page').height($(window).height());
-                    var pad = $('.deal').width() - $('.deal').innerWidth();
-                    $('.buydeal').css({
-                        marginLeft: pad/2,
-                        marginRight: pad/2
-                    });
-
-                    var middle = $('.container:last').width()/2 - $('.ensemble-pagenum-bottom-menu').width()/2 - $('.button-menuvertical').width();
-                    $('.ensemble-pagenum-bottom-menu').css({
-                        marginLeft: middle+'px'
-                    });
-
-                    $('#showLeftPush').click(function () {
-                        $('.menuvertical-push').toggleClass('menuvertical-push-toright');
-                        $('nav').toggleClass('menuvertical-left');
-                    });
-
-                    var products;
-                    var prodIndex = -1;
-                    function parseProduct(prod, i)
-                    {
-                        prodObj = products[i];
-                        prod.find('.title').html(prodObj.product.title);
-                        prod.find('.hf-name').html(prodObj.hedgefund.title);
-                        var funded = prodObj.product.sumInvestedAmounts == null ? 0 : prodObj.product.sumInvestedAmounts / prodObj.product.requiredAmount;
-                        var fundedNumBar = funded > 1 ? 1 : funded;
-                        var fundedBar = prod.find('.progress-bar-hover').width()*fundedNumBar;
-                        prod.find('.progress-bar-hover').width('-='+fundedBar);
-                        prod.find('.progress-bar-hover').css({marginLeft:fundedBar});
-                        prod.find('.may-funded').before(Math.round(funded*10000)/100+'% ');
-                        var endFundDate = new Date(prodObj.product.dateBeginExpected.date);
-                        var today = new Date();
-                        var left = (endFundDate.getTime()/1000 - today.getTime()/1000)/(24*3600);
-                        var leftText = Math.round(left) > 1 ? Math.round(left)+' d' : Math.round(left) < 1 ? Math.round(left*24) > 1 ? Math.round(left*24)+' h' : Math.round(left*24)+' h' : '1 d';
-                        prod.find('.lock-time').html(leftText);
-                        prod.find('.ana > .text').html(prodObj.product.description);
-                        var endExpect = new Date(prodObj.product.dateEndExpected.date);
-                        var dealTime = (endExpect.getTime()/1000 - endFundDate.getTime()/1000)/(24*3600);
-                        var dealTimeText = Math.round(dealTime) > 1 ? Math.round(dealTime)+' days' : Math.round(dealTime) < 1 ? Math.round(dealTime*24) > 1 ? Math.round(dealTime*24)+' hours' : Math.round(dealTime*24)+' hour' : '1 day';
-                        prod.find('.sportwatch-time').html(dealTimeText);
-                        prod.find('.renta-expected').html('+'+prodObj.product.profitsRateExpected*100+'%');
-                        prod.find('.loss-expected').html('-'+prodObj.product.lossRateExpected*100+'%');
-                    }
-                    function createProducts()
-                    {
-                        // console.log($('#deal-model').width());
-                        for (var i = 0; i < products.length; i++)
-                        {
-                            var newpage = $('#deal-model').html();
-                            $('#deal-model').before('<div id="deal'+i+'" class="deal" style="width:'+$('#deal-model').width()+'px;position:absolute;right:-'+$(window).width()+'px">'+newpage+'</div>');
-                            parseProduct($('#deal-model').prev(), i);
-                            $('#deal-model').prev().trigger('resize-product', $('#deal-model'));
-                        }
-                        $(window).trigger('imin');
-                        $('.flip-container .front').width($('#deal-container').width());
-                        $('.flip-container .front').height($('#deal-container').height());
-                        $('#deal-model').hide();
-                    }
-                    function changeProduct(toPage)
-                    {
-                        var toIndex = toPage === 'next' ? prodIndex+1 : prodIndex-1;
-                        if ((toIndex >= products.length && toPage === 'next') ||
-                            (toIndex < 0 && toPage === 'prev'))
-                        {
-                            alert('no more dude');
-                            return;
-                        }
-
-                        if ($('body').find('#deal'+toPage).length == 0)
-                        {
-                            var mult = 1;
-                            var margin = 0;
-                            if (toPage === 'next') {
-                                mult = -1;
-                            }
-                            
-                            var cacheIndex = prodIndex;
-                            $('#deal' + toIndex).show();
-                            
-                            $('.pagenum').each(function () {
-                                $(this).removeClass('active');
-                                if (toIndex == 0 && $(this).index() == 0)
-                                    $(this).addClass('active');
-                                else if (toIndex == products.length-1 && $(this).index() == 2)
-                                    $(this).addClass('active');
-                                else if (toIndex != 0 && toIndex != products.length-1 && $(this).index() == 1)
-                                    $(this).addClass('active');
-                            });
-
-                            if (toIndex >= 0 && toIndex < products.length)
-                                $('#deal' + toIndex).transition({x: '+='+(mult*($(window).width()+margin))}, function () {
-                                    $('#deal' + cacheIndex).hide();
-                                });
-                            if (prodIndex >= 0 && prodIndex < products.length)
-                                $('#deal' + prodIndex).transition({x: '+='+(mult*($(window).width()+margin))});
-                            prodIndex = toIndex;
-                        }
-                    }
-                    $('.pagenum').click(function () {
-                        if ($(this).index() == 2)
-                            changeProduct('next');
-                        else if ($(this).index() == 0)
-                            changeProduct('prev');
-                    });
-                    
-                    $(window).swipe({
-                        swipe: function(event, direction, distance, duration, fingerCount) {
-                            if (distance > $(window).width()*0.07)
-                            {
-                                if (direction === 'right')
-                                    changeProduct('prev');
-                                else
-                                    changeProduct('next');
-                            }
-                        }
-                    });
-                    // function createProducts() {
-
-                    // }
-                    $.ajax({
-                        type: 'GET',
-                        headers: {'api-key':'dwhR8ASVS1S6KWQ0Ye1Gndm2Ty6LAsFKQrXAitWqz0W9d1MQnL5c1a9NjLCiKs0yxY3KCj'},
-                        url: 'http://api.moneyspark/product',
-                        dataType: 'json',
-                        contentType: "application/json; charset=utf-8",
-                        // async: false,
-                        timeout: 2000,
-                        crossDomain: true,
-                        success: function (r) {
-                            products  = r;
-                            createProducts();
-                            changeProduct('next', 0);
-                        },
-                        error: function (x, t, z) {
-                            if(t==="timeout")
-                                alert("got timeout");
-                            alert('error');
-                        }
-                    });
-                });
-window.addEventListener('load', function() {
-    document.body.addEventListener('touchmove', function(e) {
-        e.preventDefault();
-    }, false);
-}, false);
-                // document.addEventListener("deviceready", buydealSize, false);
-                </script>
-            </body>
-            </html>
+    <script type="text/javascript" src="js/jquery.nicescroll.min.js"></script>
+    <script type="text/javascript" src="js/device.js"></script>
+    <script type="text/javascript" src="js/transit.min.js"></script>
+    <script type="text/javascript" src="js/jquery.touchSwipe.min.js"></script>
+    <script type="text/javascript" src="js/sql.js"></script>
+    <script type="text/javascript" src="js/rest.js"></script>
+    <script type="text/javascript" src="js/project.js"></script>
+</body>
+</html>
