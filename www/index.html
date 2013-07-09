@@ -1,22 +1,4 @@
 <!DOCTYPE html>
-<!--
-    Licensed to the Apache Software Foundation (ASF) under one
-    or more contributor license agreements.  See the NOTICE file
-    distributed with this work for additional information
-    regarding copyright ownership.  The ASF licenses this file
-    to you under the Apache License, Version 2.0 (the
-    "License"); you may not use this file except in compliance
-    with the License.  You may obtain a copy of the License at
-
-    http://www.apache.org/licenses/LICENSE-2.0
-
-    Unless required by applicable law or agreed to in writing,
-    software distributed under the License is distributed on an
-    "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
-     KIND, either express or implied.  See the License for the
-    specific language governing permissions and limitations
-    under the License.
--->
 <html>
     <head>
         <meta charset="utf-8" />
@@ -28,299 +10,365 @@
         <title>Moneyspark</title>
     </head>
     <body class="menuvertical-push">
-        <nav class="menuvertical menuvertical-vertical menuvertical-left">
-            <div class="mt34"></div>
-            <div class="ensemble-menu">
-                <a href="#"><i class="icon-user iconmenu"></i></a>
-                <div class="inter-menu"></div>
-                <a href="#"><i class="icon-lock iconmenu"></i></a>
-                <div class="inter-menu"></div>
-                <a href="#"><i class="icon-bolt iconmenu"></i></a>
-            </div>
-        </nav>
-            <div class="container">
-                <div class="logo"></div>
-                
-                <div id="deal-model" class="row-fluid deal">
-                    
-                    <div class="row-fluid">
-                        <div class="span4 title">Apple Sunrise</div>
-                        <div class="clear"></div>
-                    </div>  
-                    
-                    <div class="row-fluid content">
-                        <div class="span3">
-                            <div class="logo-hf"></div>
-                            <div class="hf-name">Lansrode Capital</div>
-                            <div class="clear"></div>
-                        </div>
-                        <div class="span1">
-                            <div class="lock-icon"></div>
-                            <div class="lock-time">1 day</div>
-                        </div>
-                        <div class="clear"></div>
-                    </div>
-
-                    <div class="row-fluid progress-mt">
-                        <div class="span3 mt4">
-                            <div class="row-fluid">
-                                <div class="progress-bar-layout"></div>
-                                <div class="progress-bar-hover"></div>
-                            </div>
-                            <div class="row-fluid">
-                                <div class="progress-number"><span class="maybe may-funded">founded</span></div>
-                            </div>
-                        </div>
-                        <div class="span1">
-                            <a class="imin">I'm in !</a>
-                        </div>
-                        <div class="clear"></div>
-                    </div>
-
-                    <div class="bordertop"></div>
-                    <div class="borderbottom"></div>
-                    <div class="buydeal">
-                        <div class="row-fluid">
-                            <div class="amount" style="float: left;">Amount to invest </div>
-                            <div class="amount" style="float: right;">€</div>                    
-                            <input class="input" style="float: right;cursor: pointer;" name="amount" placeholder="50"/>
-                            <div class="clear"></div>
-                        </div>
-                        <div class="row-fluid">
-                            <div class="fees" style="float: left;">our fees on gain</div>
-                            <div class="fees ml12" style="float: right;">%</div>
-                            <div class="fees" style="float: right;">9,2</div>
-                            <div class="clear"></div>
-                        </div>
-                        <div class="row-fluid">
-                            <button class="letsgo">GO</button>
-                        </div>
-                     </div>
-
-                    <div class="row-fluid">
-                        <div class="analyse"></div>
-                        <span class="text se">Analysis</span>
-                        <div class="clear"></div>
-                    </div>    
-                    <div class="row-fluid ana">    
-                        <div class="text">
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi sit amet convallis ante, a commodo quam. Fusce bibendum sagittis ullamcorper. Cras facilisis quis massa sed tincidunt. Aenean a interdum mi etiam consectetur iaculis diam eget commodo. Vivamus facilisis Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi sit amet convallis ante, a commodo quam. Fusce bibendum sagittis ullamcorper. Cras facilisis quis massa sed tincidunt. Aenean a interdum mi etiam consectetur iaculis diam eget<span class="seemore">- More...</div>
-                        </p>
-                    </div>
-
-                    <div class="bordertop"></div>
-                    <div class="borderbottom"></div>
-
-                    <div class="row-fluid zeroauto">
-                        
-
-                        <div class="span3 mt4">
-                            <div class="row-fluid" style="padding-right: 10%;">
-                                <div class="progress-number maybe" style="float: none;">Rentability max &amp; min</div>
-                                <div class="opportunity-bar-layout"></div>
-                            </div>
-                            <div class="row-fluid" style="padding-right: 10%;">
-                                <div class="progress-number loss-expected" style="float: left;">-20%</div>
-                                <div class="progress-number renta-expected" style="float: right;">+60%</div>
-                            </div>
-                        </div>
-                        <div class="span1 chrono-pt">
-                            <div class="sportwatch-icon"></div>
-                            <div class="sportwatch-time">1 week</div>
-                        </div>
-                        <div class="clear"></div>
-                    </div>
-
+        <div id="page">
+            <nav class="menuvertical menuvertical-vertical menuvertical-left">
+                <div class="mt34"></div>
+                <div class="ensemble-menu">
+                    <a href="#"><i class="icon-user iconmenu"></i></a>
+                    <div class="inter-menu"></div>
+                    <a href="#"><i class="icon-lock iconmenu"></i></a>
+                    <div class="inter-menu"></div>
+                    <a href="#"><i class="icon-bolt iconmenu"></i></a>
                 </div>
-            </div>
+            </nav>
+                <div class="container" id="deal-container">
+                    <div class="logo"></div>
+                    <div class="flip-container">
+                        <div class="flipper">
+                            <div class="front">
+                    <div id="deal-model" class="row-fluid deal">
+                        
+                        <div class="row-fluid">
+                            <div class="span4 title">Apple Sunrise</div>
+                            <div class="clear"></div>
+                        </div>  
+                        
+                        <div class="row-fluid content">
+                            <div class="span3">
+                                <div class="logo-hf"></div>
+                                <div class="hf-name">Lansrode Capital</div>
+                                <div class="clear"></div>
+                            </div>
+                            <div class="span1">
+                                <div class="lock-icon"></div>
+                                <div class="lock-time">1 day</div>
+                            </div>
+                            <div class="clear"></div>
+                        </div>
 
-            <div class="container">
-                <div class="bottom-menu">
-                    <button id="showLeftPush" class="button-menuvertical">
-                        <div class="trait"></div>
-                        <div class="trait"></div>
-                        <div class="trait"></div>
-                    </button>
-                    <div class="ensemble-pagenum-bottom-menu">
-                        <a class="pagenum" href="#prev" rel="1"></a>
-                        <a class="pagenum center active" href="#" rel="2"></a>
-                        <a class="pagenum" href="#next" rel="3"></a>
-                        <div class="clear"></div>
+                        <div class="row-fluid progress-mt">
+                            <div class="span3 mt4">
+                                <div class="row-fluid">
+                                    <div class="progress-bar-layout"></div>
+                                    <div class="progress-bar-hover"></div>
+                                </div>
+                                <div class="row-fluid">
+                                    <div class="progress-number"><span class="maybe may-funded">founded</span></div>
+                                </div>
+                            </div>
+                            <div class="span1">
+                                <a class="imin">I'm in !</a>
+                            </div>
+                            <div class="clear"></div>
+                        </div>
+
+                        <div class="bordertop"></div>
+                        <div class="borderbottom"></div>
+                        <div class="buydeal">
+                            <div class="row-fluid">
+                                <div class="amount" style="float: left;">Amount to invest </div>
+                                <div class="amount" style="float: right;">€</div>                    
+                                <input class="input" style="float: right;cursor: pointer;" name="amount" placeholder="50"/>
+                                <div class="clear"></div>
+                            </div>
+                            <div class="row-fluid">
+                                <div class="fees" style="float: left;">our fees on gain</div>
+                                <div class="fees ml12" style="float: right;">%</div>
+                                <div class="fees" style="float: right;">9,2</div>
+                                <div class="clear"></div>
+                            </div>
+                            <div class="row-fluid">
+                                <button class="letsgo">GO</button>
+                            </div>
+                         </div>
+
+                        <div class="row-fluid">
+                            <div class="analyse"></div>
+                            <span class="text se">Analysis</span>
+                            <div class="clear"></div>
+                        </div>    
+                        <div class="row-fluid ana">    
+                            <div class="text">
+                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi sit amet convallis ante, a commodo quam. Fusce bibendum sagittis ullamcorper. Cras facilisis quis massa sed tincidunt. Aenean a interdum mi etiam consectetur iaculis diam eget commodo. Vivamus facilisis Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi sit amet convallis ante, a commodo quam. Fusce bibendum sagittis ullamcorper. Cras facilisis quis massa sed tincidunt. Aenean a interdum mi etiam consectetur iaculis diam eget<span class="seemore">- More...</div>
+                            </p>
+                        </div>
+
+                        <div class="bordertop"></div>
+                        <div class="borderbottom"></div>
+
+                        <div class="row-fluid zeroauto">
+                            
+
+                            <div class="span3 mt4">
+                                <div class="row-fluid" style="padding-right: 10%;">
+                                    <div class="progress-number maybe" style="float: none;">Rentability max &amp; min</div>
+                                    <div class="opportunity-bar-layout"></div>
+                                </div>
+                                <div class="row-fluid" style="padding-right: 10%;">
+                                    <div class="progress-number loss-expected" style="float: left;">-20%</div>
+                                    <div class="progress-number renta-expected" style="float: right;">+60%</div>
+                                </div>
+                            </div>
+                            <div class="span1 chrono-pt">
+                                <div class="sportwatch-icon"></div>
+                                <div class="sportwatch-time">1 week</div>
+                            </div>
+                            <div class="clear"></div>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="back row-fluid deal">
+
+                    <div class="row-fluid">
+                    <div class="span4 title">Investment Confirmation</div>
+                    <div class="clear"></div>
+                </div>  
+                
+                <div style="margin-right: 3%;margin-left: 3%;">
+                    
+                    <div class="hf-name" style="margin-left: 0;margin-top: 5%;color: #999;float:none;">
+                        Resume
                     </div>
                     <div class="clear"></div>
+                    <ul class="confirmation-deal">
+                        <li><span class="cambria">Investment of 1.000€ in the deal "Apple Sunrise" provided by the hedge-fund "Lansrode Capital".</span></li>
+                        <li><span class="attention">Maximum loss :</span> &nbsp;&nbsp;&nbsp;-20% <span class="light">or</span> 200€</li>
+                        <li><span class="attention">Maximum gain :</span> &nbsp;&nbsp;&nbsp;+60% <span class="light">or</span> 600€</li>                        <li><span class="attention">Moneyspark's fees on gain :</span> &nbsp;&nbsp;&nbsp;9,2%</li>
+                    </ul>
+
+
+                    <div class="hf-name" style="margin-left: 0;margin-top: 5%;color: #999;float:none;">
+                        Payment method
+                    </div>
+                    <div style="float: left;margin-top: 3%;">
+                        <div class="check-little-grey" style="float:left;"></div>
+                        <div class="check-text-little-grey" style="float:left;padding-left:0;">Credit card</br><span style="font-style: italic; color: #888;">Soon available !</span></div>
+                    </div>
+                    <div style="float: right;margin-top: 3%;">
+                        <div class="check-little-grey" style="float:left;"></div>
+                        <div class="check-text-little-grey" style="float:left;padding-left:0;">Account cash</br><span style="font-style: italic; color: #888;">Balance: 1354€</span></div>
+                    </div>
+                    <div class="clear"></div>
+
+                    <div class="hf-name" style="margin-left: 0;margin-top: 3%;color: #999;float:none;">
+                        Use of terms
+                    </div>
+                    <div style="float: left;margin-top: 2%;">
+                        <div class="check-little-grey" style="float:left;"></div>
+                        <div class="check-text-little-grey" >I've read and accepted the use of terms.</div>
+                    </div>
+                    <div style="float: left;margin-top: 2%;">
+                        <div class="check-little-grey" style="float:left;"></div>
+                        <div class="check-text-little-grey">I know the risks of stock market investment.</div>
+                    </div>
+                    <div style="float: left;margin-top: 2%;">
+                        <div class="check-little-grey" style="float:left;"></div>
+                        <div class="check-text-little-grey">I agree not to claim my loss if there is one.</div>
+                    </div>
+                    <div class="clear"></div>
+
+                </div>
+
+                <div class="button-bg2 zeroauto" style="margin-top: 10%"><i class="icon-ok-sign mr10" data-role="none"></i>validate</div>
                 </div>
             </div>
         </div>
-        <script type="text/javascript" src="js/jquery.js"></script>
-        <script type="text/javascript" src="js/jquery.inheritance.js"></script>
+                </div>
 
-        <!-- Only when compile on device !-->
-        <script type="text/javascript" src="cordova.js"></script>
-        
-        <!--<script language="text/javascript">
-        $(document).one("mobileinit", function () {
-            $.mobile.defaultPageTransition = 'slide';
-        });
-        </script>-->
-        <!--<script type="text/javascript" src="js/jquery.mobile-1.3.1.js"></script>-->
-        <script type="text/javascript" src="js/project.js"></script>
-        <script type="text/javascript" src="js/jquery.nicescroll.min.js"></script>
-        <script type="text/javascript" src="js/device.js"></script>
-        <script type="text/javascript" src="js/transit.min.js"></script>
-        <script type="text/javascript" src="js/jquery.touchSwipe.min.js"></script>
-        <script type="text/javascript" src="js/sql.js"></script>
-        <script type="text/javascript" src="js/rest.js"></script>
+                <div class="container">
+                    <div class="bottom-menu">
+                        <button id="showLeftPush" class="button-menuvertical">
+                            <div class="trait"></div>
+                            <div class="trait"></div>
+                            <div class="trait"></div>
+                        </button>
+                        <div class="ensemble-pagenum-bottom-menu">
+                            <a class="pagenum" href="#prev" rel="1"></a>
+                            <a class="pagenum center active" href="#" rel="2"></a>
+                            <a class="pagenum" href="#next" rel="3"></a>
+                            <div class="clear"></div>
+                        </div>
+                        <div class="clear"></div>
+                    </div>
+                </div>
+            </div>
+            <script type="text/javascript" src="js/jquery.js"></script>
+            <script type="text/javascript" src="js/jquery.inheritance.js"></script>
 
-    
-        <script type="text/javascript">
-            // var ts=new Date().getTime();
-            // $('#mycss').prop('href','css/jquery.mobile.css?'+ts);
-            $(window).load(function () {
-                var pad = $('.deal').width() - $('.deal').innerWidth();
-                $('.buydeal').css({
-                    marginLeft: pad/2,
-                    marginRight: pad/2
-                });
-
-                var middle = $('.container:last').width()/2 - $('.ensemble-pagenum-bottom-menu').width()/2 - $('.button-menuvertical').width();
-                $('.ensemble-pagenum-bottom-menu').css({
-                    marginLeft: middle+'px'
-                });
-
-                $('#showLeftPush').click(function () {
-                    $('body').toggleClass('menuvertical-push-toright');
-                    $('nav').toggleClass('menuvertical-left');
-                });
-
-                var products;
-                var prodIndex = -1;
-                function parseProduct(prod, i)
-                {
-                    prodObj = products[i];
-                    prod.find('.title').html(prodObj.product.title);
-                    prod.find('.hf-name').html(prodObj.hedgefund.title);
-                    var funded = prodObj.product.sumInvestedAmounts == null ? 0 : prodObj.product.sumInvestedAmounts / prodObj.product.requiredAmount;
-                    var fundedNumBar = funded > 1 ? 1 : funded;
-                    var fundedBar = prod.find('.progress-bar-hover').width()*fundedNumBar;
-                    prod.find('.progress-bar-hover').width('-='+fundedBar);
-                    prod.find('.progress-bar-hover').css({marginLeft:fundedBar});
-                    prod.find('.may-funded').before(Math.round(funded*10000)/100+'% ');
-                    var endFundDate = new Date(prodObj.product.dateBeginExpected.date);
-                    var today = new Date();
-                    var left = (endFundDate.getTime()/1000 - today.getTime()/1000)/(24*3600);
-                    var leftText = Math.round(left) > 1 ? Math.round(left)+' days' : Math.round(left) < 1 ? Math.round(left*24) > 1 ? Math.round(left*24)+' hours' : Math.round(left*24)+' hour' : '1 day';
-                    prod.find('.lock-time').html(leftText);
-                    prod.find('.ana > .text').html(prodObj.product.description);
-                    var endExpect = new Date(prodObj.product.dateEndExpected.date);
-                    var dealTime = (endExpect.getTime()/1000 - endFundDate.getTime()/1000)/(24*3600);
-                    var dealTimeText = Math.round(dealTime) > 1 ? Math.round(dealTime)+' days' : Math.round(dealTime) < 1 ? Math.round(dealTime*24) > 1 ? Math.round(dealTime*24)+' hours' : Math.round(dealTime*24)+' hour' : '1 day';
-                    prod.find('.sportwatch-time').html(dealTimeText);
-                    prod.find('.renta-expected').html('+'+prodObj.product.profitsRateExpected*100+'%');
-                    prod.find('.loss-expected').html('-'+prodObj.product.lossRateExpected*100+'%');
-                }
-                function createProducts()
-                {
-                    // console.log($('#deal-model').width());
-                    for (var i = 0; i < products.length; i++)
-                    {
-                        var newpage = $('#deal-model').html();
-                        $('#deal-model').before('<div id="deal'+i+'" class="deal" style="width:'+$('#deal-model').width()+'px;position:absolute;right:-'+$(window).width()+'px">'+newpage+'</div>');
-                        parseProduct($('#deal-model').prev(), i);
-                        // $('#deal-model').prev().trigger('resize');
-                    }
-                    $('#deal-model').hide();
-                }
-                function changeProduct(toPage)
-                {
-                    var toIndex = toPage === 'next' ? prodIndex+1 : prodIndex-1;
-                    if ((toIndex >= products.length && toPage === 'next') ||
-                        (toIndex < 0 && toPage === 'prev'))
-                    {
-                        alert('no more dude');
-                        return;
-                    }
-
-                    if ($('body').find('#deal'+toPage).length == 0)
-                    {
-                        var mult = 1;
-                        var margin = 0;
-                        if (toPage === 'next') {
-                            mult = -1;
-                            margin = ($(window).width() - $('#deal'+toIndex).outerWidth())/2;
-                        }
-                        else margin = ($(window).width() - $('#deal'+prodIndex).outerWidth())/2;
-                        
-                        var cacheIndex = prodIndex;
-                        $('#deal' + toIndex).show();
-                        
-                        $('.pagenum').each(function () {
-                            $(this).removeClass('active');
-                            if (toIndex == 0 && $(this).index() == 0)
-                                $(this).addClass('active');
-                            else if (toIndex == products.length-1 && $(this).index() == 2)
-                                $(this).addClass('active');
-                            else if (toIndex != 0 && toIndex != products.length-1 && $(this).index() == 1)
-                                $(this).addClass('active');
-                        });
-
-                        if (toIndex >= 0 && toIndex < products.length)
-                            $('#deal' + toIndex).transition({x: '+='+(mult*($(window).width()+margin))}, function () {
-                                $('#deal' + cacheIndex).hide();
-                            });
-                        if (prodIndex >= 0 && prodIndex < products.length)
-                            $('#deal' + prodIndex).transition({x: '+='+(mult*($(window).width()+margin))});
-                        prodIndex = toIndex;
-                    }
-                }
-                $('.pagenum').click(function () {
-                    if ($(this).index() == 2)
-                        changeProduct('next');
-                    else if ($(this).index() == 0)
-                        changeProduct('prev');
-                });
-                
-                $(window).swipe({
-                    swipe: function(event, direction, distance, duration, fingerCount) {
-                        if (distance > $(window).width()*0.07)
-                        {
-                            if (direction === 'right')
-                                changeProduct('prev');
-                            else
-                                changeProduct('next');
-                        }
-                    }
-                });
-                // function createProducts() {
-
-                // }
-                $.ajax({
-                    type: 'GET',
-                    headers: {'api-key':'dwhR8ASVS1S6KWQ0Ye1Gndm2Ty6LAsFKQrXAitWqz0W9d1MQnL5c1a9NjLCiKs0yxY3KCj'},
-                    url: 'http://api.moneyspark/product',
-                    dataType: 'json',
-                    contentType: "application/json; charset=utf-8",
-                    // async: false,
-                    timeout: 2000,
-                    crossDomain: true,
-                    success: function (r) {
-                        products  = r;
-                        createProducts();
-                        changeProduct('next', 0);
-                    },
-                    error: function (x, t, z) {
-                        if(t==="timeout")
-                            alert("got timeout");
-                        alert('error');
-                    }
-                });
-
+            <!-- Only when compile on device !-->
+            <script type="text/javascript" src="cordova.js"></script>
+            
+            <!--<script language="text/javascript">
+            $(document).one("mobileinit", function () {
+                $.mobile.defaultPageTransition = 'slide';
             });
-            window.addEventListener('load', function() {
-                document.body.addEventListener('touchmove', function(e) {
-                    e.preventDefault();
+            </script>-->
+            <!--<script type="text/javascript" src="js/jquery.mobile-1.3.1.js"></script>-->
+            <script type="text/javascript" src="js/project.js"></script>
+            <script type="text/javascript" src="js/jquery.nicescroll.min.js"></script>
+            <script type="text/javascript" src="js/device.js"></script>
+            <script type="text/javascript" src="js/transit.min.js"></script>
+            <script type="text/javascript" src="js/jquery.touchSwipe.min.js"></script>
+            <script type="text/javascript" src="js/sql.js"></script>
+            <script type="text/javascript" src="js/rest.js"></script>
+
+        
+            <script type="text/javascript">
+                // var ts=new Date().getTime();
+                // $('#mycss').prop('href','css/jquery.mobile.css?'+ts);
+                $(window).load(function () {
+                    var pad = $('.deal').width() - $('.deal').innerWidth();
+                    $('.buydeal').css({
+                        marginLeft: pad/2,
+                        marginRight: pad/2
+                    });
+
+                    var hgt = $('#deal-model').outerHeight();
+                    hgt += parseInt($('#deal-model').css('padding-top'),10);
+                    $('.ensemble-menu').css({
+                        height: (hgt/16+2/16)+'em'
+                    });
+                    var middle = $('.container:last').width()/2 - $('.ensemble-pagenum-bottom-menu').width()/2 - $('.button-menuvertical').width();
+                    $('.ensemble-pagenum-bottom-menu').css({
+                        marginLeft: middle+'px'
+                    });
+
+                    $('#showLeftPush').click(function () {
+                        $('body').toggleClass('menuvertical-push-toright');
+                        $('nav').toggleClass('menuvertical-left');
+                    });
+
+                    var products;
+                    var prodIndex = -1;
+                    function parseProduct(prod, i)
+                    {
+                        prodObj = products[i];
+                        prod.find('.title').html(prodObj.product.title);
+                        prod.find('.hf-name').html(prodObj.hedgefund.title);
+                        var funded = prodObj.product.sumInvestedAmounts == null ? 0 : prodObj.product.sumInvestedAmounts / prodObj.product.requiredAmount;
+                        var fundedNumBar = funded > 1 ? 1 : funded;
+                        var fundedBar = prod.find('.progress-bar-hover').width()*fundedNumBar;
+                        prod.find('.progress-bar-hover').width('-='+fundedBar);
+                        prod.find('.progress-bar-hover').css({marginLeft:fundedBar});
+                        prod.find('.may-funded').before(Math.round(funded*10000)/100+'% ');
+                        var endFundDate = new Date(prodObj.product.dateBeginExpected.date);
+                        var today = new Date();
+                        var left = (endFundDate.getTime()/1000 - today.getTime()/1000)/(24*3600);
+                        var leftText = Math.round(left) > 1 ? Math.round(left)+' d' : Math.round(left) < 1 ? Math.round(left*24) > 1 ? Math.round(left*24)+' h' : Math.round(left*24)+' h' : '1 d';
+                        prod.find('.lock-time').html(leftText);
+                        prod.find('.ana > .text').html(prodObj.product.description);
+                        var endExpect = new Date(prodObj.product.dateEndExpected.date);
+                        var dealTime = (endExpect.getTime()/1000 - endFundDate.getTime()/1000)/(24*3600);
+                        var dealTimeText = Math.round(dealTime) > 1 ? Math.round(dealTime)+' days' : Math.round(dealTime) < 1 ? Math.round(dealTime*24) > 1 ? Math.round(dealTime*24)+' hours' : Math.round(dealTime*24)+' hour' : '1 day';
+                        prod.find('.sportwatch-time').html(dealTimeText);
+                        prod.find('.renta-expected').html('+'+prodObj.product.profitsRateExpected*100+'%');
+                        prod.find('.loss-expected').html('-'+prodObj.product.lossRateExpected*100+'%');
+                    }
+                    function createProducts()
+                    {
+                        // console.log($('#deal-model').width());
+                        for (var i = 0; i < products.length; i++)
+                        {
+                            var newpage = $('#deal-model').html();
+                            $('#deal-model').before('<div id="deal'+i+'" class="deal" style="width:'+$('#deal-model').width()+'px;position:absolute;right:-'+$(window).width()+'px">'+newpage+'</div>');
+                            parseProduct($('#deal-model').prev(), i);
+                            $('#deal-model').prev().trigger('resize-product', $('#deal-model'));
+                        }
+                        $(window).trigger('imin');
+                        $('.flip-container .front').width($('#deal-container').width());
+                        $('.flip-container .front').height($('#deal-container').height());
+                        $('#deal-model').hide();
+                    }
+                    function changeProduct(toPage)
+                    {
+                        var toIndex = toPage === 'next' ? prodIndex+1 : prodIndex-1;
+                        if ((toIndex >= products.length && toPage === 'next') ||
+                            (toIndex < 0 && toPage === 'prev'))
+                        {
+                            alert('no more dude');
+                            return;
+                        }
+
+                        if ($('body').find('#deal'+toPage).length == 0)
+                        {
+                            var mult = 1;
+                            var margin = 0;
+                            if (toPage === 'next') {
+                                mult = -1;
+                            }
+                            
+                            var cacheIndex = prodIndex;
+                            $('#deal' + toIndex).show();
+                            
+                            $('.pagenum').each(function () {
+                                $(this).removeClass('active');
+                                if (toIndex == 0 && $(this).index() == 0)
+                                    $(this).addClass('active');
+                                else if (toIndex == products.length-1 && $(this).index() == 2)
+                                    $(this).addClass('active');
+                                else if (toIndex != 0 && toIndex != products.length-1 && $(this).index() == 1)
+                                    $(this).addClass('active');
+                            });
+
+                            if (toIndex >= 0 && toIndex < products.length)
+                                $('#deal' + toIndex).transition({x: '+='+(mult*($(window).width()+margin))}, function () {
+                                    $('#deal' + cacheIndex).hide();
+                                });
+                            if (prodIndex >= 0 && prodIndex < products.length)
+                                $('#deal' + prodIndex).transition({x: '+='+(mult*($(window).width()+margin))});
+                            prodIndex = toIndex;
+                        }
+                    }
+                    $('.pagenum').click(function () {
+                        if ($(this).index() == 2)
+                            changeProduct('next');
+                        else if ($(this).index() == 0)
+                            changeProduct('prev');
+                    });
+                    
+                    $(window).swipe({
+                        swipe: function(event, direction, distance, duration, fingerCount) {
+                            if (distance > $(window).width()*0.07)
+                            {
+                                if (direction === 'right')
+                                    changeProduct('prev');
+                                else
+                                    changeProduct('next');
+                            }
+                        }
+                    });
+                    // function createProducts() {
+
+                    // }
+                    $.ajax({
+                        type: 'GET',
+                        headers: {'api-key':'dwhR8ASVS1S6KWQ0Ye1Gndm2Ty6LAsFKQrXAitWqz0W9d1MQnL5c1a9NjLCiKs0yxY3KCj'},
+                        url: 'http://api.moneyspark/product',
+                        dataType: 'json',
+                        contentType: "application/json; charset=utf-8",
+                        // async: false,
+                        timeout: 2000,
+                        crossDomain: true,
+                        success: function (r) {
+                            products  = r;
+                            createProducts();
+                            changeProduct('next', 0);
+                        },
+                        error: function (x, t, z) {
+                            if(t==="timeout")
+                                alert("got timeout");
+                            alert('error');
+                        }
+                    });
+                });
+                window.addEventListener('load', function() {
+                    document.body.addEventListener('touchmove', function(e) {
+                        e.preventDefault();
+                    }, false);
                 }, false);
-            }, false);
-            // document.addEventListener("deviceready", buydealSize, false);
-        </script>
+                // document.addEventListener("deviceready", buydealSize, false);
+            </script>
+        </div>
     </body>
 </html>
