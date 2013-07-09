@@ -4517,11 +4517,7 @@ h3 {
   height: 0.875em;
   margin-top: 0.9375em;
   margin-bottom: 0.9375em;
-  position: absolute;
   z-index: 1000;
-  left: 50%;
-  margin-left: -2.25em;
-  bottom: 0;
 }
 .pagenum {
   display: block;
