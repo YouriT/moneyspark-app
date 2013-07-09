@@ -138,8 +138,6 @@ var Subscribe = Input.extend({
 });
 
 
-
-
 var Retrieve = function retrieve() {
         console.log("Trying to retrieve contents");
         //if lastRetrieving exists && too old
@@ -170,12 +168,6 @@ var Retrieve = function retrieve() {
         });
     };
 
-$(function(){
+$(window).load(function () {
     $(window).on('askRetrieve', function(){ Retrieve(); })
-	// PhoneGap is ready
-	function onDeviceReady() {
-        Retrieve();
-	}
-	// Wait for PhoneGap to load
-	document.addEventListener("deviceready", onDeviceReady, false);
 });

@@ -50,13 +50,26 @@ $(window).load(function () {
 });
 
 $(window).on('pageCreated', function(){
-	$(window).trigger("askRetrieve");
-	$('form[name=login]').submit(function(){
-			var email = $(this).find('input[name=email]').val();
-			var password = $(this).find('input[name=password]').val();
-			auth = new Auth();
-	        auth.login(email, password, function(){ alert("Yeah, welcome to Moneyspark baby !") }, function(){ $('.popupLogin').fadeIn('fast'); });
-	        return false;
-	});
 
+	console.log("Current page: "+$('body').attr("data-url"));
+	//Page login
+	if($('body').attr("data-url") == "login"){
+		$('form[name=login]').submit(function(){
+				var email = $(this).find('input[name=email]').val();
+				var password = $(this).find('input[name=password]').val();
+				auth = new Auth();
+		        auth.login(email, password, function(){ alert("Yeah, welcome to Moneyspark baby !") }, function(){ $('.popupLogin').fadeIn('fast'); });
+		        return false;
+		});
+	}
+
+	//Page deals
+	if($('body').attr("data-url") == "deals"){
+		$(window).on('productsGranted', function(){
+			//Display products on index !
+		});
+	}
+
+
+	$(window).trigger("askRetrieve");
 });
