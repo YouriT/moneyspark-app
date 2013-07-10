@@ -1,6 +1,111 @@
+(function ($) {
+    $.fn.changePage = function (page, direction) {
+        $.ajaxSetup ({
+            cache: false
+        });
+        loader();
+        $.get(page, function (r) {
+            var mult = -1;
+            if (direction == undefined) {
+                direction = 'left';
+            }
+            if (direction == 'right') {
+                mult = 1;
+            }
+
+            var pattern = /<body[^>]*>((.|[\n\r])*)<\/body>/im
+            var body = pattern.exec(r);
+            if (body != null) {
+                r = body[0].replace('<body','<div').replace('</body>','</div>');
+            }
+            var $page = $(r).find('#page');
+
+            $page.prop('id','page2');
+            if (direction === 'left') {
+                $page.css({position:'absolute',left:$(window).width()+'px'});
+            } else {
+                $page.css({position:'absolute',left:-$(window).width()+'px'});
+            }
+
+            $page.width($(window).width());
+            $page.height($(window).height());
+            $page.parent().find('script').remove();
+            $('#page').before($page.parent().html());
+            $('#page').css('overflow','hidden');
+            var add = 0;
+            if ($('body').hasClass('menuvertical-push-toright')) {
+                add = parseInt($('.menuvertical-push-toright').css('left'),10);
+            }
+            $('#page').transition({x:mult*($(window).width()-add)});
+            $('#page2').transition({x:mult*($(window).width()-add)},function () {
+                var $p2 = $('#page2');
+                var copyClasses = $p2.prop('class');
+                $p2.removeAttr('class');
+                $('body').prop('class', copyClasses);
+                $('body').attr('data-url', $p2.attr('data-url'));
+                $('#page').remove();
+                $p2.css({
+                    position: '',
+                    left: '',
+                    transform: ''
+                });
+                $p2.prop('id','page');
+                $(window).trigger('pageCreated');
+                $(window).trigger('pageLoader');
+            });
+        }, 'html');
+    };
+}(jQuery));
+
+var products;
 function iminClick () {
+        var amountInvest = 0;
+        var prod;
+        $('.check-little-grey:not(.no-change)').click(function () {
+            $(this).toggleClass('active');
+        });
+        $('.validate').click(function () {
+            var termsOk = true;
+            $('.terms, .risk, .claim').each(function () {
+                if (!$(this).hasClass('active')) {
+                    termsOk = false;
+                }
+            });
+            if (!termsOk) {
+                alert('No risk, no return !');
+            } else {
+                new Ajax("investment", function(r) { 
+                    alert(r.message);
+                    $(window).changePage('user_profile.html');
+                }, {amount: amountInvest, idProduct: prod.id}, 'POST');
+            }
+        });
 		$('button.letsgo').click(function () {
-			$('.flip-container').toggleClass('hover');
+            var amountText = $(this).parents('.buydeal').find('input[name=amount]').val();
+            if (amountText !== '' && !isNaN(amountText) && parseInt(amountText,10) > 0) {
+                $this = $(this);
+                amountInvest = parseInt(amountText);
+                TableConfiguration.findValueByKey('token', function(r) {
+                    $back = $('.flip-container').find('.back');
+                    $back.height($(window).height() - $back.offset().top - $('.bottom-menu').outerHeight() - parseInt($back.css('padding-top'),10)*2);
+
+                    prod = products.item($('.front > .deal').index($this.parents('.deal')));
+                    $('.resume-amount').text(amountInvest);
+                    $('.resume-product-name').text(prod.title);
+                    $('.resume-hedgefund').text(prod.hedgefundTitle);
+                    $('.resume-max-loss').text(prod.lossRateExpected*100);
+                    $('.resume-max-loss-amount').text(Math.round(prod.lossRateExpected*amountInvest*100)/100);
+                    $('.resume-max-gain').text(prod.profitsRateExpected*100);
+                    $('.resume-max-gain-amount').text(Math.round(prod.profitsRateExpected*amountInvest*100)/100);
+                    $('.resume-fee').text($this.parents('.buydeal').find('.fees:last').text());
+                    $('.resume-user-cash').text();
+
+                    $('.flip-container').toggleClass('hover');
+                },
+                function(e) {
+                    $(window).changePage("connexion.html", "left"); 
+                });
+            }
 		});
 		$('.imin').click(function(){
 		$('.buydeal').toggleClass('active');
@@ -22,7 +127,6 @@ function calculateFee(obj, products) {
 
     i = parseInt(obj.parents('.deal').attr('data-product'),10);
     prod = products.item(i);
-
     $ratioInvested = Math.round(prod.sumInvestedAmounts/prod.requiredAmount*100)/100;
     if($ratioInvested>1)$ratioInvested=1;
     $diff = $maxFeeRate - $minFeeRate;
@@ -41,65 +145,6 @@ function eventCounts(name) {
 	else
 		return arr[name].length;
 }
-
-(function ($) {
-	$.fn.changePage = function (page, direction) {
-		$.ajaxSetup ({
-			cache: false
-		});
-        loader();
-		$.get(page, function (r) {
-			var mult = -1;
-			if (direction == undefined) {
-				direction = 'left';
-			}
-			if (direction == 'right') {
-				mult = 1;
-			}
-
-			var pattern = /<body[^>]*>((.|[\n\r])*)<\/body>/im
-			var body = pattern.exec(r);
-			if (body != null) {
-				r = body[0].replace('<body','<div').replace('</body>','</div>');
-			}
-			var $page = $(r).find('#page');
-
-			$page.prop('id','page2');
-			if (direction === 'left') {
-				$page.css({position:'absolute',left:$(window).width()+'px'});
-			} else {
-				$page.css({position:'absolute',left:-$(window).width()+'px'});
-			}
-
-			$page.width($(window).width());
-			$page.height($(window).height());
-			$page.parent().find('script').remove();
-			$('#page').before($page.parent().html());
-			$('#page').css('overflow','hidden');
-			var add = 0;
-			if ($('body').hasClass('menuvertical-push-toright')) {
-				add = parseInt($('.menuvertical-push-toright').css('left'),10);
-			}
-			$('#page').transition({x:mult*($(window).width()-add)});
-			$('#page2').transition({x:mult*($(window).width()-add)},function () {
-				var $p2 = $('#page2');
-                var copyClasses = $p2.prop('class');
-                $p2.removeAttr('class');
-				$('body').prop('class', copyClasses);
-				$('body').attr('data-url', $p2.attr('data-url'));
-				$('#page').remove();
-				$p2.css({
-                    position: '',
-                    left: '',
-                    transform: ''
-                });
-				$p2.prop('id','page');
-				$(window).trigger('pageCreated');
-                $(window).trigger('pageLoader');
-			});
-		}, 'html');
-	};
-}(jQuery));
 
 $(window).load(function () {
 	$(window).bind('imin', iminClick);
@@ -181,7 +226,6 @@ $(window).on('pageCreated', function(){
 
 	//Page deals
 	if($('body').attr("data-url") == "deals"){
-		var products;
         var prodIndex = -1;
         function parseProduct(prod, i)
         {

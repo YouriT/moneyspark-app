@@ -10,7 +10,10 @@ function loader() {
     $('#page').css('-webkit-filter','blur(3px)');
 
 	$(window).one('pageLoaded', function () {
-		$('#page').css('-webkit-filter', 'blur(0px)');
+		if (navigator.userAgent.indexOf('Apple') == -1)
+			$('#page').css('-webkit-filter', 'blur(0px)');
+		else
+			$('#page').css('-webkit-filter', '');
 		$('#main-loader').remove();
 	});
 }

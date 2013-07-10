@@ -26,14 +26,9 @@ var Ajax = Class.extend({
     else if(typeRequest == "POST"){
         contentType = "application/x-www-form-urlencoded; charset=UTF-8";
     }
-    if(apiKey == undefined){
-        TableConfiguration.findValueByKey('apiKey', function(v){
-            apiKey=v;
-        }, function(e){
-            apiKey="";
-        });
-    }
-    $.ajax({
+
+    function ajaxMe() {
+        $.ajax({
             type: typeRequest,
             data: params,
             headers: {'Api-Key': apiKey},
@@ -58,7 +53,20 @@ var Ajax = Class.extend({
                 }
                 
             }
-            });
+        });
+    }
+
+    if(apiKey === undefined){
+        TableConfiguration.findValueByKey('token', function(v){
+            apiKey=v;
+            ajaxMe();
+        }, function(e){
+            apiKey="";
+            ajaxMe();
+        });
+    }
+    else
+        ajaxMe();
     
   }
 });
