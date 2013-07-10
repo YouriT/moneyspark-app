@@ -379,6 +379,21 @@ $(window).on('pageCreated', function(){
         		}
         	}
         });
+        n=0;
+        $('input[name=iban]').keypress(function(e){
+        	t = $(this);
+        	if(e.which != 13){
+        		if(t.val().length == 4 || ( t.val().length > 4 && ( t.val().length-n )%4 ==0 ) ) {
+        			n++;
+        			t.val(t.val()+" ");
+        		}
+        	}
+        	else
+        	{
+        		if(t.val().length%5==0)
+        			n--;
+        	}
+        });
 
         function keyAt(obj, index) {
     		var i = 0;
@@ -423,7 +438,7 @@ $(window).on('pageCreated', function(){
         						if(r.error != undefined){
 
         							
-        							if(r.error.code < 1000){
+        							if(r.error.code != 1000){
         								for(i=0; i<2;i++){
 	        								slideSignin('prev');
 	        							}

@@ -102,7 +102,7 @@ var Input = Class.extend({
         var dateDDMMYYYRegex = /^(0[1-9]|[12][0-9]|3[01])[- /.](0[1-9]|1[012])[- /.](19|20)\d\d$/;
         var emailRegex = /^\b[A-Z0-9._%-]+@[A-Z0-9.-]+\.[A-Z]{2,4}\b$/i;
         var phoneNumberRegex = /\(?([0-9]{3})\)?([ .-]?)([0-9]{3})([0-9]{3})/;
-/*        if(this.i.is("input[type=text]") && this.i.val()==""){
+        if(this.i.is("input[type=text]") && this.i.val()==""){
             return "Please fill in this field";
         }
         if(this.i.is("input[name=terms]") && this.i.val()==0){
@@ -127,7 +127,7 @@ var Input = Class.extend({
         else if( this.i.attr("name") == "passwordconf" && this.pwd != this.i.val() ){
             return "Please confirm the same password";
         }
-        else*/
+        else
             return "good";
     }
 });
