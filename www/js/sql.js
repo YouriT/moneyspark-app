@@ -111,7 +111,11 @@ var TableProducts = Class.extend({
 
                             object = products[i];
                             console.log("Product "+object.product.title+" added to database");
-                            tx.executeSql('INSERT INTO PRODUCTS VALUES (NULL, "'+object.product.title+'", "'+object.hedgefund.title+'", "'+object.product.dateBeginExpected.date+'", "'+object.product.dateEndExpected.date+'", "'+object.product.description+'", "'+object.product.profitsRateExpected+'", "'+object.product.lossRateExpected+'", "'+object.product.sumInvestedAmounts+'", "'+object.product.requiredAmount+'")');
+                            tx.executeSql("INSERT INTO PRODUCTS VALUES (NULL, ?, ?, '"+object.product.dateBeginExpected.date+"', '"+object.product.dateEndExpected.date+"', ?, '"+object.product.profitsRateExpected+"', '"+object.product.lossRateExpected+"', '"+object.product.sumInvestedAmounts+"', '"+object.product.requiredAmount+"')",
+                                [object.product.title,
+                                object.hedgefund.title,
+                                object.product.description]
+                            );
                         }
                     }, function(e){
                         error(e);

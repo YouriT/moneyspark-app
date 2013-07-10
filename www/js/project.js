@@ -322,6 +322,10 @@ $(window).on('pageCreated', function(){
         $('button.signin').click(function () {
             slideSignin('next');
         });
+        $('.check').click(function () {
+            $(this).toggleClass('active');
+            $('.check-input').eq($('.slide .check').index($(this))).val($(this).hasClass('active') ? 1 : 0);
+        });
     }
     
     // Swipe function /!\ must be at the end
