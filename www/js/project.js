@@ -387,7 +387,7 @@ $(window).on('pageCreated', function(){
     		}
     		return null;
 		}
-		$('form').submit(function(){return false;});
+
         $('button.signin').click(function () {
         	nb = $('.active').find('input').length;
         	current = 0;
@@ -419,22 +419,10 @@ $(window).on('pageCreated', function(){
         					{
         						newBirthD = "";
         					}
-
-        					var ser = [];
-        					$('input:not([name$="birthDate"])').each(function(){
-        						if($(this).val() != ""){
-        							ser.push(encodeURIComponent($(this).attr("name"))+'='+encodeURIComponent($(this).val()));
-        						}
-        					});
-        					ser.push(encodeURIComponent('locale')+'='+encodeURIComponent(globalLocale));
-        					ser.push(encodeURIComponent('birthDate')+'='+encodeURIComponent(newBirthD));
-        					ser = ser.join('&');
-        					console.log(ser);
-
-
-
         					new Ajax("Register", function(r){
-        						if(r.error != undefined){	
+        						if(r.error != undefined){
+
+        							
         							if(r.error.code < 1000){
         								for(i=0; i<2;i++){
 	        								slideSignin('prev');
@@ -461,8 +449,7 @@ $(window).on('pageCreated', function(){
         							alert("All right, you are registered !");
         						}
         						
-        					}, {lastName:"lala"}, "POST");
-console.log(ser);
+        					}, $('input:not([name$="birthDate"])').serialize()+"&locale="+globalLocale+"&birthDate="+newBirthD, "POST");
         					
         				}
         				return;
