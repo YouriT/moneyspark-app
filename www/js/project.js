@@ -30,29 +30,35 @@
             $page.width($(window).width());
             $page.height($(window).height());
             $page.parent().find('script').remove();
+            $page.css('-webkit-filter','blur(3px)');
             $('#page').before($page.parent().html());
             $('#page').css('overflow','hidden');
             var add = 0;
-            if ($('body').hasClass('menuvertical-push-toright')) {
-                add = parseInt($('.menuvertical-push-toright').css('left'),10);
-            }
-            $('#page').transition({x:mult*($(window).width()-add)});
-            $('#page2').transition({x:mult*($(window).width()-add)},function () {
-                var $p2 = $('#page2');
-                var copyClasses = $p2.prop('class');
-                $p2.removeAttr('class');
-                $('body').prop('class', copyClasses);
-                $('body').attr('data-url', $p2.attr('data-url'));
-                $('#page').remove();
-                $p2.css({
-                    position: '',
-                    left: '',
-                    transform: ''
+            function transitions() {
+                $('#page').transition({x:mult*($(window).width())});
+                $('#page2').transition({x:mult*($(window).width())},function () {
+                    var $p2 = $('#page2');
+                    var copyClasses = $p2.prop('class');
+                    $p2.removeAttr('class');
+                    $('body').prop('class', copyClasses);
+                    $('body').attr('data-url', $p2.attr('data-url'));
+                    $('#page').remove();
+                    $p2.css({
+                        position: '',
+                        left: '',
+                        transform: '',
+                    });
+                    $p2.prop('id','page');
+                    $(window).trigger('pageCreated');
+                    $(window).trigger('pageLoader');
                 });
-                $p2.prop('id','page');
-                $(window).trigger('pageCreated');
-                $(window).trigger('pageLoader');
-            });
+            }
+            if ($('body').hasClass('menuvertical-push-toright')) {
+                $('body').removeClass('menuvertical-push-toright');
+                transitions();
+            }
+            else
+                transitions();
         }, 'html');
     };
 }(jQuery));

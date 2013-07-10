@@ -8,7 +8,12 @@ var resizeProduct = function (obj) {
 var globalLocale = "fr_BE";
 
 function loader() {
-    $('body').prepend('<div id="main-loader" class="loader big"><i class="icon-refresh icon-spin"></i></div>');
+
+	var loader = $('<div id="main-loader" class="loader big"><i class="icon-refresh icon-spin"></i></div>');
+	loader.width($(window).width()*5);
+	loader.css('left',-($(window).width()*2)+'px');
+    $('body').prepend(loader);
+
     $('#page').css('-webkit-filter','blur(3px)');
 
 	$(window).one('pageLoaded', function () {
