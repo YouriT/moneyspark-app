@@ -1,6 +1,5 @@
 <div>
-    <div id="page" class="bg1 menuvertical-push" data-url="signin">
-
+    <div id="page" class="bg1 menuvertical-push" data-url="register">
         <nav class="menuvertical menuvertical-vertical menuvertical-left">
             <div class="mt34"></div>
             <div class="ensemble-menu">
@@ -14,33 +13,33 @@
 
         <div class="container">
             <div class="row-fluid" style="margin-top: 40%">
-                <div class="ensemble-pagenum zeroauto">
+                <div id="signin-step" class="ensemble-pagenum zeroauto">
                     <a class="pagenum active" href="#" rel="1"></a>
                     <a class="pagenum center" href="#" rel="2"></a>
                     <a class="pagenum" href="#" rel="3"></a>
                     <div class="clear"></div>
                 </div>
                 <div id="signin-slider">
-                    <div>
-                        <input type="text" name="firstName" class="userinfo" style="margin-top: 5%;" data-role="none" placeholder="first name" />
-                        <input type="text" name="lastName" class="userinfo" style="margin-top: 5%;" data-role="none" placeholder="last name" />
+                    <div class="slide active">
+                        <input type="text" name="firstName" class="userinfo" style="margin-top: 5%;" placeholder="first name" />
+                        <input type="text" name="lastName" class="userinfo" style="margin-top: 5%;" placeholder="last name" />
                         <input type="text" 
                                name="birthDate" 
                                class="userinfo" 
                                style="margin-top: 5%;" 
-                               data-role="none" 
+                               
                                placeholder="birthdate - dd/mm/yy"/>
-                        <button class="signin" style="margin-bottom: 5%;margin-top: 10%;" data-role="none">next</button>
+                        <button class="signin" style="margin-bottom: 5%;margin-top: 10%;">next</button>
                     </div>
-                    <div>
-                        <input type="text" name="email" class="userinfo" style="margin-top: 5%;" data-role="none" placeholder="email" />
-                        <input type="text" name="iban" class="userinfo" style="margin-top: 5%;" data-role="none" placeholder="IBAN" />
-                        <input type="text" name="phone" class="userinfo" style="margin-top: 5%;" data-role="none" placeholder="phone" />
-                        <button class="signin" style="margin-bottom: 5%;margin-top: 10%;" data-role="none">next</button>
+                    <div class="slide">
+                        <input type="text" name="email" class="userinfo" style="margin-top: 5%;" placeholder="email" />
+                        <input type="text" name="iban" class="userinfo" style="margin-top: 5%;" placeholder="IBAN" />
+                        <input type="text" name="phone" class="userinfo" style="margin-top: 5%;" placeholder="phone" />
+                        <button class="signin" style="margin-bottom: 5%;margin-top: 10%;">next</button>
                     </div>
-                    <div>
-                        <input type="password" name="password" class="userinfo" style="margin-top: 5%;" data-role="none" placeholder="password" />
-                        <input type="password" name="passwordConf" class="userinfo" style="margin-top: 5%;" data-role="none" placeholder="password confirmation" />
+                    <div class="slide">
+                        <input type="password" name="password" class="userinfo" style="margin-top: 5%;" placeholder="password" />
+                        <input type="password" name="passwordConf" class="userinfo" style="margin-top: 5%;" placeholder="password confirmation" />
 
                         <div style="margin-left: 10%;margin-right: 10%;">
                             <div class="check" style="float:left;"></div>
@@ -50,7 +49,7 @@
                             <div class="check-text" style="margin-top: -2%;float:left;">Newsletter</div>
                             <div class="clear"></div>
                         </div>
-                        <button class="signin" data-role="none" style="margin-bottom: 5%;margin-top: 5%;">confirm sign in</button>
+                        <button class="signin" style="margin-bottom: 5%;margin-top: 5%;">confirm sign in</button>
                     </div>
                 </div>
             </div>

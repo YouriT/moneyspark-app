@@ -47,6 +47,7 @@ function eventCounts(name) {
 		$.ajaxSetup ({
 			cache: false
 		});
+        loader();
 		$.get(page, function (r) {
 			var mult = -1;
 			if (direction == undefined) {
@@ -82,10 +83,16 @@ function eventCounts(name) {
 			$('#page').transition({x:mult*($(window).width()-add)});
 			$('#page2').transition({x:mult*($(window).width()-add)},function () {
 				var $p2 = $('#page2');
-				$('body').prop('class', $p2.prop('class'));
+                var copyClasses = $p2.prop('class');
+                $p2.removeAttr('class');
+				$('body').prop('class', copyClasses);
 				$('body').attr('data-url', $p2.attr('data-url'));
 				$('#page').remove();
-				$p2.removeAttr('style');
+				$p2.css({
+                    position: '',
+                    left: '',
+                    transform: ''
+                });
 				$p2.prop('id','page');
 				$(window).trigger('pageCreated');
                 $(window).trigger('pageLoader');
@@ -106,6 +113,9 @@ $(window).on('pageCreated', function(){
 	var menuClick = function() { 
 		$('a').click(function (e) {
 			e.preventDefault();
+            if ($(this).prop('href').indexOf('#') !== -1)
+                return false;
+
 			var dir = 'left';
 			if ($(this).attr('data-direction') === 'right')
 				dir = 'right';
@@ -226,11 +236,11 @@ $(window).on('pageCreated', function(){
                         $(this).addClass('active');
                 });
 
-                if (toIndex >= 0 && toIndex < products.length)
+                if (toIndex >= 0 && toIndex < products.length && $('#deal' + toIndex).length > 0)
                     $('#deal' + toIndex).transition({x: '+='+(mult*($(window).width()+margin))}, function () {
                         $('#deal' + cacheIndex).hide();
                     });
-                if (prodIndex >= 0 && prodIndex < products.length)
+                if (prodIndex >= 0 && prodIndex < products.length && $('#deal' + prodIndex).length > 0)
                     $('#deal' + prodIndex).transition({x: '+='+(mult*($(window).width()+margin))});
                 prodIndex = toIndex;
             }
@@ -241,27 +251,14 @@ $(window).on('pageCreated', function(){
             else if ($(this).index() == 0)
                 changeProduct('prev');
         });
-        
-        $(window).swipe({
-            swipe: function(event, direction, distance, duration, fingerCount) {
-                if (distance > $(window).width()*0.07) {
-                    if (direction === 'right') {
-                        changeProduct('prev');
-                    } else {
-                        changeProduct('next');
-                    }
-                }
-            }
-        });
 		if (eventCounts('productsGranted') == 0) {
 			$(window).on('productsGranted', function () {
 				productsDb = new TableProducts();
 	            productsDb.findAll(function (r) {
 					products = r;
 					createProducts();
-                    setTimeout(function() {$(window).trigger('pageLoaded')},2000);
+                    $(window).trigger('pageLoaded');
 	            }, function (e) {
-
 	            });
 			});
 		}
@@ -285,6 +282,55 @@ $(window).on('pageCreated', function(){
             $('nav').toggleClass('menuvertical-left');
         });
 	}
+
+    //Page register
+    if($('body').attr("data-url") == "register") {
+        $('#signin-slider > div').width($('#signin-slider').parents('.container').width());
+        $('#signin-slider > div:not(.active)').each(function () {
+            $(this).css('right',-$(window).width());
+        });
+        function slideSignin(direction) {
+            var $this = $('.slide.active');
+            var margin = parseInt($this.parents('.container').css('margin-left'),10);
+            var slideLength = ($(window).width() + margin);
+            if ($this.next().length > 0 && direction == 'next') {
+                $this.transition({x: '-='+slideLength}).removeClass('active');
+                $this.next().transition({x: '-='+slideLength}).addClass('active');
+            } else {
+                $this.transition({x: '+='+slideLength}).removeClass('active');
+                $this.prev().transition({x: '+='+slideLength}).addClass('active');
+            }
+            $('#signin-step > a.active').toggleClass('active');
+            $('#signin-step > a').eq($('.slide').index($('.slide.active'))).toggleClass('active');
+        }
+        $('button.signin').click(function () {
+            slideSignin('next');
+        });
+    }
+    
+    // Swipe function /!\ must be at the end
+    $(window).swipe({
+        swipe: function (event, direction, distance, duration, fingerCount) {
+            if (distance > $(window).width()*0.07) {
+                // Products swipe
+                if($('body').attr("data-url") == "deals") {
+                    if (direction === 'right') {
+                        changeProduct('prev');
+                    } else if (direction === 'left') {
+                        changeProduct('next');
+                    }
+                }
+                // Signin swipe
+                if($('body').attr("data-url") == "register") {
+                    if (direction === 'right') {
+                        slideSignin('prev');
+                    } else if (direction === 'left') {
+                        slideSignin('next');
+                    }
+                }
+            }
+        }
+    });
 
 	$(window).trigger("askRetrieve");
 });
