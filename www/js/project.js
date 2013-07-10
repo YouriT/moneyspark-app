@@ -194,7 +194,7 @@ $(window).on('pageCreated', function(){
 	};
 
 	var menuCreate = function(connected){
-		$('.ensemble-menu').append('<a href="signin.html" class="needConnected"><i class="icon-user iconmenu"></i></a><div class="inter-menu"></div>');
+		$('.ensemble-menu').append('<a href="user_profile.html" class="needConnected"><i class="icon-user iconmenu"></i></a><div class="inter-menu"></div>');
     	$('.ensemble-menu').append('<a href="cash1.html" class="needConnected"><i class="icon-lock iconmenu"></i></a><div class="inter-menu"></div>');
    		$('.ensemble-menu').append('<a href="about.html"><i class="icon-bolt iconmenu"></i></a>');
    		$('.ensemble-menu').append('<div class="inter-menu"></div><a href="index.html"><i class="icon-home iconmenu"></i></a>');
@@ -229,6 +229,14 @@ $(window).on('pageCreated', function(){
 	if($('body').attr("data-url") == "profile"){
 		var dealresumehgt = $(window).height() - $('#profileContainer').offset().top - $('.bottom-menu').outerHeight();
         $('#profileContainer').height(dealresumehgt);
+        var profile;
+        var aj = new Ajax('profile/me', function (r) {
+            console.log(r);
+            profile = r;
+        });
+        function parseProfile() {
+
+        }
     }
 
 

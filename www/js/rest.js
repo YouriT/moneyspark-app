@@ -28,10 +28,17 @@ var Ajax = Class.extend({
     }
 
     function ajaxMe() {
+        if (apiKey !== undefined) {
+            $.ajaxSetup({
+                beforeSend: function (xhr) {
+                    xhr.setRequestHeader('api-key',apiKey);
+                    console.log('called');
+                }
+            });
+        }
         $.ajax({
             type: typeRequest,
             data: params,
-            headers: {'Api-Key': apiKey},
             url: "http://api.moneyspark/"+urlRequest,
             dataType: 'json',
             contentType: contentType,
