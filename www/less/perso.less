@@ -1284,9 +1284,9 @@
 // Profil User
 
 .profil-header {
-	padding-top: 25px;
-	padding-bottom: 20px;
-	.box-shadow(0px 0px 10px #000);
+	padding-top: 25/16em;
+	padding-bottom: 20/16em;
+	.box-shadow(0/16em 0/16em 10/16em #000);
 	position:relative;
 	z-index: 100;
 }
@@ -1304,15 +1304,15 @@
 	}
 	.b {
 		float: left;
-		padding-top: 7px;
-		padding-bottom: 7px;
+		padding-top: 7/16em;
+		padding-bottom: 7/16em;
 		width: 50%;
 		text-align: center;
 	}
 	.a {
 		float: right;
-		padding-top: 7px;
-		padding-bottom: 7px;
+		padding-top: 7/16em;
+		padding-bottom: 7/16em;
 		width: 50%;
 		text-align: center;
 	}
@@ -1322,7 +1322,7 @@
 	cursor: pointer;
 	padding-bottom: 4%;
 	padding-top: 3%;
-	border-bottom: 1px solid rgba(0,0,0,0.1);
+	border-bottom: 1/16em solid rgba(0,0,0,0.1);
 	.part {
 		.title {
 			float:left;
@@ -1367,10 +1367,10 @@
 			height: 4/16em;
 		}
 		.puce {
-			height: 8px;
-			width: 8px;
+			height: 8/16em;
+			width: 8/16em;
 			background-color: #aaa;
-			margin-top: -7px;
+			margin-top: -7/16em;
 			z-index: 10000000;
 			position: relative;
 			.border-radius(50%);
@@ -1384,6 +1384,35 @@
 
 .negatif {
 	color: @red;
+}
+
+.back-deal {
+	line-height: 2.2em !important;
+	font-size: 1.3em;
+}
+
+// Popup Login 
+
+.popupLogin {
+	position:fixed;
+	height:101%;
+	width:100%;
+	margin-top:-30%;
+	background: rgba(0,0,0,0.5);	
+	display:none;
+	z-index: 10;
+	.animated();	
+	.fadeIn();
+	.message-popup {
+		background-color: rgba(0,0,0,0.6);
+		width: 50%;
+		text-align: center;
+		color: #fff;
+		border-radius: 10px;
+		padding: 5px;
+		.animated.hinge();
+		.fadeIn();
+	}
 }
 
 .loader {
