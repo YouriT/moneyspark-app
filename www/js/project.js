@@ -152,6 +152,7 @@ $(window).load(function () {
 });
 
 var redirectPageAfterLogin = "index.html";
+var inputObject = new Input();
 
 $(window).on('pageCreated', function(){
 	console.log("Current page: "+$('body').attr("data-url"));
@@ -187,7 +188,7 @@ $(window).on('pageCreated', function(){
 	};
 
 	var menuCreate = function(connected){
-		$('.ensemble-menu').append('<a href="user_profile.html" class="needConnected"><i class="icon-user iconmenu"></i></a><div class="inter-menu"></div>');
+		$('.ensemble-menu').append('<a href="signin.html" class="needConnected"><i class="icon-user iconmenu"></i></a><div class="inter-menu"></div>');
     	$('.ensemble-menu').append('<a href="cash1.html" class="needConnected"><i class="icon-lock iconmenu"></i></a><div class="inter-menu"></div>');
    		$('.ensemble-menu').append('<a href="about.html"><i class="icon-bolt iconmenu"></i></a>');
    		$('.ensemble-menu').append('<div class="inter-menu"></div><a href="index.html"><i class="icon-home iconmenu"></i></a>');
@@ -223,6 +224,7 @@ $(window).on('pageCreated', function(){
 		var dealresumehgt = $(window).height() - $('#profileContainer').offset().top - $('.bottom-menu').outerHeight();
         $('#profileContainer').height(dealresumehgt);
     }
+
 
 	//Page deals
 	if($('body').attr("data-url") == "deals"){
@@ -363,8 +365,78 @@ $(window).on('pageCreated', function(){
             $('#signin-step > a.active').toggleClass('active');
             $('#signin-step > a').eq($('.slide').index($('.slide.active'))).toggleClass('active');
         }
+        $('input[name=birthDate]').keypress(function(e){
+        	t = $(this);
+        	if(e.which != 13){
+        		if(t.val().length == 2 || t.val().length == 5){
+        			t.val(t.val()+"/");
+        		}
+        	}
+        });
+
+        function keyAt(obj, index) {
+    		var i = 0;
+    		for (var key in obj) {
+        		if ((index || 0) === i++) return key;
+    		}
+		}
+
         $('button.signin').click(function () {
-            slideSignin('next');
+        	nb = $('.active').find('input').length;
+        	current = 0;
+        	$('.active').find('input').each(function(){
+        		obj = $(this);
+        		inputObject.set(obj);      	
+        		if(inputObject.validate() != "good"){
+        			alert("Error"+" "+obj.attr("name")+" : "+inputObject.validate());
+        			return;
+        		}
+        		else
+        		{
+        			current++;
+        			if(nb==current){
+        				current=0;
+        				//Next if not last step
+        				if($('.active').index() <= 1 ){
+        					slideSignin('next');
+        				}
+        				else //Last step !
+        				{
+        					//Send if last step
+        					birthD = $('input[name=birthDate]').val();
+        					birthDArray = birthD.split("/");
+        					newBirthD = birthDArray[2]+"-"+birthDArray[1]+"-"+birthDArray[0];
+        					new Ajax("Register", function(r){
+        						if(r.error != undefined && r.error.code == 1000){
+        							errorInputName = keyAt(r.error.message, 0);
+        							errorType = keyAt(r.error.message[errorInputName], 0);
+        							errorValue = r.error.message[errorInputName][errorType];
+        							//Wich slide has this input ?
+        							nIndexSlide = $('input[name='+errorInputName+']').parents(".slide").index();
+        							nSlideEffect = 2-nIndexSlide;
+        							for(i=0; i<nSlideEffect;i++){
+        								slideSignin('prev');
+        							}
+        							alert(errorInputName+" "+errorValue);
+        						}
+        						else
+        						{
+        							$(window).changePage("index.html", "right");
+        							alert("All right, you are registered !");
+        						}
+        						
+        					}, $('input:not([name$="birthDate"])').serialize()+"&locale="+globalLocale+"&birthDate="+newBirthD, "POST");
+        					
+        				}
+        				return;
+        			}
+        		}
+        		
+        		
+        		//
+        	});
+            
+        
         });
         $('.check').click(function () {
             $(this).toggleClass('active');

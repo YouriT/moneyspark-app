@@ -5,6 +5,8 @@ var resizeProduct = function (obj) {
 	$(".ana .text", obj.target).niceScroll();
 };
 
+var globalLocale = "en_BE";
+
 function loader() {
     $('body').prepend('<div id="main-loader" class="loader big"><i class="icon-refresh icon-spin"></i></div>');
     $('#page').css('-webkit-filter','blur(3px)');
@@ -18,11 +20,18 @@ function loader() {
 	});
 }
 
-
+function checkLocale() {
+      navigator.globalization.getLocaleName(
+        function (locale) { globalLocale = locale.value; }
+      );
+}
+  		
 function onDeviceReady() {
 	if (device.platform.name !== undefined) {
 		navigator.splashscreen.hide();
+		checkLocale();
 	}
+	
 }
 
 document.addEventListener("deviceready", onDeviceReady, false);
