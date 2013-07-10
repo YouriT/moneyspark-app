@@ -4,8 +4,8 @@ function iminClick () {
 		});
 		$('.imin').click(function(){
 		$('.buydeal').toggleClass('active');
-			if (!$('.buydeal').hasClass('active')) {
-				setTimeout(function () {$('.buydeal').css({marginTop: 0});}, 300);
+		if (!$('.buydeal').hasClass('active')) {
+			setTimeout(function () { $('.buydeal').css({marginTop: 0}); }, 300);
 			$("body").css("overflow-y", "hidden");
 		}
 		else {
@@ -13,6 +13,25 @@ function iminClick () {
 			$("body").css("overflow-y", "hidden");
 		}
 	});
+}
+
+function calculateFee(obj, products) {
+
+    $minFeeRate = 0.05;
+    $maxFeeRate = 0.15;
+
+    i = parseInt(obj.parents('.deal').attr('data-product'),10);
+    prod = products.item(i);
+
+    $ratioInvested = Math.round(prod.sumInvestedAmounts/prod.requiredAmount*100)/100;
+    if($ratioInvested>1)$ratioInvested=1;
+    $diff = $maxFeeRate - $minFeeRate;
+    $feeRate = $minFeeRate+($ratioInvested*$diff);
+    $b = Math.round(parseInt(obj.val(),10)/100)*0.01;
+    $feeRate-$b < $minFeeRate ? $feeRate = $minFeeRate : $feeRate = $feeRate-$b;
+    $feeRate = Math.round($feeRate*100);
+    
+    obj.parents('.deal').find('.fees:last').html($feeRate);
 }
 
 function eventCounts(name) {
@@ -69,6 +88,7 @@ function eventCounts(name) {
 				$p2.removeAttr('style');
 				$p2.prop('id','page');
 				$(window).trigger('pageCreated');
+                $(window).trigger('pageLoader');
 			});
 		}, 'html');
 	};
@@ -161,9 +181,12 @@ $(window).on('pageCreated', function(){
             for (var i = 0; i < products.length; i++)
             {
                 var newpage = $('#deal-model').html();
-                $('#deal-model').before('<div id="deal'+i+'" class="deal" style="width:'+$('#deal-model').width()+'px;position:absolute;right:-'+$(window).width()+'px">'+newpage+'</div>');
+                $('#deal-model').before('<div id="deal'+i+'" data-product="'+i+'" class="deal" style="width:'+$('#deal-model').width()+'px;position:absolute;right:-'+$(window).width()+'px">'+newpage+'</div>');
                 parseProduct($('#deal-model').prev(), i);
                 $('#deal-model').prev().trigger('resize-product', $('#deal-model'));
+                $('input[name="amount"]', $('#deal-model').prev()).keyup(function (e) {
+                    calculateFee($(this), products);
+                });
             }
             $(window).trigger('imin');
             $('.flip-container .front').width($('#deal-container').width());
@@ -221,23 +244,22 @@ $(window).on('pageCreated', function(){
         
         $(window).swipe({
             swipe: function(event, direction, distance, duration, fingerCount) {
-                if (distance > $(window).width()*0.07)
-                {
-                    if (direction === 'right')
+                if (distance > $(window).width()*0.07) {
+                    if (direction === 'right') {
                         changeProduct('prev');
-                    else
+                    } else {
                         changeProduct('next');
+                    }
                 }
             }
         });
 		if (eventCounts('productsGranted') == 0) {
 			$(window).on('productsGranted', function () {
 				productsDb = new TableProducts();
-				console.log('bla');
 	            productsDb.findAll(function (r) {
 					products = r;
-					console.log(r);
 					createProducts();
+                    setTimeout(function() {$(window).trigger('pageLoaded')},2000);
 	            }, function (e) {
 
 	            });
