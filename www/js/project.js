@@ -379,8 +379,9 @@ $(window).on('pageCreated', function(){
     		for (var key in obj) {
         		if ((index || 0) === i++) return key;
     		}
+    		return null;
 		}
-
+		$('form').submit(function(){return false;});
         $('button.signin').click(function () {
         	nb = $('.active').find('input').length;
         	current = 0;
@@ -405,19 +406,48 @@ $(window).on('pageCreated', function(){
         					//Send if last step
         					birthD = $('input[name=birthDate]').val();
         					birthDArray = birthD.split("/");
-        					newBirthD = birthDArray[2]+"-"+birthDArray[1]+"-"+birthDArray[0];
+        					if(birthDArray[2] != undefined && birthDArray[1] != undefined && birthDArray[0] != undefined){
+        						newBirthD = birthDArray[2]+"-"+birthDArray[1]+"-"+birthDArray[0];
+        					}
+        					else
+        					{
+        						newBirthD = "";
+        					}
+
+        					var ser = [];
+        					$('input:not([name$="birthDate"])').each(function(){
+        						if($(this).val() != ""){
+        							ser.push(encodeURIComponent($(this).attr("name"))+'='+encodeURIComponent($(this).val()));
+        						}
+        					});
+        					ser.push(encodeURIComponent('locale')+'='+encodeURIComponent(globalLocale));
+        					ser.push(encodeURIComponent('birthDate')+'='+encodeURIComponent(newBirthD));
+        					ser = ser.join('&');
+        					console.log(ser);
+
+
+
         					new Ajax("Register", function(r){
-        						if(r.error != undefined && r.error.code == 1000){
-        							errorInputName = keyAt(r.error.message, 0);
-        							errorType = keyAt(r.error.message[errorInputName], 0);
-        							errorValue = r.error.message[errorInputName][errorType];
-        							//Wich slide has this input ?
-        							nIndexSlide = $('input[name='+errorInputName+']').parents(".slide").index();
-        							nSlideEffect = 2-nIndexSlide;
-        							for(i=0; i<nSlideEffect;i++){
-        								slideSignin('prev');
+        						if(r.error != undefined){	
+        							if(r.error.code < 1000){
+        								for(i=0; i<2;i++){
+	        								slideSignin('prev');
+	        							}
+	        							alert(r.error.message);
         							}
-        							alert(errorInputName+" "+errorValue);
+        							else
+        							{
+        								errorInputName = keyAt(r.error.message, 0);
+	        							errorType = keyAt(r.error.message[errorInputName], 0);
+	        							errorValue = r.error.message[errorInputName][errorType];
+	        							//Wich slide has this input ?
+	        							nIndexSlide = $('input[name='+errorInputName+']').parents(".slide").index();
+	        							nSlideEffect = 2-nIndexSlide;
+	        							for(i=0; i<nSlideEffect;i++){
+	        								slideSignin('prev');
+	        							}
+	        							alert(errorInputName+" "+errorValue);
+	        						}
         						}
         						else
         						{
@@ -425,7 +455,8 @@ $(window).on('pageCreated', function(){
         							alert("All right, you are registered !");
         						}
         						
-        					}, $('input:not([name$="birthDate"])').serialize()+"&locale="+globalLocale+"&birthDate="+newBirthD, "POST");
+        					}, {lastName:"lala"}, "POST");
+console.log(ser);
         					
         				}
         				return;

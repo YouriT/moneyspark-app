@@ -5,7 +5,7 @@ var resizeProduct = function (obj) {
 	$(".ana .text", obj.target).niceScroll();
 };
 
-var globalLocale = "en_BE";
+var globalLocale = "fr_BE";
 
 function loader() {
     $('body').prepend('<div id="main-loader" class="loader big"><i class="icon-refresh icon-spin"></i></div>');
