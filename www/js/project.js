@@ -127,7 +127,7 @@ $(window).on('pageCreated', function(){
 			$('.ensemble-menu').append('<a href="cash1.html" class="needConnected"><i class="icon-user iconmenu"></i></a><div class="inter-menu"></div>');
     		$('.ensemble-menu').append('<a href="cash1.html" class="needConnected"><i class="icon-lock iconmenu"></i></a><div class="inter-menu"></div>');
    			$('.ensemble-menu').append('<a href="cash1.html" class="needConnected"><i class="icon-bolt iconmenu"></i></a>');
-   			$('.ensemble-menu').append('<div class="inter-menu"></div><a href="connexion.html" class="logout"><i class="icon-bolt iconmenu"></i></a>');
+   			$('.ensemble-menu').append('<div class="inter-menu"></div><a href="connexion.html" class="logout"><i class="icon-home iconmenu"></i></a>');
    			menuClick();
 	}, function(e){
 		//Menu when not connected

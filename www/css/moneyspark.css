@@ -4912,13 +4912,13 @@ h3 {
 }
 /* Orientation-dependent styles for the content of the menu */
 .menuvertical-vertical {
-  width: 3.75em;
+  width: 4.125em;
   top: 0;
   z-index: 1000;
 }
 /* Vertical menu that slides from the left or right */
 .menuvertical-left {
-  left: -3.75em;
+  left: -4.125em;
 }
 .menuvertical-left.menuvertical-open {
   left: 0em;
@@ -4930,10 +4930,10 @@ h3 {
   left: 0;
 }
 .menuvertical-push-toright {
-  left: 3.75em;
+  left: 4.125em;
 }
 .menuvertical-toleft {
-  left: -3.75em;
+  left: -4.125em;
 }
 /* Transitions */.menuvertical,
 .menuvertical-push {
@@ -5171,6 +5171,40 @@ h3 {
   -moz-animation-name: fadeIn;
   -o-animation-name: fadeIn;
   animation-name: fadeIn;
+}
+.loader {
+  position: absolute;
+  z-index: 10000000;
+  background-color: rgba(0, 0, 0, 0.6);
+  text-align: center;
+  -webkit-border-radius: 0.3125em;
+  -moz-border-radius: 0.3125em;
+  border-radius: 0.3125em;
+}
+.loader i {
+  font-size: 3.5em;
+  color: #ffffff;
+}
+.loader.small {
+  margin-left: -2.5em;
+  margin-top: -2.5em;
+  width: 5em;
+  height: 5em;
+  left: 50%;
+}
+.loader.small i {
+  margin-top: 0.23214285714285715em;
+}
+.loader.big {
+  width: 100%;
+  height: 100%;
+}
+.loader.big i {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin-top: -0.5em;
+  margin-left: -0.5em;
 }
 @-ms-viewport {
   width: device-width;
