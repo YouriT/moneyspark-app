@@ -91,20 +91,6 @@ var Input = Class.extend({
         this.inp = input;
     },
     validate:function(){
-        var ibanValidator = function($v){ 
-                            function isValidIBAN($v){ //This function check if the checksum if correct
-                                $v = $v.replace(/^(.{4})(.*)$/,"$2$1"); //Move the first 4 chars from left to the right
-                                $v = $v.replace(/[A-Z]/g,function($e){return $e.charCodeAt(0) - 'A'.charCodeAt(0) + 10}); //Convert A-Z to 10-25
-                                var $sum = 0;
-                                var $ei = 1; //First exponent 
-                                for(var $i = $v.length - 1; $i >= 0; $i--){
-                                    $sum += $ei * parseInt($v.charAt($i),10); //multiply the digit by it's exponent 
-                                    $ei = ($ei * 10) % 97; //compute next base 10 exponent  in modulus 97
-                                }; 
-                                return $sum % 97 == 1;
-                            }
-                            return /^BE\d{14}$/.test($v) && isValidIBAN($v);        
-                }
         var dateDDMMYYYRegex = '^(0[1-9]|[12][0-9]|3[01])[- /.](0[1-9]|1[012])[- /.](19|20)\d\d$';
         var emailRegex = '^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$';
         var phoneNumberRegex = /[0-9-()+]{3,20}/;
@@ -115,8 +101,6 @@ var Input = Class.extend({
         if(this.inp.attr("name") == "email" && !this.inp.val().match(emailRegex))
             return "badRegex";
         if(this.inp.attr("name") == "phone" && !this.inp.val().match(phoneNumberRegex))
-            return "badRegex";
-        if(this.inp.attr("name") == "iban" && !ibanValidator(this.inp.val()))
             return "badRegex";
         if(this.inp.attr("name") == "password" && this.inp.val().length < 6)
             return "badRegex";
@@ -132,8 +116,7 @@ var Subscribe = Input.extend({
         data = inputs;
     },
     send:function(successCallBack, errorCallBack){
-        /*new Ajax()
-        function(urlRequest, successCallBack, params, typeRequest, apiKey)*/
+        new Ajax("Register", successCallBack, inputs, 'POST');
     }
 });
 

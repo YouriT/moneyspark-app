@@ -1,14 +1,5 @@
-<html>
-    <head>
-        <meta charset="utf-8" />
-        <!-- <meta name="format-detection" content="telephone=no" /> -->
-        <meta name="viewport" content="user-scalable=no, initial-scale=0.5" />
-        <!-- Please don't add "maximum-scale=1" here. It's bad for accessibility. -->
-        <!-- <meta name="viewport" content="width=device-width, initial-scale=0.5"> -->
-        <link id="mycss" rel="stylesheet" type="text/css" href="css/moneyspark.css" />
-        <title>Moneyspark</title>
-    </head>
-    <body class="menuvertical-push">
+<div>
+    <div id="page" class="bg1 menuvertical-push" data-url="signin">
 
         <nav class="menuvertical menuvertical-vertical menuvertical-left">
             <div class="mt34"></div>
@@ -29,23 +20,50 @@
                     <a class="pagenum" href="#" rel="3"></a>
                     <div class="clear"></div>
                 </div>
+                <div id="signin-slider">
+                    <div>
+                        <input type="text" name="firstName" class="userinfo" style="margin-top: 5%;" data-role="none" placeholder="first name" />
+                        <input type="text" name="lastName" class="userinfo" style="margin-top: 5%;" data-role="none" placeholder="last name" />
+                        <input type="text" 
+                               name="birthDate" 
+                               class="userinfo" 
+                               style="margin-top: 5%;" 
+                               data-role="none" 
+                               placeholder="birthdate - dd/mm/yy"/>
+                        <button class="signin" style="margin-bottom: 5%;margin-top: 10%;" data-role="none">next</button>
+                    </div>
+                    <div>
+                        <input type="text" name="email" class="userinfo" style="margin-top: 5%;" data-role="none" placeholder="email" />
+                        <input type="text" name="iban" class="userinfo" style="margin-top: 5%;" data-role="none" placeholder="IBAN" />
+                        <input type="text" name="phone" class="userinfo" style="margin-top: 5%;" data-role="none" placeholder="phone" />
+                        <button class="signin" style="margin-bottom: 5%;margin-top: 10%;" data-role="none">next</button>
+                    </div>
+                    <div>
+                        <input type="password" name="password" class="userinfo" style="margin-top: 5%;" data-role="none" placeholder="password" />
+                        <input type="password" name="passwordConf" class="userinfo" style="margin-top: 5%;" data-role="none" placeholder="password confirmation" />
 
-                <input type="text" name="firstName" class="userinfo" style="margin-top: 5%;" data-role="none" placeholder="first name" />
-                <input type="text" name="lastName" class="userinfo" style="margin-top: 5%;" data-role="none" placeholder="last name" />
-                <input type="text" name="birthDate" class="userinfo" style="margin-top: 5%;" data-role="none" placeholder="birth data - dd/mm/yy" />
-                
-                <button class="signin" style="margin-bottom: 5%;margin-top: 10%;" data-role="none">next</button>
+                        <div style="margin-left: 10%;margin-right: 10%;">
+                            <div class="check" style="float:left;"></div>
+                            <div class="check-text" style="margin-top: 8%;float:left;">I've read the use of terms</div>
+                            <div class="clear"></div>
+                            <div class="check" style="float:left;margin-top: 0;"></div>
+                            <div class="check-text" style="margin-top: -2%;float:left;">Newsletter</div>
+                            <div class="clear"></div>
+                        </div>
+                        <button class="signin" data-role="none" style="margin-bottom: 5%;margin-top: 5%;">confirm sign in</button>
+                    </div>
+                </div>
             </div>
             
         </div>
 
         <div class="container">
-                <div class="bottom-menu">
-                    <button id="showLeftPush" class="button-menuvertical">
-                        <div class="trait"></div>
-                        <div class="trait"></div>
-                        <div class="trait"></div>
-                    </button>
+            <div class="bottom-menu">
+                <button id="showLeftPush" class="button-menuvertical">
+                    <div class="trait"></div>
+                    <div class="trait"></div>
+                    <div class="trait"></div>
+                </button>
                     <!--
                     <div class="ensemble-pagenum-bottom-menu">
                         <a class="pagenum" href="#prev" rel="1"></a>
@@ -53,20 +71,9 @@
                         <a class="pagenum" href="#next" rel="3"></a>
                         <div class="clear"></div>
                     </div>
-                    -->
-                    <div class="clear"></div>
-                </div>
-            </div>   
-        <script type="text/javascript" src="js/jquery.js"></script>
-        <script type="text/javascript" src="js/app.js"></script>
-        <script type="text/javascript" src="cordova.js"></script>
-        <script type="text/javascript">
-            $(window).load(function () {
-                $('#showLeftPush').click(function () {
-                    $('body').toggleClass('menuvertical-push-toright');
-                    $('nav').toggleClass('menuvertical-left');
-                });
-            });
-        </script>
-    </body>
-</html>
+                -->
+                <div class="clear"></div>
+            </div>
+        </div>   
+    </div>
+</div>

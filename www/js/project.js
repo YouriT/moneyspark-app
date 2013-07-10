@@ -81,15 +81,42 @@ $(window).load(function () {
 
 $(window).on('pageCreated', function(){
 	console.log("Current page: "+$('body').attr("data-url"));
-	// All pages
-	$('a').click(function (e) {
-		e.preventDefault();
-		var dir = 'left';
-		if ($(this).attr('data-direction') === 'right')
-			dir = 'right';
-		$(window).changePage($(this).prop('href'), dir);
+
+	//All pages
+	var menuClick = function() { 
+		$('a').click(function (e) {
+			e.preventDefault();
+			var dir = 'left';
+			if ($(this).attr('data-direction') === 'right')
+				dir = 'right';
+
+			if($(this).hasClass('needConnected')){
+				//Check out if user is connected
+				th = $(this);
+				TableConfiguration.findValueByKey('token', function(r){ $(window).changePage(th.prop('href'), dir); }, 
+														   function(e){ $(window).changePage("connexion.html", dir); });
+			}
+			else
+				$(window).changePage($(this).prop('href'), dir);
+		});
+	};
+
+	//Create menu
+	TableConfiguration.findValueByKey("token", function(r){
+		//Menu when connected
+			$('.ensemble-menu').append('<a href="cash1.html" class="needConnected"><i class="icon-user iconmenu"></i></a><div class="inter-menu"></div>');
+    		$('.ensemble-menu').append('<a href="cash1.html" class="needConnected"><i class="icon-lock iconmenu"></i></a><div class="inter-menu"></div>');
+   			$('.ensemble-menu').append('<a href="cash1.html" class="needConnected"><i class="icon-bolt iconmenu"></i></a>');
+   			$('.ensemble-menu').append('<div class="inter-menu"></div><a href="connexion.html" class="logout"><i class="icon-bolt iconmenu"></i></a>');
+   			menuClick();
+	}, function(e){
+		//Menu when not connected
+			$('.ensemble-menu').append('<a href="cash1.html" class="needConnected"><i class="icon-user iconmenu"></i></a><div class="inter-menu"></div>');
+    		$('.ensemble-menu').append('<a href="cash1.html" class="needConnected"><i class="icon-lock iconmenu"></i></a><div class="inter-menu"></div>');
+   			$('.ensemble-menu').append('<a href="cash1.html" class="needConnected"><i class="icon-bolt iconmenu"></i></a>');
+   			menuClick();
 	});
-	
+
 	//Page login
 	if($('body').attr("data-url") == "login"){
 		$('form[name=login]').submit(function(){
