@@ -106,6 +106,8 @@ $(window).load(function () {
 	$(window).trigger("pageCreated");
 });
 
+var redirectPageAfterLogin = "index.html";
+
 $(window).on('pageCreated', function(){
 	console.log("Current page: "+$('body').attr("data-url"));
 
@@ -124,26 +126,39 @@ $(window).on('pageCreated', function(){
 				//Check out if user is connected
 				th = $(this);
 				TableConfiguration.findValueByKey('token', function(r){ $(window).changePage(th.prop('href'), dir); }, 
-														   function(e){ $(window).changePage("connexion.html", dir); });
+														   function(e){
+														   		redirectPageAfterLogin=th.prop('href');
+														   		$(window).changePage("connexion.html", dir); 
+														   });
+			}
+			else if($(this).hasClass('logout')){
+				TableConfiguration.delete("token", function(){
+					$(window).changePage("connexion.html", dir);
+				});
 			}
 			else
 				$(window).changePage($(this).prop('href'), dir);
 		});
 	};
 
+	var menuCreate = function(connected){
+		$('.ensemble-menu').append('<a href="user_profile.html" class="needConnected"><i class="icon-user iconmenu"></i></a><div class="inter-menu"></div>');
+    	$('.ensemble-menu').append('<a href="cash1.html" class="needConnected"><i class="icon-lock iconmenu"></i></a><div class="inter-menu"></div>');
+   		$('.ensemble-menu').append('<a href="about.html"><i class="icon-bolt iconmenu"></i></a>');
+   		$('.ensemble-menu').append('<div class="inter-menu"></div><a href="index.html"><i class="icon-home iconmenu"></i></a>');
+		if(connected){
+			$('.ensemble-menu').append('<div class="inter-menu"></div><a href="index.html" class="logout"><i class="icon-power-off iconmenu"></i></a>');
+		}
+
+	};
 	//Create menu
 	TableConfiguration.findValueByKey("token", function(r){
 		//Menu when connected
-			$('.ensemble-menu').append('<a href="cash1.html" class="needConnected"><i class="icon-user iconmenu"></i></a><div class="inter-menu"></div>');
-    		$('.ensemble-menu').append('<a href="cash1.html" class="needConnected"><i class="icon-lock iconmenu"></i></a><div class="inter-menu"></div>');
-   			$('.ensemble-menu').append('<a href="cash1.html" class="needConnected"><i class="icon-bolt iconmenu"></i></a>');
-   			$('.ensemble-menu').append('<div class="inter-menu"></div><a href="connexion.html" class="logout"><i class="icon-home iconmenu"></i></a>');
+			menuCreate(true);
    			menuClick();
 	}, function(e){
 		//Menu when not connected
-			$('.ensemble-menu').append('<a href="cash1.html" class="needConnected"><i class="icon-user iconmenu"></i></a><div class="inter-menu"></div>');
-    		$('.ensemble-menu').append('<a href="cash1.html" class="needConnected"><i class="icon-lock iconmenu"></i></a><div class="inter-menu"></div>');
-   			$('.ensemble-menu').append('<a href="cash1.html" class="needConnected"><i class="icon-bolt iconmenu"></i></a>');
+			menuCreate(false);
    			menuClick();
 	});
 
@@ -153,10 +168,16 @@ $(window).on('pageCreated', function(){
 			var email = $(this).find('input[name=email]').val();
 			var password = $(this).find('input[name=password]').val();
 			auth = new Auth();
-	        auth.login(email, password, function(){ $(window).changePage("cash1.html"); }, function(){ $('.popupLogin').fadeIn('fast'); });
+	        auth.login(email, password, function(){ $(window).changePage(redirectPageAfterLogin); }, function(){ $('.popupLogin').fadeIn('fast'); });
 	        return false;
 		});
 	}
+
+	//Page profile
+	if($('body').attr("data-url") == "profile"){
+		var dealresumehgt = $(window).height() - $('#profileContainer').offset().top - $('.bottom-menu').outerHeight();
+        $('#profileContainer').height(dealresumehgt);
+    }
 
 	//Page deals
 	if($('body').attr("data-url") == "deals"){
@@ -276,11 +297,6 @@ $(window).on('pageCreated', function(){
         $('.ensemble-pagenum-bottom-menu').css({
             marginLeft: middle+'px'
         });
-
-        $('#showLeftPush').click(function () {
-            $('.menuvertical-push').toggleClass('menuvertical-push-toright');
-            $('nav').toggleClass('menuvertical-left');
-        });
 	}
 
     //Page register
@@ -332,5 +348,9 @@ $(window).on('pageCreated', function(){
         }
     });
 
+    $('#showLeftPush').click(function () {
+        $('.menuvertical-push').toggleClass('menuvertical-push-toright');
+        $('nav').toggleClass('menuvertical-left');
+    });
 	$(window).trigger("askRetrieve");
 });
