@@ -150,45 +150,65 @@ var Subscribe = Input.extend({
 });
 
 
-var Retrieve = function retrieve() {
-        console.log("Trying to retrieve contents");
-        //if lastRetrieving exists && too old
+var updateProfile = function updateProfile(r){
+    c = new TableConfiguration();
+    function insertV(k, v, successCallBack){
+        c.insert({key:k,value:v}, function(){ console.log("Update "+k+" "+v); successCallBack(); })
+    };
+    function updateV(k, v, successCallBack){
+        c.updateValue(k,v, function(){ console.log("Insert "+k+" "+v); successCallBack(); })
+    };
+    c.findValueByKey("firstName", function(r){ updateV("firstName", r.firstName); }, function(e){ insertV("firstName", r.firstName); });
+    c.findValueByKey("lastName", function(r){ updateV("lastName", r.lastName); }, function(e){ insertV("lastName", r.lastName); });
+    c.findValueByKey("lockboxAmount", function(r){ updateV("lockboxAmount", r.lockboxAmount); }, function(e){ insertV("lockboxAmount", r.lockboxAmount); });
+    c.findValueByKey("averageRentability", function(r){ updateV("averageRentability", r.averageRentability); }, function(e){ insertV("averageRentability", r.averageRentability); });
+    updateLastRetrieving("meGranted");
+};
+
+var updateInvestments = function updateInvestments(r){
+    updateLastRetrieving("investmentsGranted");
+};
+
+
+var updateLastRetrieving = function updateLastRetrieving(granted){
+    var d = new Date();
+    var n = d.getTime();
+    c.findValueByKey("lastRetrieving", function(v){
+        c.updateValue("lastRetrieving", n, function(){ $(window).trigger(granted);}, function(e){});
+    }, function(e){
+        c.insert({key:"lastRetrieving",value:n}, function(){ $(window).trigger(granted);}, function(e){});
+    });
+};
+
+
+var Retrieve = function retrieve(force) {
+        if(force == undefined)
+            force = true;
         var d = new Date();
         var n = d.getTime();
         c.findValueByKey("lastRetrieving", function(v){
-            if(v < (n-(3600000*6)) ){
-                //Update products and lastRetrieving
-                new Ajax("Product", function(r){
-                    p.insertAll(r, function(){ 
-                        //Products added, now update lastRetrieving
-                        c.updateValue("lastRetrieving", n, function(){
-                            $(window).trigger('productsGranted');
-                            console.log("Table products updated");
-                        }, function(e){})
-                     }, function(e){
-                        //Error products not added
-                     });
-                });
+            if( (v < (n-(3600000*6))) || force ){
+                //Update products
+                new Ajax("Product", function(r){p.insertAll(r, function(){updateLastRetrieving("productsGranted")}, function(e){});});
                 //if token exists, UPDATE investments, profile
+                 c.findValueByKey("token", function(v){ new Ajax("Profile/me", function(r){ updateProfile(r); updateInvestments(r);  }); }, function(e){});
             }
             else
             {
-                $(window).trigger('productsGranted');
+                c.findValueByKey("token", function(v){ updateLastRetrieving("meGranted"); updateLastRetrieving("investmentsGranted")  }, function(e){});
+                updateLastRetrieving("productsGranted");
             }
         }, function(e){ //if lastRetrieving does not exists
-            //==>UPDATE only table products, insert lastRetrieving products
+            //Update only table products, insert lastRetrieving products
             new Ajax("Product", function(r){
                 p.insertAll(r, function(){ 
-                    //Products added, now update lastRetrieving
-                    c.insert({key:"lastRetrieving",value:n}, function(){
-                        $(window).trigger('productsGranted');
-                        console.log("Table products updated");
-                    }, function(e){})
+                    updateLastRetrieving("productsGranted");
                  }, function(e){
                     //Error products not added
                  });
             });
         });
+
     };
 
 $(window).load(function () {
