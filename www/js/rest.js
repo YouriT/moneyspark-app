@@ -39,7 +39,7 @@ var Ajax = Class.extend({
         $.ajax({
             type: typeRequest,
             data: params,
-            url: "http://api.moneyspark/"+urlRequest,
+            url: "http://api.reonin.com/"+urlRequest,
             dataType: 'json',
             contentType: contentType,
             crossDomain: true,
